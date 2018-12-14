@@ -3,13 +3,15 @@
       <td *cdkDragPreview >
           <app-item [item]="items[id]"></app-item>
         </td>
-    <td>
+    <td class="item-cell">
       <app-item [item]="items[id]"></app-item>
     </td>
-    <td>
+    <td class="item-cell">
       <app-shops [itemId]="id"></app-shops>
     </td>
-    <td><button mat-icon-button (click)="deleteRecord(i)"><mat-icon>delete_forever</mat-icon></button></td>
+    <td class="item-cell"><button mat-icon-button (click)="deleteRecord(i)">
+        <mat-icon>delete_forever</mat-icon>
+      </button></td>
   </tr>
 </table>
 
