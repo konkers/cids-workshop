@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'theme.scss';
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@font-face {
+    font-family: "ff4";
+
+    src: url("./assets/Final_Fantasy_IV_SNES.woff") format("woff");
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

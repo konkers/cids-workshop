@@ -1,0 +1,8 @@
+<div *ngIf="locs">
+  <div (click)="edit($event)" *ngIf="record.town_ids.length == 0">
+    shop
+  </div>
+  <div (click)="edit($event)" *ngIf="record.town_ids.length > 0">
+    <span *ngFor="let id of record.town_ids; let isLast=last">{{locs[id].name}}{{isLast ? '' : ', '}}</span>
+  </div>
+</div>

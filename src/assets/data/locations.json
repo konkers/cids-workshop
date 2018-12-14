@@ -1,0 +1,86 @@
+[
+    {
+        "id": 0,
+        "name": "Baron",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 1,
+        "name": "Mist",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 2,
+        "name": "Kaipo",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 3,
+        "name": "Toroia",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 4,
+        "name": "Fabul",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 5,
+        "name": "Silvera",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 6,
+        "name": "Mysidia",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 7,
+        "name": "Agart",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 8,
+        "name": "Eblan",
+        "type": "town",
+        "map": "overworld"
+    },
+    {
+        "id": 9,
+        "name": "D Castle",
+        "type": "town",
+        "map": "underworld"
+    },
+    {
+        "id": 10,
+        "name": "Tomra",
+        "type": "town",
+        "map": "underworld"
+    },
+    {
+        "id": 11,
+        "name": "Feymarch",
+        "type": "town",
+        "map": "underworld"
+    },
+    {
+        "id": 12,
+        "name": "Kokkol",
+        "type": "town",
+        "map": "underworld"
+    },
+    {
+        "id": 13,
+        "name": "Hummingway",
+        "type": "town",
+        "map": "moon"
+    }
+]
