@@ -36,9 +36,9 @@ export class ShopsComponent implements OnInit {
   }
 
   edit(event: any) {
-    const pos = { top: `${event.clientY}px`, left: `${event.clientX}px` };
+    // const pos = { top: `${event.clientY}px`, left: `${event.clientX}px` };
     const dialogRef = this.dialog.open(ShopsDialogComponent, {
-      position: pos,
+      // position: pos,
       hasBackdrop: true,
       width: '250px',
       data: { found: this.found }
