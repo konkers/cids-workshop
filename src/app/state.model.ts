@@ -1,5 +1,3 @@
-import {Deserializable} from './deserializable.model';
-
 export const STATE_VERSION = 0;
 
 export interface ItemLocations {

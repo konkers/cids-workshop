@@ -1,8 +1,8 @@
 <section class="mat-typography">
   <a href="/item-list">Items</a>
 
-  <ul *ngIf="locs.size > 0">
-  <li *ngFor="let id of locOrder">{{locs.get(id).name}}
+  <ul *ngxIfNotEmpty="locs">
+  <li *ngFor="let id of locOrder">{{locs[id].name}}
     <a (click)="shop(id, 'item')"><app-icon type="potion"></app-icon></a>
     <a (click)="shop(id, 'weapon')"><app-icon type="lightsword"></app-icon></a>
     <a (click)="shop(id, 'armor')"><app-icon type="shield"></app-icon></a>

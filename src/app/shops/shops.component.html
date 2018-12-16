@@ -3,6 +3,6 @@
     shop
   </div>
   <div (click)="edit($event)" *ngxIfNotEmpty="found">
-    <span *ngFor="let id of found | keyvalue ; let isLast=last">{{id.key}}{{isLast ? '' : ', '}}</span>
+    <span *ngFor="let id of found | keyvalue ; let isLast=last">{{locs[id.key].name}}{{isLast ? '' : ', '}}</span>
   </div>
 </div>

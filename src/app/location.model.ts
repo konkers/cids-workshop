@@ -1,13 +1,6 @@
-import {Deserializable} from './deserializable.model';
-
-export class Location implements Deserializable {
+export interface Location {
     id: string;
     name: string;
     type: string;
     map: string;
-
-    deserialize(input: any) {
-        Object.assign(this, input);
-        return this;
-    }
 }
