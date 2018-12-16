@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Locations, LocationService } from '../location.service';
 
@@ -16,8 +16,6 @@ export class LocationTrackerComponent implements OnInit {
   constructor(private router: Router, private locationService: LocationService) {
     this.locationService.getLocations().subscribe(locs => {
       this.locs = locs;
-      console.log(locs);
-      console.log(locs.size);
     });
     this.locOrder = this.locationService.getLocationOrder();
   }
@@ -27,6 +25,10 @@ export class LocationTrackerComponent implements OnInit {
 
   shop(loc: string, type: string) {
     this.router.navigate(['/shop', loc, type]);
+  }
+
+  gotoLoc(loc: string) {
+    this.router.navigate(['/loc', loc]);
   }
 
 }

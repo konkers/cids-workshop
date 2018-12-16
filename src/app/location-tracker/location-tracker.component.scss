@@ -1,0 +1,9 @@
+.location {
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+}
+
+.location:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

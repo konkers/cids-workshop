@@ -3,84 +3,226 @@
         "id": "baron",
         "name": "Baron",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop",
+                "reqs": ["baron-key"]
+            },
+            {
+                "type": "armor-shop",
+                "reqs": ["baron-key"]
+            }
+        ]
     },
     {
         "id": "mist",
         "name": "Mist",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "kaipo",
         "name": "Kaipo",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "toroia",
         "name": "Toroia",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "fabul",
         "name": "Fabul",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "silvera",
         "name": "Silvera",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "mysidia",
         "name": "Mysidia",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "agart",
         "name": "Agart",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
+
     },
     {
         "id": "eblan-cave",
         "name": "Eblan Cave",
         "type": "town",
-        "map": "overworld"
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "d-castle",
         "name": "Dwarf Castle",
         "type": "town",
-        "map": "underworld"
+        "map": "underworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "tomra",
         "name": "Tomra",
         "type": "town",
-        "map": "underworld"
+        "map": "underworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "feymarch",
         "name": "Feymarch",
         "type": "town",
-        "map": "underworld"
+        "map": "underworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            }
+        ]
     },
     {
         "id": "kokkol",
         "name": "Kokkol",
         "type": "town",
-        "map": "underworld"
+        "map": "underworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            }
+        ]
     },
     {
         "id": "hummingway",
         "name": "Hummingway",
         "type": "town",
-        "map": "moon"
+        "map": "moon",
+        "poi": [
+            {
+                "type": "item-shop"
+            }
+        ]
     }
 ]

@@ -1,7 +1,6 @@
-{{location}} {{shopType}}
 <div *ngIf="items && selectedItems && foundItems">
   <ul>
-    <li *ngFor="let id of selectedItems; index as i">
+    <li *ngFor="let id of filterItems(items, selectedItems); index as i">
       <mat-checkbox [checked]="found(id)" (change)="checked(id, $event.checked)">
         {{items[id].name}}
       </mat-checkbox>

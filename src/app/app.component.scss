@@ -11,11 +11,13 @@ app-root {
   flex: 1;
   box-sizing: border-box;
   min-height: 100%;
+  padding: 10px;
 }
 
 .app-sidenav {
   overflow: auto;
   width: $sidenav-width;
+  padding: 10px;
 }
 
 .docs-component-sidenav-inner-content {
