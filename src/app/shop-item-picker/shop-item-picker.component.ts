@@ -3,8 +3,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
-import {Item, ItemRecord} from '../item.model';
-import {ItemService, FoundItems, ItemLocations} from '../item.service';
+import {Item, ItemService, FoundItems} from '../item.service';
 
 @Component({
   selector: 'app-shop-item-picker',

@@ -6,11 +6,12 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {ConfigService} from './config.service';
-import {Item, ItemRecord} from './item.model';
+import {Item} from './item.model';
 import {FoundItems, ItemLocations} from './state.model';
 import {StateService} from './state.service';
 
 export {FoundItems, ItemLocations} from './state.model';
+export {Item} from './item.model';
 
 const STORAGE_KEY = 'tracker.items.service';
 

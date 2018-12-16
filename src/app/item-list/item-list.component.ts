@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { Item, ItemRecord } from '../item.model';
-import { ItemService, ItemLocations, FoundItems } from '../item.service';
+import { Item, ItemService, FoundItems } from '../item.service';
 
 import {CdkDragDrop} from '@angular/cdk/drag-drop';
 
@@ -53,7 +52,6 @@ export class ItemListComponent implements OnInit {
   }
 
   addItem(item: Item) {
-    console.log("add", item);
     this.searchControl.setValue('');
     this.itemService.addSelectedItem(item);
   }
@@ -67,10 +65,4 @@ export class ItemListComponent implements OnInit {
 
     return this.items.filter(option => option.name.toLowerCase().includes(filterValue));
   }
-
-  drop(event: CdkDragDrop<ItemRecord[]>) {
-    console.log(event);
-    this.itemService.moveItemRecord(event.previousIndex, event.currentIndex);
-  }
-
 }
