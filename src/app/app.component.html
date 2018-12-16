@@ -1,2 +1,8 @@
-<app-item-list></app-item-list>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav mode="side" class="app-sidenav" opened>
+        <app-location-tracker></app-location-tracker>
+    </mat-sidenav>
+    <mat-sidenav-content class="app-sidenav-container">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

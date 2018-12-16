@@ -4,10 +4,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { Item, ItemRecord } from '../item.model';
-import { ItemService } from '../item.service';
+import { ItemService, ItemLocations, FoundItems } from '../item.service';
 
 import {CdkDragDrop} from '@angular/cdk/drag-drop';
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-item-list',
@@ -16,13 +15,11 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ItemListComponent implements OnInit {
   items: Item[];
-  itemRecords: ItemRecord[];
-  itemRecordsSource = new MatTableDataSource<ItemRecord>();
+  selectedItems: number[];
+  foundItems: FoundItems;
 
   searchControl = new FormControl();
   filteredItems: Observable<Item[]>;
-
-  displayedColumns: string[] = ['item', 'shop', 'action'];
 
   constructor(private itemService: ItemService) { }
 
@@ -40,11 +37,14 @@ export class ItemListComponent implements OnInit {
 
       });
 
-    this.itemService.getItemRecords()
-      .subscribe(records => {
-        this.itemRecords = records;
-        this.itemRecordsSource.data = records;
-        console.log(records);
+    this.itemService.getSelectedItems()
+      .subscribe(s => {
+        this.selectedItems = s;
+      });
+
+    this.itemService.getFoundItems()
+      .subscribe(f => {
+        this.foundItems = f;
       });
   }
 
@@ -53,13 +53,15 @@ export class ItemListComponent implements OnInit {
   }
 
   addItem(item: Item) {
+    console.log("add", item);
     this.searchControl.setValue('');
-    this.itemService.addItemRecord(item);
+    this.itemService.addSelectedItem(item);
   }
 
   deleteRecord(index: number) {
-    this.itemService.deleteItemRecord(index);
+    this.itemService.deleteSelectedItem(index);
   }
+
   private _filter(value: string): Item[] {
     const filterValue = value.toLowerCase();
 

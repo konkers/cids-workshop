@@ -3,13 +3,11 @@ import { FormControl } from '@angular/forms';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { ItemRecord } from '../item.model';
-import { ItemService } from '../item.service';
-import { Location } from '../location.model';
-import { LocationService } from '../location.service';
+import { ItemService, FoundItems, ItemLocations } from '../item.service';
+import { Locations, LocationService } from '../location.service';
 
 export interface DialogData {
-  townIds: number[];
+  found: ItemLocations;
 }
 
 @Component({
@@ -20,37 +18,36 @@ export interface DialogData {
 
 export class ShopsComponent implements OnInit {
 
-  @Input() record: ItemRecord;
-  locs: Location[];
+  @Input() itemId: number;
+  found: ItemLocations;
+  locs: Locations;
 
   constructor(public dialog: MatDialog, private locationService: LocationService,
     private itemService: ItemService) {
+  }
+
+  ngOnInit() {
+    this.itemService.getFoundItems().subscribe(f => {
+      this.found = f[this.itemId] || {};
+    });
     this.locationService.getLocations().subscribe(locs => {
       this.locs = locs;
     });
   }
 
-  ngOnInit() {
-  }
-
   edit(event: any) {
-    console.log(event);
     const pos = { top: `${event.clientY}px`, left: `${event.clientX}px` };
-    console.log(pos);
     const dialogRef = this.dialog.open(ShopsDialogComponent, {
       position: pos,
       hasBackdrop: true,
       width: '250px',
-      data: { townIds: this.record.town_ids }
+      data: { found: this.found }
 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       if (result !== undefined) {
-        this.record.town_ids = result;
-        this.itemService.updateRecord(this.record.item_id, this.record.town_ids);
+        this.itemService.updateFoundItems(this.itemId, result);
       }
     });
   }
@@ -62,42 +59,34 @@ export class ShopsComponent implements OnInit {
 })
 export class ShopsDialogComponent {
 
-  locs: Location[];
-  selected: boolean[];
-  locsControl = new FormControl();
+  locs: Locations;
+  selected: ItemLocations;
+  locOrder: string[];
 
   constructor(
     public dialogRef: MatDialogRef<ShopsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private locationService: LocationService) {
 
+    this.locOrder = this.locationService.getLocationOrder();
     this.locationService.getLocations().subscribe(locs => {
-      this.selected = new Array(locs.length).fill(false);
-      for (const i of this.data.townIds) {
-        this.selected[i] = true;
-      }
+      this.selected = this.data.found;
 
       this.locs = locs;
-      this.locsControl.setValue(this.data.townIds);
     });
-
-    this.locsControl.valueChanges
-      .subscribe(locs => {
-        data.townIds = locs;
-      });
   }
 
-  selectedIds(): number[] {
+  selectedIds(): ItemLocations {
     if (this.selected === undefined) {
-      return [];
+      return {};
     }
-    const set = [];
-    this.selected.forEach((s, i) => {
-      if (s) {
-        set.push(this.locs[i].id);
+    const selected: ItemLocations = {};
+    for (let id in this.selected) {
+      if (this.selected[id]) {
+        selected[id] = true;
       }
-    });
-    return set;
+    }
+    return selected;
   }
 
   onNoClick(): void {

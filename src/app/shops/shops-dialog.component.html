@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Shops</h1>
 <div mat-dialog-content>
-    <div fxLayout='column' *ngIf="locs">
-    <mat-checkbox *ngFor="let loc of locs" [(ngModel)]="selected[loc.id]">{{loc.name}}</mat-checkbox>
+    <div fxLayout='column' *ngIf="locs && locs.size > 0">
+    <mat-checkbox *ngFor="let id of locOrder" [(ngModel)]="selected[id]">{{locs.get(id).name}}</mat-checkbox>
     </div>
 </div>
 
