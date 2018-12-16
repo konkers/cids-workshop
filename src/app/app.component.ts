@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { StateService } from './state.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,11 +11,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'tracker';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private stateService: StateService) {
   }
 
-  goItems(loc: string, type: string) {
+  goItems() {
     this.router.navigate(['/items']);
+  }
+
+  reset() {
+    this.stateService.reset();
   }
 
 }
