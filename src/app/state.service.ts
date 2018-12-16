@@ -15,10 +15,7 @@ export class StateService {
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
     console.log(this.storage.get(STORAGE_KEY));
-    this.stateData = this.storage.get(STORAGE_KEY) || {
-      version: STATE_VERSION,
-      found_items: {},
-    };
+    this.stateData = this.storage.get(STORAGE_KEY) || this.defaultState();
     console.log(this.stateData);
 
     this._state = <BehaviorSubject<State>>new BehaviorSubject(this.stateData);
@@ -30,13 +27,25 @@ export class StateService {
   }
 
    private store() {
-    console.log("saving state", this.stateData);
+    console.log('saving state', this.stateData);
     this._state.next(this.stateData);
     this.storage.set(STORAGE_KEY, this.stateData);
    }
 
    updateFoundItems(foundItems: FoundItems) {
      this.stateData.found_items = foundItems;
+     this.store();
+   }
+
+   defaultState(): State {
+    return {
+      version: STATE_VERSION,
+      found_items: {},
+    };
+   }
+
+   reset() {
+     this.stateData = this.defaultState();
      this.store();
    }
 }
