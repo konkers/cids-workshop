@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
-import {Item, ItemService, FoundItems} from '../item.service';
+import { Item, ItemService, FoundItems } from '../item.service';
 
 @Component({
   selector: 'app-shop-item-picker',
@@ -12,16 +11,15 @@ import {Item, ItemService, FoundItems} from '../item.service';
 })
 
 export class ShopItemPickerComponent implements OnInit {
+  @Input() location: string;
+  @Input() shopType: string;
+
   items: Item[];
   selectedItems: number[];
   foundItems: FoundItems;
 
-  location: string;
-  shopType: string;
-
   constructor(
-      private route: ActivatedRoute, private router: Router,
-      private itemService: ItemService) {
+    private itemService: ItemService) {
     this.itemService.getItems().subscribe(items => {
       this.items = items;
     });
@@ -36,6 +34,17 @@ export class ShopItemPickerComponent implements OnInit {
       });
   }
 
+  filterItems(items: Item[], selectedItems: number[]): number[] {
+    return selectedItems.filter(i => this.displayItem(i));
+  }
+ 
+  displayItem(i: number) {
+    if (!this.items || i >= this.items.length) {
+      return false;
+    }
+    return this.items[i].shop_type === this.shopType;
+  }
+
   found(id: number) {
     return id in this.foundItems && this.location in this.foundItems[id];
   }
@@ -45,25 +54,19 @@ export class ShopItemPickerComponent implements OnInit {
   }
 
   calcShopItems() {
-   // let shopItems = [];
-   // for (const ri in this.itemRecords) {
-   //   const r = this.itemRecords[ri];
-   //   shopItems[ri] = false;
-   //   for (const t in r.town_ids) {
-   //     if (this.location === t) {
-   //       shopItems[ri] = true;
-   //     }
-   //   }
-   // }
-   // this.shopItems = shopItems;
+    // let shopItems = [];
+    // for (const ri in this.itemRecords) {
+    //   const r = this.itemRecords[ri];
+    //   shopItems[ri] = false;
+    //   for (const t in r.town_ids) {
+    //     if (this.location === t) {
+    //       shopItems[ri] = true;
+    //     }
+    //   }
+    // }
+    // this.shopItems = shopItems;
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(m => {
-      this.location = m.get('loc');
-      this.shopType = m.get('type');
-      this.calcShopItems();
-      console.log(this.location, this.shopType);
-    });
   }
 }

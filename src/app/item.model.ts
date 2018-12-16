@@ -4,6 +4,6 @@ export interface Item {
     price: number;
     icon: string;
     rarity?: string;
-    shopType?: string;
+    shop_type?: string;
     key?: string;
 }

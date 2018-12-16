@@ -1879,56 +1879,56 @@
     "name": "Baron",
     "price": 0,
     "icon": "key",
-    "key": "baron_key"
+    "key": "baron-key"
   },
   {
     "id": 236,
     "name": "SandRuby",
     "price": 0,
     "icon": "",
-    "key": "sand_ruby"
+    "key": "sand-ruby"
   },
   {
     "id": 237,
     "name": "Earth",
     "price": 0,
     "icon": "crystal",
-    "key": "earth_crystal"
+    "key": "earth-crystal"
   },
   {
     "id": 238,
     "name": "Magma",
     "price": 0,
     "icon": "key",
-    "key": "magma_key"
+    "key": "magma-key"
   },
   {
     "id": 239,
     "name": "Luca",
     "price": 0,
     "icon": "key",
-    "key": "luca_key"
+    "key": "luca-key"
   },
   {
     "id": 240,
     "name": "TwinHarp",
     "price": 0,
     "icon": "harp",
-    "key": "twin_harp"
+    "key": "twin-harp"
   },
   {
     "id": 241,
     "name": "Darkness",
     "price": 0,
     "icon": "crystal",
-    "key": "darknes_crystal"
+    "key": "darknes-crystal"
   },
   {
     "id": 242,
     "name": "Rat",
     "price": 0,
     "icon": "tail",
-    "key": "rat_tail"
+    "key": "rat-tail"
   },
   {
     "id": 243,
@@ -1949,7 +1949,7 @@
     "name": "Pink",
     "price": 125000,
     "icon": "tail",
-    "key": "pink_tail"
+    "key": "pink-tail"
   },
   {
     "id": 246,
