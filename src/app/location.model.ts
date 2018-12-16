@@ -1,7 +1,7 @@
 import {Deserializable} from './deserializable.model';
 
 export class Location implements Deserializable {
-    id: number;
+    id: string;
     name: string;
     type: string;
     map: string;

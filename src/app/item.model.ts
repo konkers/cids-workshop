@@ -14,5 +14,5 @@ export class Item implements Deserializable {
 
 export class ItemRecord {
     item_id: number;
-    town_ids: number[];
+    town_ids: string[];
 }

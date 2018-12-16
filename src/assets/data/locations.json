@@ -1,84 +1,84 @@
 [
     {
-        "id": 0,
+        "id": "baron",
         "name": "Baron",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 1,
+        "id": "mist",
         "name": "Mist",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 2,
+        "id": "kaipo",
         "name": "Kaipo",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 3,
+        "id": "toroia",
         "name": "Toroia",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 4,
+        "id": "fabul",
         "name": "Fabul",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 5,
+        "id": "silvera",
         "name": "Silvera",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 6,
+        "id": "mysidia",
         "name": "Mysidia",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 7,
+        "id": "agart",
         "name": "Agart",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 8,
-        "name": "Eblan",
+        "id": "eblan-cave",
+        "name": "Eblan Cave",
         "type": "town",
         "map": "overworld"
     },
     {
-        "id": 9,
-        "name": "D Castle",
+        "id": "d-castle",
+        "name": "Dwarf Castle",
         "type": "town",
         "map": "underworld"
     },
     {
-        "id": 10,
+        "id": "tomra",
         "name": "Tomra",
         "type": "town",
         "map": "underworld"
     },
     {
-        "id": 11,
+        "id": "feymarch",
         "name": "Feymarch",
         "type": "town",
         "map": "underworld"
     },
     {
-        "id": 12,
+        "id": "kokkol",
         "name": "Kokkol",
         "type": "town",
         "map": "underworld"
     },
     {
-        "id": 13,
+        "id": "hummingway",
         "name": "Hummingway",
         "type": "town",
         "map": "moon"

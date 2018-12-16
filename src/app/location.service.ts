@@ -1,21 +1,50 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import {Location} from './location.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+export type Locations = Map<string, Location>;
+
+
+@Injectable({providedIn: 'root'})
 export class LocationService {
-  locations: Observable<Location[]>;
+  private locationsData: Locations;
+  private _locations: BehaviorSubject<Locations>;
+  locations: Observable<Locations>;
 
   constructor(private http: HttpClient) {
-    this.locations = this.http.get<Location[]>('./assets/data/locations.json');
+    this.locationsData = new Map();
+    this._locations =
+        <BehaviorSubject<Locations>>new BehaviorSubject(this.locationsData);
+    this.locations = this._locations.asObservable();
+    this.http.get<Location[]>('./assets/data/locations.json')
+        .subscribe(l => {this._locations.next(l.reduce((map, o) => {
+                     map.set(o.id, o);
+                     return map;
+                   }, new Map()))});
   }
 
-  public getLocations(): Observable<Location[]> {
+  public getLocations(): Observable<Locations> {
     return this.locations;
   }
-}
 
+  public getLocationOrder(): string[] {
+    return [
+      'baron',
+      'mist',
+      'kaipo',
+      'toroia',
+      'fabul',
+      'silvera',
+      'mysidia',
+      'agart',
+      'eblan-cave',
+      'd-castle',
+      'tomra',
+      'feymarch',
+      'kokkol',
+      'hummingway',
+    ]
+  }
+}
