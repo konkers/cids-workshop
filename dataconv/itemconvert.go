@@ -31,7 +31,7 @@ var keyItems = map[string]string{
 	"Magma Key":        "magma-key",
 	"Luca Key":         "luca-key",
 	"TwinHarp":         "twin-harp",
-	"Darkness Crystal": "darknes-crystal",
+	"Darkness Crystal": "darkness-crystal",
 	"Rat Tail":         "rat-tail",
 	"Adamant":          "adamant",
 	"Pan":              "pan",
