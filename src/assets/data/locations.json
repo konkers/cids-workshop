@@ -1,5 +1,22 @@
 [
     {
+        "id": "intro",
+        "name": "Intro at Baron",
+        "type": "intro",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "char"
+            },
+            {
+                "type": "char"
+            },
+            {
+                "type": "key"
+            }
+        ]
+    },
+    {
         "id": "baron",
         "name": "Baron",
         "type": "town",
@@ -10,11 +27,84 @@
             },
             {
                 "type": "weapon-shop",
-                "reqs": ["baron-key"]
+                "reqs": [
+                    "baron-key"
+                ]
             },
             {
                 "type": "armor-shop",
-                "reqs": ["baron-key"]
+                "reqs": [
+                    "baron-key"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "baron-inn",
+        "name": "Baron Inn",
+        "type": "event",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss"
+            },
+            {
+                "type": "boss"
+            },
+            {
+                "type": "char"
+            },
+            {
+                "type": "key"
+            }
+        ]
+    },
+    {
+        "id": "baron-castle",
+        "name": "Baron Castle",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss",
+                "reqs": [
+                    "baron-key"
+                ]
+            },
+            {
+                "type": "boss",
+                "reqs": [
+                    "baron-key"
+                ]
+            },
+            {
+                "type": "char",
+                "reqs": [
+                    "baron-key"
+                ]
+            },
+            {
+                "type": "key",
+                "reqs": [
+                    "baron-key"
+                ]
+            },
+            {
+                "type": "boss",
+                "reqs": [
+                    "baron-key"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "mist-cave",
+        "name": "Mist Cave",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss"
             }
         ]
     },
@@ -29,6 +119,24 @@
             },
             {
                 "type": "armor-shop"
+            },
+            {
+                "type": "key",
+                "reqs": [
+                    "d-mist"
+                ]
+            },
+            {
+                "type": "boss",
+                "reqs": [
+                    "package"
+                ]
+            },
+            {
+                "type": "char",
+                "reqs": [
+                    "package"
+                ]
             }
         ]
     },
@@ -46,23 +154,51 @@
             },
             {
                 "type": "armor-shop"
+            },
+            {
+                "type": "char",
+                "reqs": [
+                    "sand-ruby"
+                ]
             }
         ]
     },
     {
-        "id": "toroia",
-        "name": "Toroia",
+        "id": "watery-pass",
+        "name": "Watery Pass",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "char"
+            },
+            {
+                "type": "boss"
+            }
+        ]
+    },
+    {
+        "id": "damcyan",
+        "name": "Damcyan Castle",
         "type": "town",
         "map": "overworld",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "char"
+            }
+        ]
+    },
+    {
+        "id": "mt-hobs",
+        "name": "Mt. Hobs",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "char"
             },
             {
-                "type": "weapon-shop"
-            },
-            {
-                "type": "armor-shop"
+                "type": "boss"
             }
         ]
     },
@@ -80,6 +216,96 @@
             },
             {
                 "type": "armor-shop"
+            },
+            {
+                "type": "boss"
+            },
+            {
+                "type": "key"
+            }
+        ]
+    },
+    {
+        "id": "yangs-wife",
+        "name": "Yang's Wife",
+        "type": "event",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "key",
+                "reqs": [
+                    "underground"
+                ]
+            },
+            {
+                "type": "key",
+                "reqs": [
+                    "pan",
+                    "underground"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "toroia",
+        "name": "Toroia",
+        "type": "town",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "item-shop"
+            },
+            {
+                "type": "weapon-shop"
+            },
+            {
+                "type": "armor-shop"
+            },
+            {
+                "type": "char"
+            }
+        ]
+    },
+    {
+        "id": "magnes",
+        "name": "Magnes Cave",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss",
+                "reqs": [
+                    "twin-harp"
+                ]
+            },
+            {
+                "type": "key",
+                "reqs": [
+                    "twin-harp"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "zot",
+        "name": "Tower of Zot",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss"
+            },
+            {
+                "type": "char",
+                "reqs": ["earth-crystal"]
+            },
+            {
+                "type": "char",
+                "reqs": ["earth-crystal"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["earth-crystal"]
             }
         ]
     },
@@ -101,6 +327,20 @@
         ]
     },
     {
+        "id": "adamant-grotto",
+        "name": "Adamant Grotto",
+        "type": "town",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "key",
+                "reqs": [
+                    "rat-tail"
+                ]
+            }
+        ]
+    },
+    {
         "id": "mysidia",
         "name": "Mysidia",
         "type": "town",
@@ -114,6 +354,35 @@
             },
             {
                 "type": "armor-shop"
+            },
+            {
+                "type": "char"
+            },
+            {
+                "type": "char"
+            }
+        ]
+    },
+    {
+        "id": "mt-ordeals",
+        "name": "Mt. Ordeals",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "char"
+            },
+            {
+                "type": "boss"
+            },
+            {
+                "type": "boss"
+            },
+            {
+                "type": "key"
+            },
+            {
+                "type": "boss"
             }
         ]
     },
@@ -133,7 +402,6 @@
                 "type": "armor-shop"
             }
         ]
-
     },
     {
         "id": "eblan-cave",
@@ -142,13 +410,28 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "item-shop",
+                "res": ["hook"]
             },
             {
-                "type": "weapon-shop"
+                "type": "weapon-shop",
+                "res": ["hook"]
             },
             {
-                "type": "armor-shop"
+                "type": "armor-shop",
+                "res": ["hook"]
+            },
+            {
+                "type": "char",
+                "res": ["hook"]
+            },
+            {
+                "type": "boss",
+                "res": ["hook"]
+            },
+            {
+                "type": "boss",
+                "res": ["hook"]
             }
         ]
     },
@@ -159,13 +442,32 @@
         "map": "underworld",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "item-shop",
+                "reqs": ["underground"]
             },
             {
-                "type": "weapon-shop"
+                "type": "weapon-shop",
+                "reqs": ["underground"]
             },
             {
-                "type": "armor-shop"
+                "type": "armor-shop",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "char",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "key",
+                "reqs": ["underground"]
             }
         ]
     },
@@ -176,13 +478,32 @@
         "map": "underworld",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "item-shop",
+                "reqs": ["underground"]
             },
             {
-                "type": "weapon-shop"
+                "type": "weapon-shop",
+                "reqs": ["underground"]
             },
             {
-                "type": "armor-shop"
+                "type": "armor-shop",
+                "reqs": ["underground"]
+            }
+        ]
+    },
+    {
+        "id": "sealed-cave",
+        "name": "Sealed Cave",
+        "type": "dungeon",
+        "map": "underworld",
+        "poi": [
+            {
+                "type": "key",
+                "reqs": ["underground", "luca-key"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["underground", "luca-key"]
             }
         ]
     },
@@ -193,13 +514,28 @@
         "map": "underworld",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "item-shop",
+                "reqs": ["underground"]
             },
             {
-                "type": "weapon-shop"
+                "type": "weapon-shop",
+                "reqs": ["underground"]
             },
             {
-                "type": "armor-shop"
+                "type": "armor-shop",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "key",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["underground"]
             }
         ]
     },
@@ -210,7 +546,32 @@
         "map": "underworld",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "item-shop",
+                "reqs": ["underground"]
+            }
+        ]
+    },
+    {
+        "id": "lower-babil",
+        "name": "Tower of Babil",
+        "type": "dungeon",
+        "map": "underworld",
+        "poi": [
+            {
+                "type": "boss",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "key",
+                "reqs": ["underground"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["underground", "tower-key"]
+            },
+            {
+                "type": "key",
+                "reqs": ["underground", "tower-key"]
             }
         ]
     },
@@ -221,7 +582,81 @@
         "map": "moon",
         "poi": [
             {
-                "type": "item-shop"
+                "type": "item-shop",
+                "reqs": ["darkness-crystal"]
+            }
+        ]
+    },
+    {
+        "id": "crystal-palace",
+        "name": "Crystal Palace",
+        "type": "town",
+        "map": "moon",
+        "poi": [
+            {
+                "type": "char",
+                "reqs": ["darkness-crystal"]
+            }
+        ]
+    },
+    {
+        "id": "bahamut-cave",
+        "name": "Bahamut's Cave",
+        "type": "dungeon",
+        "map": "moon",
+        "poi": [
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            }
+        ]
+    },
+    {
+        "id": "lunar-subterrane",
+        "name": "Lunar Subterrane",
+        "type": "dungeon",
+        "map": "moon",
+        "poi": [
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            }
+        ]
+    },
+    {
+        "id": "giant",
+        "name": "Giant of Babil",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            },
+            {
+                "type": "boss",
+                "reqs": ["darkness-crystal"]
+            },
+
+            {
+                "type": "char",
+                "reqs": ["darkness-crystal"]
             }
         ]
     }
