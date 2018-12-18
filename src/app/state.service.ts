@@ -17,6 +17,9 @@ export class StateService {
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
     console.log(this.storage.get(STORAGE_KEY));
     this.stateData = this.storage.get(STORAGE_KEY) || this.defaultState();
+    if (this.stateData.version !== STATE_VERSION) {
+      this.stateData = this.defaultState();
+    }
     console.log(this.stateData);
 
     this._state = <BehaviorSubject<State>>new BehaviorSubject(this.stateData);

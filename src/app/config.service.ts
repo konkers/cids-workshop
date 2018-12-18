@@ -13,10 +13,10 @@ export class ConfigService {
   private _config: BehaviorSubject<Config>;
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
-    this.configData = this.storage.get(STORAGE_KEY) || {
-      version: CONFIG_VERSION,
-      selected_items: [],
-    };
+    this.configData = this.storage.get(STORAGE_KEY) || this.defaultConfig();
+    if (this.configData.version !== CONFIG_VERSION) {
+      this.configData = this.defaultConfig();
+    }
     this._config =
         <BehaviorSubject<Config>>new BehaviorSubject(this.configData);
     this.config$ = this._config.asObservable();
@@ -34,5 +34,12 @@ export class ConfigService {
   updateSelectedItems(selectedItems: number[]) {
     this.configData.selected_items = selectedItems;
     this.store();
+  }
+
+  defaultConfig(): Config {
+    return {
+      version: CONFIG_VERSION,
+      selected_items: [],
+    };
   }
 }
