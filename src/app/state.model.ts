@@ -1,4 +1,4 @@
-export const STATE_VERSION = 0;
+export const STATE_VERSION = 1;
 
 export interface ItemLocations {
     [index: string]: boolean;
