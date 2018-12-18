@@ -1,6 +1,7 @@
 <mat-sidenav-container class="app-sidenav-container">
     <mat-sidenav mode="side" class="app-sidenav" opened>
-        <app-location-tracker></app-location-tracker>
+        <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
+        <app-location-tracker [keyItemEvents]="keyItemEvents"></app-location-tracker>
 
         <button mat-raised-button (click)="goItems()" color="primary">List/Edit Items</button>
         <br />

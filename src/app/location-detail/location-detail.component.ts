@@ -30,6 +30,9 @@ export class LocationDetailComponent implements OnInit {
   }
 
   private updateLoc() {
+    if (this.locs === undefined) {
+      return;
+    }
     if (this.locId in this.locs) {
       this.loc = this.locs[this.locId];
     }

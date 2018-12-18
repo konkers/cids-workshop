@@ -1,0 +1,14 @@
+<div
+  class="tracker"
+  *ngIf="(keyItems$ | async) && (keyItemOrder$ | async)"
+>
+  <div class="key-item"
+      *ngFor="let id of keyItemOrder$ | async"
+      (click)="selectKeyItem(id)"
+  >
+    <app-key-item
+      [keyItem]="(keyItems$ | async)[id]"
+      [state]="(keyItemsFound$ |async)[id]"
+    ></app-key-item>
+  </div>
+</div>
