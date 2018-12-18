@@ -18,6 +18,7 @@ export interface Locations {
 export interface PoiState {
   enabled: boolean;
   keyItem?: string;
+  character?: string;
 }
 
 export interface PoiStates {
@@ -113,6 +114,14 @@ export class LocationService {
       }
       states[k.location].poi[k.slot].keyItem = id;
     }
+
+    for (const id of Object.keys(state.chars)) {
+      const k = state.chars[id];
+      if (k.location === 'virt') {
+        continue;
+      }
+      states[k.location].poi[k.slot].character = id;
+    }
     return states;
   }
 
@@ -130,18 +139,19 @@ export class LocationService {
       ));
   }
 
-  public processKeyItem(l: string, keyItem: string) {
+  private processPoi(poiType: string, poiKey: string, l: string, poiId: string,
+    addFunc: (slot: number) => void, deleteFunc: (slot: number) => void) {
     if (l === undefined) {
       return;
     }
     const loc = this.locationsData[l];
 
-    // First check if they key item is already recorded.  If so, remove it.
+    // First check if poi is already recorded.  If so, remove it.
     for (const p of Object.keys(loc.poi)) {
       const poi = loc.poi[p];
       const poiState = this.locationStateData[l].poi[p];
-      if (poi.type === 'key' && poiState.keyItem === keyItem ) {
-        this.stateService.unrecordKeyItem(keyItem, l, Number(p));
+      if (poi.type === poiType && poiState[poiKey] === poiId) {
+        deleteFunc(Number(p));
         return;
       }
     }
@@ -150,13 +160,26 @@ export class LocationService {
     for (const p of Object.keys(loc.poi)) {
       const poi = loc.poi[p];
       const poiState = this.locationStateData[l].poi[p];
-      if (poi.type === 'key' && !('keyItem' in poiState)) {
-        // recordKeyItem() will make sure the key item is not recorded
-        // somewhere else.
-        this.stateService.recordKeyItem(keyItem, l, Number(p));
+      if (poi.type === poiType && !(poiKey in poiState)) {
+        // addFunc() will make sure the key item is not recorded somewhere else.
+        addFunc(Number(p));
         return;
       }
     }
+  }
+
+  processKeyItem(loc: string, keyItem: string) {
+    this.processPoi('key', 'keyItem', loc, keyItem,
+      (slot) => { this.stateService.recordKeyItem(keyItem, loc, slot); },
+      (slot) => { this.stateService.unrecordKeyItem(keyItem, loc, slot); }
+    );
+  }
+
+  processChar(loc: string, char: string) {
+    this.processPoi('char', 'character', loc, char,
+      (slot) => { this.stateService.recordCharacter(char, loc, slot); },
+      (slot) => { this.stateService.unrecordCharacter(char, loc, slot); }
+    );
   }
 
   getLocationState(location$: Observable<Location>): Observable<LocationState> {

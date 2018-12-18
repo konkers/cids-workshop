@@ -1,0 +1,14 @@
+<div
+  class="tracker"
+  *ngIf="(chars$ | async) && (charOrder$ | async)"
+>
+  <div
+    class="char"
+    *ngFor="let id of charOrder$ | async"
+      (click)="selectCharacter(id)"
+  >
+    <app-character
+      [char]="(chars$ | async)[id]"
+      [state]="(charsFound$ | async)[id]"
+    ></app-character>
+  </div>

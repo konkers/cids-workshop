@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { KeyItem, KeyItemLocation } from '../key-item.service';
+import { KeyItem, FoundLocation } from '../key-item.service';
 
 @Component({
   selector: 'app-key-item',
@@ -10,7 +10,7 @@ import { KeyItem, KeyItemLocation } from '../key-item.service';
 export class KeyItemComponent implements OnInit {
 
   @Input() keyItem: KeyItem;
-  @Input() state: KeyItemLocation;
+  @Input() state: FoundLocation;
 
   constructor() { }
 
