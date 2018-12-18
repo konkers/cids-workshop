@@ -1,4 +1,4 @@
-$sidenav-width: 240px;
+$sidenav-width: 430px;
 $small-breakpoint-width: 10px;
 
 app-root {
@@ -11,7 +11,6 @@ app-root {
   flex: 1;
   box-sizing: border-box;
   min-height: 100%;
-  padding: 10px;
 }
 
 .app-sidenav {
@@ -107,6 +106,7 @@ app-root {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  padding: 10px;
 }
 
 .docs-component-sidenav-inner-content {

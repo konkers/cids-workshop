@@ -1,5 +1,7 @@
 <section class="mat-typography" *ngxIfNotEmpty="locs">
+  <div class="locations">
   <div class="location" *ngFor="let id of locOrder" (click)="gotoLoc(id)">
-    {{locs[id].name}}
+    <app-location-summary [locId]="id"></app-location-summary>
   </div>
+</div>
 </section>

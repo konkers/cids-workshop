@@ -1,0 +1,3 @@
+<div *ngIf="poi">
+  <img class="icon" [class.disabled]="!(state$ | async).enabled" [src]="img()" />
+</div>

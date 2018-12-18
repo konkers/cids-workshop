@@ -1,0 +1,7 @@
+<div class="loc" *ngIf="(loc$ | async) != undefined">
+  <img class="icon" [class.disabled]="!(state$ | async).enabled" src="../assets/locations/{{(loc$ | async).id}}.png"
+    matTooltip="{{(loc$ | async).name}}" />
+  <div class="pois">
+    <app-poi *ngFor="let poi of (loc$ | async).poi; index as i" [locId]="(loc$ | async).id" [poiIndex]="i"  [state$]="state$"></app-poi>
+  </div>
+</div>

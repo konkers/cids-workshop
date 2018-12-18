@@ -2,7 +2,7 @@
   <ul>
     <li *ngFor="let id of filterItems(items, selectedItems); index as i">
       <mat-checkbox [checked]="found(id)" (change)="checked(id, $event.checked)">
-        {{items[id].name}}
+      <app-item [item]="items[id]"></app-item>
       </mat-checkbox>
     </li>
   </ul>
