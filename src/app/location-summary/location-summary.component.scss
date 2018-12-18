@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+.loc {
+    display: flex;
+    width:  125px;
+}
+
+.pois {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.disabled {
+    filter:brightness(50%);
+}
+
+.icon {
+    margin: 2px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: solid #444444 2px;
+}

@@ -68,7 +68,9 @@ export class ShopsDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private locationService: LocationService) {
 
-    this.locOrder = this.locationService.getLocationOrder();
+    this.locationService.getLocationOrder().subscribe( order => {
+      this.locOrder = order;
+    });
     this.locationService.getLocations().subscribe(locs => {
       this.selected = this.data.found;
 

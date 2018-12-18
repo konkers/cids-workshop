@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,8 @@ import { LocationTrackerComponent } from './location-tracker/location-tracker.co
 import { ShopItemPickerComponent } from './shop-item-picker/shop-item-picker.component';
 import { IconComponent } from './icon/icon.component';
 import { LocationDetailComponent } from './location-detail/location-detail.component';
+import { LocationSummaryComponent } from './location-summary/location-summary.component';
+import { PoiComponent } from './poi/poi.component';
 
 const appRoutes: Routes = [
   { path: 'loc/:loc', component: LocationDetailComponent },
@@ -52,7 +55,9 @@ const appRoutes: Routes = [
     LocationTrackerComponent,
     ShopItemPickerComponent,
     IconComponent,
-    LocationDetailComponent
+    LocationDetailComponent,
+    LocationSummaryComponent,
+    PoiComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -84,6 +89,7 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatTableModule,
     MatTabsModule,
+    MatTooltipModule,
   ],
   entryComponents: [ShopsDialogComponent],
   providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],

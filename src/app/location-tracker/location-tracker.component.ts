@@ -17,7 +17,9 @@ export class LocationTrackerComponent implements OnInit {
     this.locationService.getLocations().subscribe(locs => {
       this.locs = locs;
     });
-    this.locOrder = this.locationService.getLocationOrder();
+    this.locationService.getLocationOrder().subscribe( order => {
+      this.locOrder = order;
+    });
   }
 
   ngOnInit() {

@@ -1,7 +1,13 @@
+.locations {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .location {
     font-weight: bold;
     cursor: pointer;
-    width: 150px;
+    width: 130px;
 }
 
 .location:hover {
