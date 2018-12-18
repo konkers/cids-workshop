@@ -20,7 +20,7 @@ type Item struct {
 }
 
 var keyItems = map[string]string{
-	"Legend Sword":     "legend_sword",
+	"Legend Sword":     "legend-sword",
 	"Spoon":            "spoon",
 	"Crystal":          "crystal",
 	"Pass":             "pass",
@@ -36,7 +36,7 @@ var keyItems = map[string]string{
 	"Adamant":          "adamant",
 	"Pan":              "pan",
 	"Pink Tail":        "pink-tail",
-	"Tower Key":        "tower_key",
+	"Tower Key":        "tower-key",
 }
 
 var removedItems = map[string]bool{

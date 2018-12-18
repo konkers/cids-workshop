@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { StateService } from './state.service';
 
@@ -11,7 +12,12 @@ import { StateService } from './state.service';
 export class AppComponent {
   title = 'tracker';
 
+  private _keyItemEvents: BehaviorSubject<string>;
+  keyItemEvents: Observable<string>;
+
   constructor(private router: Router, private stateService: StateService) {
+    this._keyItemEvents = <BehaviorSubject<string>>new BehaviorSubject(undefined);
+    this.keyItemEvents = this._keyItemEvents.asObservable();
   }
 
   goItems() {
@@ -22,4 +28,7 @@ export class AppComponent {
     this.stateService.reset();
   }
 
+  keyItemEvent(keyItem: string) {
+    this._keyItemEvents.next(keyItem);
+  }
 }

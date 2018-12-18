@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Location, LocationService } from '../location.service';
-import { LocationState, StateService } from '../state.service';
+import { Location, LocationService, LocationState } from '../location.service';
 
 @Component({
   selector: 'app-location-summary',
@@ -12,16 +11,17 @@ import { LocationState, StateService } from '../state.service';
 export class LocationSummaryComponent implements OnInit {
 
   @Input() locId: string;
+  @Input() selected: boolean;
 
   loc$: Observable<Location>;
   state$: Observable<LocationState>;
 
-  constructor(private locationService: LocationService, private stateService: StateService) {
+  constructor(private locationService: LocationService) {
   }
 
   ngOnInit() {
     this.loc$ = this.locationService.getLocation(this.locId);
-    this.state$ = this.stateService.getLocationState(this.loc$);
+    this.state$ = this.locationService.getLocationState(this.loc$);
   }
 
 }

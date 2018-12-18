@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Location, LocationPoi, LocationService } from '../location.service';
-import { State, StateService, LocationState, PoiState } from '../state.service';
+import { State, StateService } from '../state.service';
 
 @Component({
   selector: 'app-poi',
@@ -13,12 +13,12 @@ export class PoiComponent implements OnInit {
 
   @Input() locId: string;
   @Input() poiIndex: number;
-  @Input() state$: Observable<PoiState>;
+  @Input() state$: Observable<LocationState>;
 
   loc: Location;
   poi: LocationPoi;
-  enabled: boolean;
-  locationState$: Observable<LocationState>;
+  enabled = false;
+  keyItem: string;
 
   constructor(private locationService: LocationService, private stateService: StateService) { }
 
@@ -27,8 +27,20 @@ export class PoiComponent implements OnInit {
       this.loc = loc;
       this.poi = loc.poi[this.poiIndex];
     });
+
+    this.state$.subscribe(s => {
+      this.enabled = s.poi[this.poiIndex].enabled;
+      this.keyItem = s.poi[this.poiIndex].keyItem;
+    });
   }
 
+  private keyItemImg(): string {
+    if (this.keyItem === undefined) {
+      return '../assets/empty/key.png';
+    } else {
+      return '../assets/key-items/' + this.keyItem + '.png';
+    }
+  }
 
   img(): string {
     switch (this.poi.type) {
@@ -41,9 +53,9 @@ export class PoiComponent implements OnInit {
       case 'char':
         return '../assets/empty/char.png';
       case 'key':
-        return '../assets/empty/key.png';
+        return this.keyItemImg();
       case 'boss':
-        return '../assets/icon/potion.png';
+        return '../assets/empty/boss.png';
       default:
         return '';
     }

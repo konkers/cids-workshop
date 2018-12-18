@@ -13,7 +13,7 @@ export interface KeyItemLocation {
     slot: number;
 }
 
-export interface KeysItemsFound {
+export interface KeyItemsFound {
     [index: string]: KeyItemLocation;
 }
 
@@ -23,5 +23,5 @@ export interface State {
     // Map of found item id to map of location id to found.
     found_items: FoundItems;
 
-    key_items: KeysItemsFound;
+    key_items: KeyItemsFound;
 }

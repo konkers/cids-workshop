@@ -3,6 +3,7 @@
 .loc {
     display: flex;
     width:  125px;
+    margin: 2px;
 }
 
 .pois {
@@ -12,6 +13,11 @@
 
 .disabled {
     filter:brightness(50%);
+}
+
+.selected {
+    border: solid white 2px;
+    margin: 0px;
 }
 
 .icon {

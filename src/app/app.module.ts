@@ -36,6 +36,8 @@ import { IconComponent } from './icon/icon.component';
 import { LocationDetailComponent } from './location-detail/location-detail.component';
 import { LocationSummaryComponent } from './location-summary/location-summary.component';
 import { PoiComponent } from './poi/poi.component';
+import { KeyItemTrackerComponent } from './key-item-tracker/key-item-tracker.component';
+import { KeyItemComponent } from './key-item/key-item.component';
 
 const appRoutes: Routes = [
   { path: 'loc/:loc', component: LocationDetailComponent },
@@ -57,7 +59,9 @@ const appRoutes: Routes = [
     IconComponent,
     LocationDetailComponent,
     LocationSummaryComponent,
-    PoiComponent
+    PoiComponent,
+    KeyItemTrackerComponent,
+    KeyItemComponent
   ],
   imports: [
     RouterModule.forRoot(

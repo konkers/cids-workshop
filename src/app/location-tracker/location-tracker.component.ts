@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { Locations, LocationService } from '../location.service';
+import { Locations, LocationState, LocationService } from '../location.service';
 
 @Component({
   selector: 'app-location-tracker',
@@ -9,20 +10,35 @@ import { Locations, LocationService } from '../location.service';
   styleUrls: ['./location-tracker.component.scss']
 })
 export class LocationTrackerComponent implements OnInit {
+  @Input() keyItemEvents: Observable<string>;
 
   locs: Locations;
   locOrder: string[];
+  locRouteRe = RegExp('/loc/([^/]*)');
+  selectedLoc: string;
+  locState: LocationState;
 
   constructor(private router: Router, private locationService: LocationService) {
     this.locationService.getLocations().subscribe(locs => {
       this.locs = locs;
     });
-    this.locationService.getLocationOrder().subscribe( order => {
+    this.locationService.getLocationOrder().subscribe(order => {
       this.locOrder = order;
     });
   }
 
   ngOnInit() {
+    this.router.events.subscribe((res) => {
+      const match = this.locRouteRe.exec(this.router.url);
+      if (match) {
+        this.selectedLoc = match[1];
+      }
+    });
+    this.keyItemEvents.subscribe(ki => { this.handleKeyItem(ki); });
+  }
+
+  handleKeyItem(keyItem: string) {
+    this.locationService.processKeyItem(this.selectedLoc, keyItem);
   }
 
   shop(loc: string, type: string) {

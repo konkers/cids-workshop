@@ -411,27 +411,27 @@
         "poi": [
             {
                 "type": "item-shop",
-                "res": ["hook"]
+                "reqs": ["hook"]
             },
             {
                 "type": "weapon-shop",
-                "res": ["hook"]
+                "reqs": ["hook"]
             },
             {
                 "type": "armor-shop",
-                "res": ["hook"]
+                "reqs": ["hook"]
             },
             {
                 "type": "char",
-                "res": ["hook"]
+                "reqs": ["hook"]
             },
             {
                 "type": "boss",
-                "res": ["hook"]
+                "reqs": ["hook"]
             },
             {
                 "type": "boss",
-                "res": ["hook"]
+                "reqs": ["hook"]
             }
         ]
     },
