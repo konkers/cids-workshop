@@ -15,9 +15,15 @@ export class AppComponent {
   private _keyItemEvents: BehaviorSubject<string>;
   keyItemEvents: Observable<string>;
 
+  private _characterEvents: BehaviorSubject<string>;
+  characterEvents: Observable<string>;
+
   constructor(private router: Router, private stateService: StateService) {
     this._keyItemEvents = <BehaviorSubject<string>>new BehaviorSubject(undefined);
     this.keyItemEvents = this._keyItemEvents.asObservable();
+
+    this._characterEvents = <BehaviorSubject<string>>new BehaviorSubject(undefined);
+    this.characterEvents = this._characterEvents.asObservable();
   }
 
   goItems() {
@@ -30,5 +36,10 @@ export class AppComponent {
 
   keyItemEvent(keyItem: string) {
     this._keyItemEvents.next(keyItem);
+  }
+
+  characterEvent(char: string) {
+    console.log(char);
+    this._characterEvents.next(char);
   }
 }

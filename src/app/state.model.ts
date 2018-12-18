@@ -8,13 +8,13 @@ export interface FoundItems {
     [index: number]: ItemLocations;
 }
 
-export interface KeyItemLocation {
+export interface FoundLocation {
     location: string;
     slot: number;
 }
 
-export interface KeyItemsFound {
-    [index: string]: KeyItemLocation;
+export interface Found {
+    [index: string]: FoundLocation;
 }
 
 export interface State {
@@ -23,5 +23,7 @@ export interface State {
     // Map of found item id to map of location id to found.
     found_items: FoundItems;
 
-    key_items: KeyItemsFound;
+    key_items: Found;
+    chars: Found;
+    bosses: Found;
 }

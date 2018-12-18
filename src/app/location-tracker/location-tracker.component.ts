@@ -11,6 +11,7 @@ import { Locations, LocationState, LocationService } from '../location.service';
 })
 export class LocationTrackerComponent implements OnInit {
   @Input() keyItemEvents: Observable<string>;
+  @Input() characterEvents: Observable<string>;
 
   locs: Locations;
   locOrder: string[];
@@ -35,10 +36,15 @@ export class LocationTrackerComponent implements OnInit {
       }
     });
     this.keyItemEvents.subscribe(ki => { this.handleKeyItem(ki); });
+    this.characterEvents.subscribe(c => { this.handleCharacter(c); });
   }
 
   handleKeyItem(keyItem: string) {
     this.locationService.processKeyItem(this.selectedLoc, keyItem);
+  }
+
+  handleCharacter(char: string) {
+    this.locationService.processChar(this.selectedLoc, char);
   }
 
   shop(loc: string, type: string) {

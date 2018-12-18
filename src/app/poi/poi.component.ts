@@ -19,6 +19,7 @@ export class PoiComponent implements OnInit {
   poi: LocationPoi;
   enabled = false;
   keyItem: string;
+  character: string;
 
   constructor(private locationService: LocationService, private stateService: StateService) { }
 
@@ -31,6 +32,7 @@ export class PoiComponent implements OnInit {
     this.state$.subscribe(s => {
       this.enabled = s.poi[this.poiIndex].enabled;
       this.keyItem = s.poi[this.poiIndex].keyItem;
+      this.character = s.poi[this.poiIndex].character;
     });
   }
 
@@ -39,6 +41,14 @@ export class PoiComponent implements OnInit {
       return '../assets/empty/key.png';
     } else {
       return '../assets/key-items/' + this.keyItem + '.png';
+    }
+  }
+
+  private charImg(): string {
+    if (this.character === undefined) {
+      return '../assets/empty/char.png';
+    } else {
+      return '../assets/characters/' + this.character + '.png';
     }
   }
 
@@ -51,7 +61,7 @@ export class PoiComponent implements OnInit {
       case 'armor-shop':
         return '../assets/icon/shield.png';
       case 'char':
-        return '../assets/empty/char.png';
+        return this.charImg();
       case 'key':
         return this.keyItemImg();
       case 'boss':

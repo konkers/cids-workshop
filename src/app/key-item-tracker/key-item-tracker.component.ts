@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import {KeyItems, KeyItemService} from '../key-item.service';
-import { KeyItemsFound } from '../state.model';
+import {Found, KeyItems, KeyItemService} from '../key-item.service';
 
 @Component({
   selector: 'app-key-item-tracker',
@@ -15,7 +14,7 @@ export class KeyItemTrackerComponent implements OnInit {
   keyItems$: Observable<KeyItems>;
   keyItemOrder$: Observable<string[]>;
 
-  keyItemsFound$: Observable<KeyItemsFound>;
+  keyItemsFound$: Observable<Found>;
 
   constructor(private keyItemService: KeyItemService) {
       this.keyItems$ = keyItemService.getKeyItems();

@@ -3,9 +3,8 @@ import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { FoundItems, State, STATE_VERSION } from './state.model';
-import { Location } from './location.model';
 
-export { State } from './state.model';
+export { Found, FoundLocation, State } from './state.model';
 
 const STORAGE_KEY = 'workshop.state';
 
@@ -58,11 +57,25 @@ export class StateService {
     this.store();
   }
 
+  recordCharacter(char: string, loc: string, slot: number) {
+    if (!(char in this.stateData.chars)) {
+      this.stateData.chars[char] = { location: loc, slot: slot };
+      this.store();
+    }
+  }
+
+  unrecordCharacter(char: string, loc: string, slot: number) {
+    delete this.stateData.chars[char];
+    this.store();
+  }
+
   defaultState(): State {
     return {
       version: STATE_VERSION,
       found_items: {},
       key_items: {},
+      chars: {},
+      bosses: {},
     };
   }
 

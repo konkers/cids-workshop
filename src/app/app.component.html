@@ -1,11 +1,30 @@
 <mat-sidenav-container class="app-sidenav-container">
-    <mat-sidenav mode="side" class="app-sidenav" opened>
-        <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
-        <app-location-tracker [keyItemEvents]="keyItemEvents"></app-location-tracker>
+    <mat-sidenav
+        mode="side"
+        class="app-sidenav"
+        opened
+    >
+        <div class="selectables">
+            <app-character-tracker (select)="characterEvent($event)"></app-character-tracker>
+            <div class="vert-sep"></div>
+            <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
+        </div>
+        <app-location-tracker
+            [keyItemEvents]="keyItemEvents"
+            [characterEvents]="characterEvents"
+        ></app-location-tracker>
 
-        <button mat-raised-button (click)="goItems()" color="primary">List/Edit Items</button>
+        <button
+            mat-raised-button
+            (click)="goItems()"
+            color="primary"
+        >List/Edit Items</button>
         <br />
-        <button mat-raised-button (click)="reset()" color="warn">Reset</button>
+        <button
+            mat-raised-button
+            (click)="reset()"
+            color="warn"
+        >Reset</button>
 
     </mat-sidenav>
     <mat-sidenav-content class="app-sidenav-content">

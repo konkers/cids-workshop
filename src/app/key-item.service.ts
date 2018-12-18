@@ -4,11 +4,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { KeyItem } from './key-item.model';
-import { KeyItemsFound } from './state.model';
-import { StateService } from './state.service';
+import { Found, StateService } from './state.service';
 
 export { KeyItem } from './key-item.model';
-export { KeyItemLocation } from './state.model';
+export { Found, FoundLocation } from './state.service';
 
 export interface KeyItems {
   [index: string]: KeyItem;
@@ -18,6 +17,7 @@ export interface KeyItems {
   providedIn: 'root'
 })
 export class KeyItemService {
+  // TODO: replace with IndexedData.
   private _keyItems: BehaviorSubject<KeyItems>;
   keyItems$: Observable<KeyItems>;
 
@@ -50,7 +50,7 @@ export class KeyItemService {
     return this.keyItemOrder$;
   }
 
-  getKeyItemsFound(): Observable<KeyItemsFound> {
+  getKeyItemsFound(): Observable<Found> {
     return this.stateService.getState().pipe(
       map(state => state.key_items
       ));
