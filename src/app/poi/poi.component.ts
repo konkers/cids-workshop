@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Location, LocationPoi, LocationService } from '../location.service';
-import { State, StateService } from '../state.service';
+import { Location, LocationPoi, LocationState, LocationService } from '../location.service';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-poi',
