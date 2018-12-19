@@ -49,13 +49,15 @@ import { BossComponent } from "./boss/boss.component";
 import { BossTrackerComponent } from "./boss-tracker/boss-tracker.component";
 import { FlagsComponent } from "./flags/flags.component";
 import { FlagComponent } from "./flag/flag.component";
+import { HelpComponent } from "./help/help.component";
 
 const appRoutes: Routes = [
   { path: "loc/:loc", component: LocationDetailComponent },
   { path: "shop/:loc/:type", component: ShopItemPickerComponent },
   { path: "flags", component: FlagsComponent },
   { path: "items", component: ItemListComponent },
-  { path: "**", component: ItemListComponent }
+  { path: "items", component: HelpComponent },
+  { path: "**", component: HelpComponent }
 ];
 
 @NgModule({
@@ -78,7 +80,8 @@ const appRoutes: Routes = [
     BossComponent,
     BossTrackerComponent,
     FlagsComponent,
-    FlagComponent
+    FlagComponent,
+    HelpComponent
   ],
   imports: [
     RouterModule.forRoot(
