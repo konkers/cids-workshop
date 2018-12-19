@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ShopItemPickerComponent } from './shop-item-picker.component';
+import { ShopItemPickerComponent } from "./shop-item-picker.component";
 
-describe('ShopItemPickerComponent', () => {
+describe("ShopItemPickerComponent", () => {
   let component: ShopItemPickerComponent;
   let fixture: ComponentFixture<ShopItemPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShopItemPickerComponent ]
-    })
-    .compileComponents();
+      declarations: [ShopItemPickerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ShopItemPickerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-flag',
-  templateUrl: './flag.component.html',
-  styleUrls: ['./flag.component.scss']
+  selector: "app-flag",
+  templateUrl: "./flag.component.html",
+  styleUrls: ["./flag.component.scss"]
 })
 export class FlagComponent implements OnInit {
   @Output() change = new EventEmitter<boolean>();
@@ -11,10 +11,9 @@ export class FlagComponent implements OnInit {
   @Input() flag: string;
   @Input() desc: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   doChange(value: boolean) {
     this.change.emit(value);

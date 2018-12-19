@@ -1,16 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from "@angular/core";
+import { Observable } from "rxjs";
 
-import { Location, LocationPoi, LocationState, LocationService } from '../location.service';
-import { StateService } from '../state.service';
+import {
+  Location,
+  LocationPoi,
+  LocationState,
+  LocationService
+} from "../location.service";
+import { StateService } from "../state.service";
 
 @Component({
-  selector: 'app-poi',
-  templateUrl: './poi.component.html',
-  styleUrls: ['./poi.component.scss']
+  selector: "app-poi",
+  templateUrl: "./poi.component.html",
+  styleUrls: ["./poi.component.scss"]
 })
 export class PoiComponent implements OnInit {
-
   @Input() locId: string;
   @Input() poiIndex: number;
   @Input() state$: Observable<LocationState>;
@@ -22,7 +26,10 @@ export class PoiComponent implements OnInit {
   character: string;
   boss: string;
 
-  constructor(private locationService: LocationService, private stateService: StateService) { }
+  constructor(
+    private locationService: LocationService,
+    private stateService: StateService
+  ) {}
 
   ngOnInit() {
     this.locationService.getLocation(this.locId).subscribe(loc => {
@@ -40,45 +47,44 @@ export class PoiComponent implements OnInit {
 
   private keyItemImg(): string {
     if (this.keyItem === undefined) {
-      return '../assets/empty/key.png';
+      return "../assets/empty/key.png";
     } else {
-      return '../assets/key-items/' + this.keyItem + '.png';
+      return "../assets/key-items/" + this.keyItem + ".png";
     }
   }
 
   private charImg(): string {
     if (this.character === undefined) {
-      return '../assets/empty/char.png';
+      return "../assets/empty/char.png";
     } else {
-      return '../assets/characters/' + this.character + '.png';
+      return "../assets/characters/" + this.character + ".png";
     }
   }
 
   private bossImg(): string {
     if (this.boss === undefined) {
-      return '../assets/empty/boss.png';
+      return "../assets/empty/boss.png";
     } else {
-      return '../assets/bosses/' + this.boss + '.png';
+      return "../assets/bosses/" + this.boss + ".png";
     }
   }
 
   img(): string {
     switch (this.poi.type) {
-      case 'item-shop':
-        return '../assets/icon/potion.png';
-      case 'weapon-shop':
-        return '../assets/icon/sword.png';
-      case 'armor-shop':
-        return '../assets/icon/shield.png';
-      case 'char':
+      case "item-shop":
+        return "../assets/icon/potion.png";
+      case "weapon-shop":
+        return "../assets/icon/sword.png";
+      case "armor-shop":
+        return "../assets/icon/shield.png";
+      case "char":
         return this.charImg();
-      case 'key':
+      case "key":
         return this.keyItemImg();
-      case 'boss':
+      case "boss":
         return this.bossImg();
       default:
-        return '';
+        return "";
     }
   }
-
 }

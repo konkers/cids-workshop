@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BossTrackerComponent } from './boss-tracker.component';
+import { BossTrackerComponent } from "./boss-tracker.component";
 
-describe('BossTrackerComponent', () => {
+describe("BossTrackerComponent", () => {
   let component: BossTrackerComponent;
   let fixture: ComponentFixture<BossTrackerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BossTrackerComponent ]
-    })
-    .compileComponents();
+      declarations: [BossTrackerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('BossTrackerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
