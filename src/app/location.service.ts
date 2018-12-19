@@ -61,8 +61,8 @@ export class LocationService {
 
     this.locationState$ =
       combineLatest(this.stateService.getState(), this.configService.getConfig(), this.locations)
-      .pipe(
-        map(results => this.processState(results[0], results[1], results[2]))
+        .pipe(
+          map(results => this.processState(results[0], results[1], results[2]))
         );
     this.locationState$.subscribe(s => { this.locationStateData = s; });
 
@@ -93,52 +93,56 @@ export class LocationService {
       const loc = locationsData[locId];
       const l: LocationState = { enabled: false, poi: [] };
 
-      for (const p of Object.keys(loc.poi)) {
-        const poi = loc.poi[p];
-        const ps: PoiState = {
-          enabled: true,
-          visible: true,
-        };
+      if (!('poi' in loc)) {
+        l.enabled = true;
+      } else {
+        for (const p of Object.keys(loc.poi)) {
+          const poi = loc.poi[p];
+          const ps: PoiState = {
+            enabled: true,
+            visible: true,
+          };
 
-        // Scan through any reqs to see if the poi is enabled.
-        if ('reqs' in poi) {
-          for (const req of poi.reqs) {
-            if (!(req in state.key_items)) {
-              ps.enabled = false;
-            }
-          }
-        }
-
-        // If any of the pois are enabled,  The location stays enabled.
-        if (ps.enabled) {
-          l.enabled = true;
-        }
-
-        // Evaluate flags for poi visibility.
-        if ('flags' in poi) {
-          let visible = false;
-          for (let flag of poi.flags) {
-            let invert = false;
-            if (flag.substring(0, 1) === '!') {
-              invert = true;
-              flag = flag.substring(1);
-            }
-            if (flag in config.flags) {
-              let flagVal = config.flags[flag];
-              if (invert) {
-                flagVal = !flagVal;
+          // Scan through any reqs to see if the poi is enabled.
+          if ('reqs' in poi) {
+            for (const req of poi.reqs) {
+              if (!(req in state.key_items)) {
+                ps.enabled = false;
               }
-
-              visible = visible || flagVal;
-            } else {
-              console.log(`Flag ${flag} unknown`);
             }
-            ps.visible = visible;
           }
+
+          // If any of the pois are enabled,  The location stays enabled.
+          if (ps.enabled) {
+            l.enabled = true;
+          }
+
+          // Evaluate flags for poi visibility.
+          if ('flags' in poi) {
+            let visible = false;
+            for (let flag of poi.flags) {
+              let invert = false;
+              if (flag.substring(0, 1) === '!') {
+                invert = true;
+                flag = flag.substring(1);
+              }
+              if (flag in config.flags) {
+                let flagVal = config.flags[flag];
+                if (invert) {
+                  flagVal = !flagVal;
+                }
+
+                visible = visible || flagVal;
+              } else {
+                console.log(`Flag ${flag} unknown`);
+              }
+              ps.visible = visible;
+            }
+          }
+
+
+          l.poi[p] = ps;
         }
-
-
-        l.poi[p] = ps;
       }
       states[locId] = l;
     }
@@ -242,12 +246,12 @@ export class LocationService {
         const states = r[0];
         const loc = r[1];
 
-      const l: LocationState = { enabled: false, poi: [] };
-      if (states === undefined || loc === undefined) {
-        return l;
-      }
+        const l: LocationState = { enabled: false, poi: [] };
+        if (states === undefined || loc === undefined) {
+          return l;
+        }
 
-      return states[loc.id];
-    }));
+        return states[loc.id];
+      }));
   }
 }

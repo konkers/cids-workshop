@@ -311,6 +311,9 @@
                 "type": "boss",
                 "reqs": ["earth-crystal"]
             }
+        ],
+        "trapped_chests": [
+            "Flamedog"
         ]
     },
     {
@@ -411,6 +414,17 @@
         ]
     },
     {
+        "id": "eblan-castle",
+        "name": "Eblan Castle",
+        "type": "dungeon",
+        "map": "overworld",
+        "trapped_chests": [
+            "Mad Ogre (x3)",
+            "Q. Lamia/Blackcat(x2)",
+            "Stoneman/Skulls(x4)"
+        ]
+    },
+    {
         "id": "eblan-cave",
         "name": "Eblan Cave",
         "type": "town",
@@ -440,6 +454,10 @@
                 "type": "boss",
                 "reqs": ["hook"]
             }
+        ],
+        "trapped_chests": [
+            "Staleman (x2)",
+            "Mad Ogre (x4)"
         ]
     },
     {
@@ -450,7 +468,7 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["underground"]
+                "reqs": ["uderground"]
             },
             {
                 "type": "weapon-shop",
@@ -544,6 +562,24 @@
                 "type": "boss",
                 "reqs": ["underground"]
             }
+        ],
+        "trapped_chests": [
+            "Warrior (x5)"
+        ]
+    },
+    {
+        "id": "sylph-cave",
+        "name": "Sylph Cave",
+        "type": "dungeon",
+        "map": "underworld",
+        "trapped_chests": [
+            "Evil Ghost(x6)",
+            "Evil Ghost(x6)",
+            "Evil Ghost(x6)",
+            "Centepede(x2)",
+            "Molbol(x2)/Treant(x2)",
+            "Molbol(x2)",
+            "ToadLady/Bog Toad(x6)"
         ]
     },
     {
@@ -580,6 +616,12 @@
                 "type": "key",
                 "reqs": ["underground", "tower-key"]
             }
+        ],
+        "trapped_chests": [
+            "Alert-Stoneman",
+            "Alert-Chimera",
+            "Alert-Flamedog",
+            "Alert-Naga"
         ]
     },
     {
@@ -619,6 +661,15 @@
         ]
     },
     {
+        "id": "lunar-pass",
+        "name": "Lunar Pass",
+        "type": "dungeon",
+        "map": "moon",
+        "trapped_chests": [
+            "Procyote(x2)/Juclyote(x2)"
+        ]
+    },
+    {
         "id": "lunar-subterrane",
         "name": "Lunar Subterrane",
         "type": "dungeon",
@@ -644,6 +695,17 @@
                 "type": "boss",
                 "reqs": ["darkness-crystal"]
             }
+        ],
+        "trapped_chests": [
+            "Red Giant(x2)",
+            "Warlock(x2)/Kary(x2)",
+            "Behemoth",
+            "Behemoth",
+            "Behemoth",
+            "Red Dragon(x2)",
+            "Red Dragon/Blue Dragon",
+            "D. Fossil/Wizard",
+            "Warlock/Kary(x3)"
         ]
     },
     {
@@ -660,11 +722,13 @@
                 "type": "boss",
                 "reqs": ["darkness-crystal"]
             },
-
             {
                 "type": "char",
                 "reqs": ["darkness-crystal"]
             }
+        ],
+        "trapped_chests": [
+            "Last Arm"
         ]
     }
 ]
