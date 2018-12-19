@@ -1,8 +1,12 @@
-export const CONFIG_VERSION = 1;
+export const CONFIG_VERSION = 2;
 
 export class Flags {
   Nc: boolean;
   Nk: boolean;
+}
+
+export class Options {
+  always_remove_key: boolean;
 }
 
 export class Config {
@@ -11,4 +15,6 @@ export class Config {
   selected_items: number[];
 
   flags: Flags;
+
+  options: Options;
 }
