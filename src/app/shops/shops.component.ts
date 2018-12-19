@@ -1,21 +1,20 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import { FormControl } from "@angular/forms";
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
-import { ItemService, FoundItems, ItemLocations } from '../item.service';
-import { Locations, LocationService } from '../location.service';
+import { ItemService, FoundItems, ItemLocations } from "../item.service";
+import { Locations, LocationService } from "../location.service";
 
 export interface DialogData {
   found: ItemLocations;
 }
 
 @Component({
-  selector: 'app-shops-dialog',
-  templateUrl: './shops-dialog.component.html',
+  selector: "app-shops-dialog",
+  templateUrl: "./shops-dialog.component.html"
 })
 export class ShopsDialogComponent {
-
   locs: Locations;
   selected: ItemLocations;
   locOrder: string[];
@@ -23,9 +22,9 @@ export class ShopsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ShopsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private locationService: LocationService) {
-
-    this.locationService.getLocationOrder().subscribe( order => {
+    private locationService: LocationService
+  ) {
+    this.locationService.getLocationOrder().subscribe(order => {
       this.locOrder = order;
     });
     this.locationService.getLocations().subscribe(locs => {
@@ -54,20 +53,20 @@ export class ShopsDialogComponent {
 }
 
 @Component({
-  selector: 'app-shops',
-  templateUrl: './shops.component.html',
-  styleUrls: ['./shops.component.scss']
+  selector: "app-shops",
+  templateUrl: "./shops.component.html",
+  styleUrls: ["./shops.component.scss"]
 })
-
 export class ShopsComponent implements OnInit {
-
   @Input() itemId: number;
   found: ItemLocations;
   locs: Locations;
 
-  constructor(public dialog: MatDialog, private locationService: LocationService,
-    private itemService: ItemService) {
-  }
+  constructor(
+    public dialog: MatDialog,
+    private locationService: LocationService,
+    private itemService: ItemService
+  ) {}
 
   ngOnInit() {
     this.itemService.getFoundItems().subscribe(f => {
@@ -83,9 +82,8 @@ export class ShopsComponent implements OnInit {
     const dialogRef = this.dialog.open(ShopsDialogComponent, {
       // position: pos,
       hasBackdrop: true,
-      width: '250px',
+      width: "250px",
       data: { found: this.found }
-
     });
 
     dialogRef.afterClosed().subscribe(result => {

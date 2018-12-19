@@ -1,15 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Component, OnInit, Input } from "@angular/core";
+import { Observable } from "rxjs";
+import { map, switchMap } from "rxjs/operators";
 
-import { Item, ItemService, FoundItems } from '../item.service';
+import { Item, ItemService, FoundItems } from "../item.service";
 
 @Component({
-  selector: 'app-shop-item-picker',
-  templateUrl: './shop-item-picker.component.html',
-  styleUrls: ['./shop-item-picker.component.scss']
+  selector: "app-shop-item-picker",
+  templateUrl: "./shop-item-picker.component.html",
+  styleUrls: ["./shop-item-picker.component.scss"]
 })
-
 export class ShopItemPickerComponent implements OnInit {
   @Input() location: string;
   @Input() shopType: string;
@@ -18,20 +17,17 @@ export class ShopItemPickerComponent implements OnInit {
   selectedItems: number[];
   foundItems: FoundItems;
 
-  constructor(
-    private itemService: ItemService) {
+  constructor(private itemService: ItemService) {
     this.itemService.getItems().subscribe(items => {
       this.items = items;
     });
-    this.itemService.getSelectedItems()
-      .subscribe(s => {
-        this.selectedItems = s;
-      });
+    this.itemService.getSelectedItems().subscribe(s => {
+      this.selectedItems = s;
+    });
 
-    this.itemService.getFoundItems()
-      .subscribe(f => {
-        this.foundItems = f;
-      });
+    this.itemService.getFoundItems().subscribe(f => {
+      this.foundItems = f;
+    });
   }
 
   filterItems(items: Item[], selectedItems: number[]): number[] {
@@ -67,6 +63,5 @@ export class ShopItemPickerComponent implements OnInit {
     // this.shopItems = shopItems;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

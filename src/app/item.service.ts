@@ -1,30 +1,32 @@
-import {HttpClient} from '@angular/common/http';
-import {Identifiers} from '@angular/compiler';
-import {Inject, Injectable} from '@angular/core';
-import {SESSION_STORAGE, StorageService} from 'angular-webstorage-service';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
+import { Identifiers } from "@angular/compiler";
+import { Inject, Injectable } from "@angular/core";
+import { SESSION_STORAGE, StorageService } from "angular-webstorage-service";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
-import {ConfigService} from './config.service';
-import {Item} from './item.model';
-import {FoundItems, ItemLocations} from './state.model';
-import {StateService} from './state.service';
+import { ConfigService } from "./config.service";
+import { Item } from "./item.model";
+import { FoundItems, ItemLocations } from "./state.model";
+import { StateService } from "./state.service";
 
-export {FoundItems, ItemLocations} from './state.model';
-export {Item} from './item.model';
+export { FoundItems, ItemLocations } from "./state.model";
+export { Item } from "./item.model";
 
-const STORAGE_KEY = 'tracker.items.service';
+const STORAGE_KEY = "tracker.items.service";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class ItemService {
   items: Observable<Item[]>;
   selectedItems: number[];
   foundItems: FoundItems;
 
   constructor(
-      private configService: ConfigService, private http: HttpClient,
-      private stateService: StateService) {
-    this.items = this.http.get<Item[]>('./assets/data/items.json');
+    private configService: ConfigService,
+    private http: HttpClient,
+    private stateService: StateService
+  ) {
+    this.items = this.http.get<Item[]>("./assets/data/items.json");
     this.configService.getConfig().subscribe(c => {
       this.selectedItems = c.selected_items;
     });
@@ -33,11 +35,9 @@ export class ItemService {
     });
   }
 
-
   public getItems(): Observable<Item[]> {
     return this.items;
   }
-
 
   public getSelectedItems(): Observable<number[]> {
     return this.configService.getConfig().pipe(map(c => c.selected_items));
@@ -48,7 +48,7 @@ export class ItemService {
   }
 
   public addSelectedItem(item: Item) {
-    console.log('add', item);
+    console.log("add", item);
     this.selectedItems.push(item.id);
     this.configService.updateSelectedItems(this.selectedItems);
   }

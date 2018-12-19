@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, Observable, combineLatest } from "rxjs";
+import { map } from "rxjs/operators";
 
-import { Location } from './location.model';
-import { State, StateService } from './state.service';
-import { Config, ConfigService } from './config.service';
+import { Location } from "./location.model";
+import { State, StateService } from "./state.service";
+import { Config, ConfigService } from "./config.service";
 
-export { Location, LocationPoi } from './location.model';
+export { Location, LocationPoi } from "./location.model";
 
 export interface Locations {
   [index: string]: Location;
 }
-
 
 // These below are used to aggregate state by location instead of char,
 // key item, boss, etc.
@@ -37,7 +36,7 @@ export interface LocationStates {
   [index: string]: LocationState;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class LocationService {
   private locationsData: Locations;
   private _locations: BehaviorSubject<Locations>;
@@ -50,61 +49,76 @@ export class LocationService {
   locationState$: Observable<LocationStates>;
   private locationStateData: LocationStates;
 
-  constructor(private http: HttpClient, private configService: ConfigService, private stateService: StateService) {
-    this._locations =
-      <BehaviorSubject<Locations>>new BehaviorSubject(undefined);
+  constructor(
+    private http: HttpClient,
+    private configService: ConfigService,
+    private stateService: StateService
+  ) {
+    this._locations = <BehaviorSubject<Locations>>(
+      new BehaviorSubject(undefined)
+    );
     this.locations = this._locations.asObservable();
 
-    this._locationOrder =
-      <BehaviorSubject<string[]>>new BehaviorSubject(undefined);
+    this._locationOrder = <BehaviorSubject<string[]>>(
+      new BehaviorSubject(undefined)
+    );
     this.locationOrder = this._locationOrder.asObservable();
 
-    this.locationState$ =
-      combineLatest(this.stateService.getState(), this.configService.getConfig(), this.locations)
-        .pipe(
-          map(results => this.processState(results[0], results[1], results[2]))
-        );
-    this.locationState$.subscribe(s => { this.locationStateData = s; });
+    this.locationState$ = combineLatest(
+      this.stateService.getState(),
+      this.configService.getConfig(),
+      this.locations
+    ).pipe(
+      map(results => this.processState(results[0], results[1], results[2]))
+    );
+    this.locationState$.subscribe(s => {
+      this.locationStateData = s;
+    });
 
-    this.http.get<Location[]>('./assets/data/locations.json')
-      .subscribe(l => {
-        this.locationOrderData = l.map(a => a.id);
-        this._locationOrder.next(this.locationOrderData);
+    this.http.get<Location[]>("./assets/data/locations.json").subscribe(l => {
+      this.locationOrderData = l.map(a => a.id);
+      this._locationOrder.next(this.locationOrderData);
 
-        this.locationsData = l.reduce((locs, o) => {
-          locs[o.id] = o;
-          return locs;
-        }, {});
+      this.locationsData = l.reduce((locs, o) => {
+        locs[o.id] = o;
+        return locs;
+      }, {});
 
-        this._locations.next(this.locationsData);
-      });
-
-
+      this._locations.next(this.locationsData);
+    });
   }
 
   // This is a big horrible function that is begging to be refactored.
-  private processState(state: State, config: Config, locationsData: Locations): LocationStates {
+  private processState(
+    state: State,
+    config: Config,
+    locationsData: Locations
+  ): LocationStates {
     const states: LocationStates = {};
 
-    if (state === undefined || config === undefined || locationsData === undefined) {
+    if (
+      state === undefined ||
+      config === undefined ||
+      locationsData === undefined
+    ) {
       return states;
     }
     for (const locId of Object.keys(locationsData)) {
       const loc = locationsData[locId];
       const l: LocationState = { enabled: false, poi: [] };
 
-      if (!('poi' in loc)) {
+      if (!("poi" in loc)) {
         l.enabled = true;
       } else {
         for (const p of Object.keys(loc.poi)) {
           const poi = loc.poi[p];
           const ps: PoiState = {
             enabled: true,
-            visible: true,
+            visible: true
           };
 
           // Scan through any reqs to see if the poi is enabled.
-          if ('reqs' in poi) {
+          if ("reqs" in poi) {
             for (const req of poi.reqs) {
               if (!(req in state.key_items)) {
                 ps.enabled = false;
@@ -118,11 +132,11 @@ export class LocationService {
           }
 
           // Evaluate flags for poi visibility.
-          if ('flags' in poi) {
+          if ("flags" in poi) {
             let visible = false;
             for (let flag of poi.flags) {
               let invert = false;
-              if (flag.substring(0, 1) === '!') {
+              if (flag.substring(0, 1) === "!") {
                 invert = true;
                 flag = flag.substring(1);
               }
@@ -140,7 +154,6 @@ export class LocationService {
             }
           }
 
-
           l.poi[p] = ps;
         }
       }
@@ -149,7 +162,7 @@ export class LocationService {
 
     for (const id of Object.keys(state.key_items)) {
       const k = state.key_items[id];
-      if (k.location === 'virt') {
+      if (k.location === "virt") {
         continue;
       }
       states[k.location].poi[k.slot].keyItem = id;
@@ -157,7 +170,7 @@ export class LocationService {
 
     for (const id of Object.keys(state.chars)) {
       const k = state.chars[id];
-      if (k.location === 'virt') {
+      if (k.location === "virt") {
         continue;
       }
       states[k.location].poi[k.slot].character = id;
@@ -165,7 +178,7 @@ export class LocationService {
 
     for (const id of Object.keys(state.bosses)) {
       const k = state.bosses[id];
-      if (k.location === 'virt') {
+      if (k.location === "virt") {
         continue;
       }
       states[k.location].poi[k.slot].boss = id;
@@ -182,13 +195,17 @@ export class LocationService {
   }
 
   public getLocation(id: string): Observable<Location> {
-    return this.getLocations().pipe(
-      map(locs => locs[id]
-      ));
+    return this.getLocations().pipe(map(locs => locs[id]));
   }
 
-  private processPoi(poiType: string, poiKey: string, l: string, poiId: string,
-    addFunc: (slot: number) => void, deleteFunc: (slot: number) => void) {
+  private processPoi(
+    poiType: string,
+    poiKey: string,
+    l: string,
+    poiId: string,
+    addFunc: (slot: number) => void,
+    deleteFunc: (slot: number) => void
+  ) {
     if (l === undefined) {
       return;
     }
@@ -217,23 +234,47 @@ export class LocationService {
   }
 
   processKeyItem(loc: string, keyItem: string) {
-    this.processPoi('key', 'keyItem', loc, keyItem,
-      (slot) => { this.stateService.recordKeyItem(keyItem, loc, slot); },
-      (slot) => { this.stateService.unrecordKeyItem(keyItem, loc, slot); }
+    this.processPoi(
+      "key",
+      "keyItem",
+      loc,
+      keyItem,
+      slot => {
+        this.stateService.recordKeyItem(keyItem, loc, slot);
+      },
+      slot => {
+        this.stateService.unrecordKeyItem(keyItem, loc, slot);
+      }
     );
   }
 
   processChar(loc: string, char: string) {
-    this.processPoi('char', 'character', loc, char,
-      (slot) => { this.stateService.recordCharacter(char, loc, slot); },
-      (slot) => { this.stateService.unrecordCharacter(char, loc, slot); }
+    this.processPoi(
+      "char",
+      "character",
+      loc,
+      char,
+      slot => {
+        this.stateService.recordCharacter(char, loc, slot);
+      },
+      slot => {
+        this.stateService.unrecordCharacter(char, loc, slot);
+      }
     );
   }
 
   processBoss(loc: string, boss: string) {
-    this.processPoi('boss', 'boss', loc, boss,
-      (slot) => { this.stateService.recordBoss(boss, loc, slot); },
-      (slot) => { this.stateService.unrecordBoss(boss, loc, slot); }
+    this.processPoi(
+      "boss",
+      "boss",
+      loc,
+      boss,
+      slot => {
+        this.stateService.recordBoss(boss, loc, slot);
+      },
+      slot => {
+        this.stateService.unrecordBoss(boss, loc, slot);
+      }
     );
   }
 
@@ -252,6 +293,7 @@ export class LocationService {
         }
 
         return states[loc.id];
-      }));
+      })
+    );
   }
 }

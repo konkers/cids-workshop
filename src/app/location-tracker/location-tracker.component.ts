@@ -1,13 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
-import { Locations, LocationState, LocationService } from '../location.service';
+import { Locations, LocationState, LocationService } from "../location.service";
 
 @Component({
-  selector: 'app-location-tracker',
-  templateUrl: './location-tracker.component.html',
-  styleUrls: ['./location-tracker.component.scss']
+  selector: "app-location-tracker",
+  templateUrl: "./location-tracker.component.html",
+  styleUrls: ["./location-tracker.component.scss"]
 })
 export class LocationTrackerComponent implements OnInit {
   @Input() keyItemEvents: Observable<string>;
@@ -16,11 +16,14 @@ export class LocationTrackerComponent implements OnInit {
 
   locs: Locations;
   locOrder: string[];
-  locRouteRe = RegExp('/loc/([^/]*)');
+  locRouteRe = RegExp("/loc/([^/]*)");
   selectedLoc: string;
   locState: LocationState;
 
-  constructor(private router: Router, private locationService: LocationService) {
+  constructor(
+    private router: Router,
+    private locationService: LocationService
+  ) {
     this.locationService.getLocations().subscribe(locs => {
       this.locs = locs;
     });
@@ -30,15 +33,21 @@ export class LocationTrackerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.subscribe((res) => {
+    this.router.events.subscribe(res => {
       const match = this.locRouteRe.exec(this.router.url);
       if (match) {
         this.selectedLoc = match[1];
       }
     });
-    this.keyItemEvents.subscribe(ki => { this.handleKeyItem(ki); });
-    this.characterEvents.subscribe(c => { this.handleCharacter(c); });
-    this.bossEvents.subscribe(b => { this.handleBoss(b); });
+    this.keyItemEvents.subscribe(ki => {
+      this.handleKeyItem(ki);
+    });
+    this.characterEvents.subscribe(c => {
+      this.handleCharacter(c);
+    });
+    this.bossEvents.subscribe(b => {
+      this.handleBoss(b);
+    });
   }
 
   handleKeyItem(keyItem: string) {
@@ -54,11 +63,10 @@ export class LocationTrackerComponent implements OnInit {
   }
 
   shop(loc: string, type: string) {
-    this.router.navigate(['/shop', loc, type]);
+    this.router.navigate(["/shop", loc, type]);
   }
 
   gotoLoc(loc: string) {
-    this.router.navigate(['/loc', loc]);
+    this.router.navigate(["/loc", loc]);
   }
-
 }
