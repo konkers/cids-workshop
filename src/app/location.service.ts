@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, combineLatest } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { Location } from "./location.model";
-import { State, StateService } from "./state.service";
+import { State, StateService, TrappedChestsLocation } from "./state.service";
 import { Config, ConfigService } from "./config.service";
 
 export { Location, LocationPoi } from "./location.model";
@@ -30,6 +30,7 @@ export interface PoiStates {
 export interface LocationState {
   enabled: boolean;
   poi: PoiStates;
+  trapped_chests: TrappedChestsLocation;
 }
 
 export interface LocationStates {
@@ -105,7 +106,7 @@ export class LocationService {
     }
     for (const locId of Object.keys(locationsData)) {
       const loc = locationsData[locId];
-      const l: LocationState = { enabled: false, poi: [] };
+      const l: LocationState = { enabled: false, poi: [], trapped_chests: {} };
 
       if (!("poi" in loc)) {
         l.enabled = true;
@@ -153,9 +154,12 @@ export class LocationService {
               ps.visible = visible;
             }
           }
-
           l.poi[p] = ps;
         }
+      }
+
+      if (locId in state.trapped_chests) {
+        l.trapped_chests = state.trapped_chests[locId];
       }
       states[locId] = l;
     }
@@ -278,6 +282,10 @@ export class LocationService {
     );
   }
 
+  recordTrappedChest(locId: string, chest: number, found: boolean) {
+    this.stateService.recordTrappedChest(locId, chest, found);
+  }
+
   getLocationState(location$: Observable<Location>): Observable<LocationState> {
     // TODO: rewrite this to use this.locationState$
     const state$ = this.stateService.getState();
@@ -287,7 +295,11 @@ export class LocationService {
         const states = r[0];
         const loc = r[1];
 
-        const l: LocationState = { enabled: false, poi: [] };
+        const l: LocationState = {
+          enabled: false,
+          poi: [],
+          trapped_chests: {}
+        };
         if (states === undefined || loc === undefined) {
           return l;
         }

@@ -36,10 +36,15 @@
     </mat-tab-group>
   </div>
 
-  <div *ngIf="hasTrappedChests()">
+  <div *ngIf="hasTrappedChests() && (state$ | async)">
     <h2>Trapped Chests</h2>
-    <ul>
-      <li *ngFor="let chest of loc.trapped_chests">{{chest}}</li>
-    </ul>
+    <div *ngFor="let chest of loc.trapped_chests; index as i">
+      <mat-checkbox
+        [checked]="(state$ | async).trapped_chests[i]"
+        (change)="doTrappedChest(i, $event.checked)"
+      >
+        {{chest}}
+      </mat-checkbox>
+    </div>
   </div>
 </section>
