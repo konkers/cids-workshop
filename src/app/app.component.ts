@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
   locRouteRe = RegExp("/loc/([^/]*)");
   pageNames = {
     "/items": "Items",
-    "/flags": "Flags"
+    "/flags": "Flags",
+    "/help": "Help"
   };
 
   constructor(
@@ -73,6 +74,8 @@ export class AppComponent implements OnInit {
 
     if (url in this.pageNames) {
       this.navTitle = this.pageNames[url];
+    } else {
+      this.navTitle = "Cid's Workshop";
     }
   }
 
@@ -82,6 +85,10 @@ export class AppComponent implements OnInit {
 
   goItems() {
     this.router.navigate(["/items"]);
+  }
+
+  goHelp() {
+    this.router.navigate(["/help"]);
   }
 
   reset() {
