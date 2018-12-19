@@ -4,7 +4,12 @@ import { BehaviorSubject, Observable, combineLatest } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { Location } from "./location.model";
-import { State, StateService, TrappedChestsLocation } from "./state.service";
+import {
+  Found,
+  State,
+  StateService,
+  TrappedChestsLocation
+} from "./state.service";
 import { Config, ConfigService } from "./config.service";
 
 export { Location, LocationPoi } from "./location.model";
@@ -50,6 +55,9 @@ export class LocationService {
   locationState$: Observable<LocationStates>;
   private locationStateData: LocationStates;
 
+  state: State;
+  config: Config;
+
   constructor(
     private http: HttpClient,
     private configService: ConfigService,
@@ -64,6 +72,14 @@ export class LocationService {
       new BehaviorSubject(undefined)
     );
     this.locationOrder = this._locationOrder.asObservable();
+
+    this.stateService.getState().subscribe(state => {
+      this.state = state;
+    });
+
+    this.configService.getConfig().subscribe(config => {
+      this.config = config;
+    });
 
     this.locationState$ = combineLatest(
       this.stateService.getState(),
@@ -205,23 +221,31 @@ export class LocationService {
   private processPoi(
     poiType: string,
     poiKey: string,
+    found: Found,
     l: string,
     poiId: string,
     addFunc: (slot: number) => void,
-    deleteFunc: (slot: number) => void
+    deleteFunc: () => void
   ) {
     if (l === undefined) {
       return;
     }
     const loc = this.locationsData[l];
 
-    // First check if poi is already recorded.  If so, remove it.
-    for (const p of Object.keys(loc.poi)) {
-      const poi = loc.poi[p];
-      const poiState = this.locationStateData[l].poi[p];
-      if (poi.type === poiType && poiState[poiKey] === poiId) {
-        deleteFunc(Number(p));
+    if (this.config.options.always_remove_key) {
+      if (poiId in found) {
+        deleteFunc();
         return;
+      }
+    } else {
+      // First check if poi is already recorded.  If so, remove it.
+      for (const p of Object.keys(loc.poi)) {
+        const poi = loc.poi[p];
+        const poiState = this.locationStateData[l].poi[p];
+        if (poi.type === poiType && poiState[poiKey] === poiId) {
+          deleteFunc();
+          return;
+        }
       }
     }
 
@@ -241,13 +265,14 @@ export class LocationService {
     this.processPoi(
       "key",
       "keyItem",
+      this.state.key_items,
       loc,
       keyItem,
       slot => {
         this.stateService.recordKeyItem(keyItem, loc, slot);
       },
-      slot => {
-        this.stateService.unrecordKeyItem(keyItem, loc, slot);
+      () => {
+        this.stateService.unrecordKeyItem(keyItem);
       }
     );
   }
@@ -256,13 +281,14 @@ export class LocationService {
     this.processPoi(
       "char",
       "character",
+      this.state.chars,
       loc,
       char,
       slot => {
         this.stateService.recordCharacter(char, loc, slot);
       },
-      slot => {
-        this.stateService.unrecordCharacter(char, loc, slot);
+      () => {
+        this.stateService.unrecordCharacter(char);
       }
     );
   }
@@ -271,13 +297,14 @@ export class LocationService {
     this.processPoi(
       "boss",
       "boss",
+      this.state.bosses,
       loc,
       boss,
       slot => {
         this.stateService.recordBoss(boss, loc, slot);
       },
-      slot => {
-        this.stateService.unrecordBoss(boss, loc, slot);
+      () => {
+        this.stateService.unrecordBoss(boss);
       }
     );
   }

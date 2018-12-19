@@ -25,6 +25,14 @@ export class ConfigService {
     this.config$ = this._config.asObservable();
   }
 
+  private updateConfig() {
+    const defaultConfig = this.defaultConfig();
+    if (this.configData.version === 1) {
+      this.configData.options = defaultConfig.options;
+    }
+    this.configData.version = CONFIG_VERSION;
+  }
+
   getConfig() {
     return this.config$;
   }
@@ -48,7 +56,10 @@ export class ConfigService {
     return {
       version: CONFIG_VERSION,
       selected_items: [],
-      flags: { Nc: false, Nk: false }
+      flags: { Nc: false, Nk: false },
+      options: {
+        always_remove_key: true
+      }
     };
   }
 }
