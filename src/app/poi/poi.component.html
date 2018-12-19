@@ -1,3 +1,10 @@
-<div *ngIf="poi">
-  <img class="icon" [class.disabled]="!enabled" [src]="img()" />
+<div
+  *ngIf="poi"
+  class="icon-container"
+>
+  <img
+    class="icon"
+    [class.disabled]="!enabled"
+    [src]="img()"
+  />
 </div>
