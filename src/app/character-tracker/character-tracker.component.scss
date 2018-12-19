@@ -1,7 +1,8 @@
 .tracker {
     display: flex;
-    width: 64px;
+    width: 36px * 2;
     flex-wrap: wrap;
+    padding: 2px;
 }
 
 .char:hover {

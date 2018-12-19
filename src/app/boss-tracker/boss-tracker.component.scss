@@ -1,10 +1,10 @@
 .tracker {
     display: flex;
-    width: 36px * 3;
+    width: 36px * 6;
     flex-wrap: wrap;
     padding: 2px;
 }
 
-.key-item:hover {
+.boss:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }

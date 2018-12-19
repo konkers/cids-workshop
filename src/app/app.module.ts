@@ -40,6 +40,8 @@ import { KeyItemTrackerComponent } from './key-item-tracker/key-item-tracker.com
 import { KeyItemComponent } from './key-item/key-item.component';
 import { CharacterTrackerComponent } from './character-tracker/character-tracker.component';
 import { CharacterComponent } from './character/character.component';
+import { BossComponent } from './boss/boss.component';
+import { BossTrackerComponent } from './boss-tracker/boss-tracker.component';
 
 const appRoutes: Routes = [
   { path: 'loc/:loc', component: LocationDetailComponent },
@@ -65,7 +67,9 @@ const appRoutes: Routes = [
     KeyItemTrackerComponent,
     KeyItemComponent,
     CharacterTrackerComponent,
-    CharacterComponent
+    CharacterComponent,
+    BossComponent,
+    BossTrackerComponent
   ],
   imports: [
     RouterModule.forRoot(
