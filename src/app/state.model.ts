@@ -1,4 +1,4 @@
-export const STATE_VERSION = 1;
+export const STATE_VERSION = 2;
 
 export interface ItemLocations {
   [index: string]: boolean;
@@ -17,6 +17,14 @@ export interface Found {
   [index: string]: FoundLocation;
 }
 
+export interface TrappedChestsLocation {
+  [index: number]: boolean;
+}
+
+export interface TrappedChests {
+  [index: string]: TrappedChestsLocation;
+}
+
 export interface State {
   version: number;
 
@@ -26,4 +34,6 @@ export interface State {
   key_items: Found;
   chars: Found;
   bosses: Found;
+
+  trapped_chests: TrappedChests;
 }
