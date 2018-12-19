@@ -1,15 +1,25 @@
-<table *ngIf="items && selectedItems && foundItems" cdkDropList (cdkDropListDropped)="drop($event)">
-  <tr *ngFor="let id of selectedItems; index as i" cdkDrag>
-      <td *cdkDragPreview >
-          <app-item [item]="items[id]"></app-item>
-        </td>
+<table
+  *ngIf="items && selectedItems && foundItems"
+  cdkDropList
+  (cdkDropListDropped)="drop($event)"
+>
+  <tr
+    *ngFor="let id of selectedItems; index as i"
+    cdkDrag
+  >
+    <td *cdkDragPreview>
+      <app-item [item]="items[id]"></app-item>
+    </td>
     <td class="item-cell">
       <app-item [item]="items[id]"></app-item>
     </td>
     <td class="item-cell">
       <app-shops [itemId]="id"></app-shops>
     </td>
-    <td class="item-cell"><button mat-icon-button (click)="deleteRecord(i)">
+    <td class="item-cell"><button
+        mat-icon-button
+        (click)="deleteRecord(i)"
+      >
         <mat-icon>delete_forever</mat-icon>
       </button></td>
   </tr>
@@ -17,10 +27,24 @@
 
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Add item" aria-label="Number" matInput [formControl]="searchControl"
-      [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayItem" (optionSelected)="addItem($event.option.value)">
-      <mat-option *ngFor="let item of filteredItems | async" [value]="item">
+    <input
+      type="text"
+      placeholder="Add item"
+      aria-label="Number"
+      matInput
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+    >
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      autoActiveFirstOption="true"
+      [displayWith]="displayItem"
+      (optionSelected)="addItem($event.option.value)"
+    >
+      <mat-option
+        *ngFor="let item of filteredItems | async"
+        [value]="item"
+      >
         <app-item [item]="item"></app-item>
       </mat-option>
     </mat-autocomplete>
