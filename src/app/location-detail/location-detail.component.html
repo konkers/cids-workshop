@@ -4,59 +4,63 @@
 >
   <div *ngIf="hasShops()">
     <h2>Shops</h2>
-    <table>
-      <tr>
-        <th *ngIf="hasPoi('item-shop')">
-          Item
-        </th>
-        <th *ngIf="hasPoi('weapon-shop')">
-          Weapon
-        </th>
-        <th *ngIf="hasPoi('armor-shop')">
-          Armor
-        </th>
-      </tr>
-      <tr>
-        <td
-          *ngIf="hasPoi('item-shop')"
-          class="picker"
-        >
-          <app-shop-item-picker
-            [location]="loc.id"
-            shopType="item"
-          ></app-shop-item-picker>
-        </td>
-        <td
-          *ngIf="hasPoi('weapon-shop')"
-          class="picker"
-        >
-          <app-shop-item-picker
-            [location]="loc.id"
-            shopType="weapon"
-          ></app-shop-item-picker>
-        </td>
-        <td
-          *ngIf="hasPoi('armor-shop')"
-          class="picker"
-        >
-          <app-shop-item-picker
-            [location]="loc.id"
-            shopType="armor"
-          ></app-shop-item-picker>
-        </td>
-      </tr>
-    </table>
+    <div class="section">
+      <table>
+        <tr>
+          <th *ngIf="hasPoi('item-shop')">
+            Item
+          </th>
+          <th *ngIf="hasPoi('weapon-shop')">
+            Weapon
+          </th>
+          <th *ngIf="hasPoi('armor-shop')">
+            Armor
+          </th>
+        </tr>
+        <tr>
+          <td
+            *ngIf="hasPoi('item-shop')"
+            class="picker"
+          >
+            <app-shop-item-picker
+              [location]="loc.id"
+              shopType="item"
+            ></app-shop-item-picker>
+          </td>
+          <td
+            *ngIf="hasPoi('weapon-shop')"
+            class="picker"
+          >
+            <app-shop-item-picker
+              [location]="loc.id"
+              shopType="weapon"
+            ></app-shop-item-picker>
+          </td>
+          <td
+            *ngIf="hasPoi('armor-shop')"
+            class="picker"
+          >
+            <app-shop-item-picker
+              [location]="loc.id"
+              shopType="armor"
+            ></app-shop-item-picker>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <div *ngIf="hasTrappedChests() && (state$ | async)">
     <h2>Trapped Chests</h2>
-    <div *ngFor="let chest of loc.trapped_chests; index as i">
-      <mat-checkbox
-        [checked]="(state$ | async).trapped_chests[i]"
-        (change)="doTrappedChest(i, $event.checked)"
-      >
-        {{chest}}
-      </mat-checkbox>
+    <div class="section">
+      <div *ngFor="let chest of loc.trapped_chests; index as i">
+        <mat-checkbox
+          [checked]="(state$ | async).trapped_chests[i]"
+          (change)="doTrappedChest(i, $event.checked)"
+        >
+          {{chest}}
+        </mat-checkbox>
+      </div>
     </div>
   </div>
 </section>
