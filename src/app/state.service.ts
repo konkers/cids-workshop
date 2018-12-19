@@ -63,7 +63,7 @@ export class StateService {
     }
   }
 
-  unrecordKeyItem(key: string, loc: string, slot: number) {
+  unrecordKeyItem(key: string) {
     delete this.stateData.key_items[key];
     this.store();
   }
@@ -75,7 +75,7 @@ export class StateService {
     }
   }
 
-  unrecordCharacter(char: string, loc: string, slot: number) {
+  unrecordCharacter(char: string) {
     delete this.stateData.chars[char];
     this.store();
   }
@@ -87,7 +87,7 @@ export class StateService {
     }
   }
 
-  unrecordBoss(boss: string, loc: string, slot: number) {
+  unrecordBoss(boss: string) {
     delete this.stateData.bosses[boss];
     this.store();
   }
