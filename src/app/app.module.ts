@@ -50,6 +50,7 @@ import { BossTrackerComponent } from "./boss-tracker/boss-tracker.component";
 import { FlagsComponent } from "./flags/flags.component";
 import { FlagComponent } from "./flag/flag.component";
 import { HelpComponent } from "./help/help.component";
+import { ItemAdderComponent } from "./item-adder/item-adder.component";
 
 const appRoutes: Routes = [
   { path: "loc/:loc", component: LocationDetailComponent },
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
     BossTrackerComponent,
     FlagsComponent,
     FlagComponent,
-    HelpComponent
+    HelpComponent,
+    ItemAdderComponent
   ],
   imports: [
     RouterModule.forRoot(

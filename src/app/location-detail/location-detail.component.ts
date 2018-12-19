@@ -67,6 +67,10 @@ export class LocationDetailComponent implements OnInit {
     this.locationService.recordTrappedChest(this.locId, chest, found);
   }
 
+  gotoItemList() {
+    this.router.navigate(["/items"]);
+  }
+
   hasPoi(poi: string): boolean {
     if (this.loc === undefined || this.loc.poi === undefined) {
       return false;
