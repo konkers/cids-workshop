@@ -1,17 +1,45 @@
-<section class="mat-typography" *ngIf="loc">
+<section
+  class="mat-typography"
+  *ngIf="loc"
+>
   <h1>{{loc.name}}</h1>
   <div *ngIf="hasShops()">
     <h2>Shops</h2>
     <mat-tab-group>
-  <mat-tab label="Item" *ngIf="hasPoi('item-shop')">
-    <app-shop-item-picker [location]="loc.id" shopType="item"></app-shop-item-picker>
-  </mat-tab>
-  <mat-tab label="Weapon" *ngIf="hasPoi('weapon-shop')">
-    <app-shop-item-picker [location]="loc.id" shopType="weapon"></app-shop-item-picker>
-  </mat-tab>
-  <mat-tab label="Armor" *ngIf="hasPoi('armor-shop')">
-    <app-shop-item-picker [location]="loc.id" shopType="armor"></app-shop-item-picker>
-  </mat-tab>
-</mat-tab-group>
+      <mat-tab
+        label="Item"
+        *ngIf="hasPoi('item-shop')"
+      >
+        <app-shop-item-picker
+          [location]="loc.id"
+          shopType="item"
+        ></app-shop-item-picker>
+      </mat-tab>
+      <mat-tab
+        label="Weapon"
+        *ngIf="hasPoi('weapon-shop')"
+      >
+        <app-shop-item-picker
+          [location]="loc.id"
+          shopType="weapon"
+        ></app-shop-item-picker>
+      </mat-tab>
+      <mat-tab
+        label="Armor"
+        *ngIf="hasPoi('armor-shop')"
+      >
+        <app-shop-item-picker
+          [location]="loc.id"
+          shopType="armor"
+        ></app-shop-item-picker>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div *ngIf="hasTrappedChests()">
+    <h2>Trapped Chests</h2>
+    <ul>
+      <li *ngFor="let chest of loc.trapped_chests">{{chest}}</li>
+    </ul>
   </div>
 </section>
