@@ -12,6 +12,7 @@ before_script:
 script:
   - ng lint
   - ng build --prod --base-href https://cidsworkshop.com/
+  - ./node_modules/.bin/prettier-check src/**/*.ts
 deploy:
   provider: pages
   skip_cleanup: true
