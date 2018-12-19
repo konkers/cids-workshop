@@ -4,14 +4,20 @@
         class="app-sidenav"
         opened
     >
-        <div class="selectables">
-            <app-character-tracker (select)="characterEvent($event)"></app-character-tracker>
-            <div class="vert-sep"></div>
-            <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
+        <div class="broadcast">
+            <div class="selectables">
+                <app-character-tracker (select)="characterEvent($event)"></app-character-tracker>
+                <div class="vert-sep"></div>
+                <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
+                <div class="vert-sep"></div>
+                <app-boss-tracker (select)="bossEvent($event)"></app-boss-tracker>
+            </div>
         </div>
+        <div class="runner">
         <app-location-tracker
             [keyItemEvents]="keyItemEvents"
             [characterEvents]="characterEvents"
+            [bossEvents]="bossEvents"
         ></app-location-tracker>
 
         <button
@@ -25,6 +31,7 @@
             (click)="reset()"
             color="warn"
         >Reset</button>
+        </div>
 
     </mat-sidenav>
     <mat-sidenav-content class="app-sidenav-content">

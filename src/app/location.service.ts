@@ -19,6 +19,7 @@ export interface PoiState {
   enabled: boolean;
   keyItem?: string;
   character?: string;
+  boss?: string;
 }
 
 export interface PoiStates {
@@ -122,6 +123,14 @@ export class LocationService {
       }
       states[k.location].poi[k.slot].character = id;
     }
+
+    for (const id of Object.keys(state.bosses)) {
+      const k = state.bosses[id];
+      if (k.location === 'virt') {
+        continue;
+      }
+      states[k.location].poi[k.slot].boss = id;
+    }
     return states;
   }
 
@@ -179,6 +188,13 @@ export class LocationService {
     this.processPoi('char', 'character', loc, char,
       (slot) => { this.stateService.recordCharacter(char, loc, slot); },
       (slot) => { this.stateService.unrecordCharacter(char, loc, slot); }
+    );
+  }
+
+  processBoss(loc: string, boss: string) {
+    this.processPoi('boss', 'boss', loc, boss,
+      (slot) => { this.stateService.recordBoss(boss, loc, slot); },
+      (slot) => { this.stateService.unrecordBoss(boss, loc, slot); }
     );
   }
 

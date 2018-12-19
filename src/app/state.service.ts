@@ -72,6 +72,18 @@ export class StateService {
     this.store();
   }
 
+  recordBoss(boss: string, loc: string, slot: number) {
+    if (!(boss in this.stateData.bosses)) {
+      this.stateData.bosses[boss] = { location: loc, slot: slot };
+      this.store();
+    }
+  }
+
+  unrecordBoss(boss: string, loc: string, slot: number) {
+    delete this.stateData.bosses[boss];
+    this.store();
+  }
+
   defaultState(): State {
     return {
       version: STATE_VERSION,

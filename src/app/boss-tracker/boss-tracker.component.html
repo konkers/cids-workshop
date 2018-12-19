@@ -1,0 +1,16 @@
+<div
+  class="tracker"
+  *ngIf="(bosses$ | async) && (bossOrder$ | async)"
+>
+  <div
+    class="boss"
+    *ngFor="let id of bossOrder$ | async"
+    (click)="selectBoss(id)"
+  >
+    <app-boss
+      [boss]="(bosses$ | async)[id]"
+      [state]="(bossesFound$ | async)[id]"
+    >
+      </app-boss>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-$sidenav-width: 430px;
+$sidenav-width: 440px;
 $small-breakpoint-width: 10px;
 
 app-root {
@@ -7,15 +7,32 @@ app-root {
   min-height: 100%;
 }
 
+.broadcast {
+  background: #010761;
+  padding: 10px;
+}
+
+.runner{
+  padding: 10px;
+}
+
 .selectables {
   display: flex;
   flex-direction: row;
 }
+
 .vert-sep {
   background: #ffffff;
   width: 2px;
   min-height: 100%;
 }
+
+.horiz-sep {
+  background: #ffffff;
+  height: 2px;
+  min-width: 100%;
+}
+
 .app-sidenav-container {
   flex: 1;
   box-sizing: border-box;
@@ -25,7 +42,6 @@ app-root {
 .app-sidenav {
   overflow: auto;
   width: $sidenav-width;
-  padding: 10px;
 }
 
 .docs-component-sidenav-inner-content {
