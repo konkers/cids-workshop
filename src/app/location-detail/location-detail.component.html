@@ -4,6 +4,14 @@
 >
   <div *ngIf="hasShops()">
     <h2>Shops</h2>
+    <div class="shop-actions">
+      <app-item-adder [autoCheckLoc]="locId"></app-item-adder><button
+        mat-icon-button
+        (click)="gotoItemList()"
+      >
+        <mat-icon>assignment</mat-icon>
+      </button>
+    </div>
     <div class="section">
       <table>
         <tr>
