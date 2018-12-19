@@ -60,8 +60,10 @@ export class LocationService {
     this.locationOrder = this._locationOrder.asObservable();
 
     this.locationState$ =
-      combineLatest(this.stateService.getState(), this.configService.getConfig(), this.locations,
-        (s, c, l) => this.processState(s, c, l));
+      combineLatest(this.stateService.getState(), this.configService.getConfig(), this.locations)
+      .pipe(
+        map(results => this.processState(results[0], results[1], results[2]))
+        );
     this.locationState$.subscribe(s => { this.locationStateData = s; });
 
     this.http.get<Location[]>('./assets/data/locations.json')
@@ -235,7 +237,10 @@ export class LocationService {
     // TODO: rewrite this to use this.locationState$
     const state$ = this.stateService.getState();
 
-    return combineLatest(this.locationState$, location$, (states, loc) => {
+    return combineLatest(this.locationState$, location$).pipe(
+      map(r => {
+        const states = r[0];
+        const loc = r[1];
 
       const l: LocationState = { enabled: false, poi: [] };
       if (states === undefined || loc === undefined) {
@@ -243,6 +248,6 @@ export class LocationService {
       }
 
       return states[loc.id];
-    });
+    }));
   }
 }

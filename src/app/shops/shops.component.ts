@@ -11,6 +11,49 @@ export interface DialogData {
 }
 
 @Component({
+  selector: 'app-shops-dialog',
+  templateUrl: './shops-dialog.component.html',
+})
+export class ShopsDialogComponent {
+
+  locs: Locations;
+  selected: ItemLocations;
+  locOrder: string[];
+
+  constructor(
+    public dialogRef: MatDialogRef<ShopsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private locationService: LocationService) {
+
+    this.locationService.getLocationOrder().subscribe( order => {
+      this.locOrder = order;
+    });
+    this.locationService.getLocations().subscribe(locs => {
+      this.selected = this.data.found;
+
+      this.locs = locs;
+    });
+  }
+
+  selectedIds(): ItemLocations {
+    if (this.selected === undefined) {
+      return {};
+    }
+    const selected: ItemLocations = {};
+    for (const id in this.selected) {
+      if (this.selected[id]) {
+        selected[id] = true;
+      }
+    }
+    return selected;
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
   selector: 'app-shops',
   templateUrl: './shops.component.html',
   styleUrls: ['./shops.component.scss']
@@ -50,48 +93,5 @@ export class ShopsComponent implements OnInit {
         this.itemService.updateFoundItems(this.itemId, result);
       }
     });
-  }
-}
-
-@Component({
-  selector: 'app-shops-dialog',
-  templateUrl: './shops-dialog.component.html',
-})
-export class ShopsDialogComponent {
-
-  locs: Locations;
-  selected: ItemLocations;
-  locOrder: string[];
-
-  constructor(
-    public dialogRef: MatDialogRef<ShopsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private locationService: LocationService) {
-
-    this.locationService.getLocationOrder().subscribe( order => {
-      this.locOrder = order;
-    });
-    this.locationService.getLocations().subscribe(locs => {
-      this.selected = this.data.found;
-
-      this.locs = locs;
-    });
-  }
-
-  selectedIds(): ItemLocations {
-    if (this.selected === undefined) {
-      return {};
-    }
-    const selected: ItemLocations = {};
-    for (let id in this.selected) {
-      if (this.selected[id]) {
-        selected[id] = true;
-      }
-    }
-    return selected;
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }

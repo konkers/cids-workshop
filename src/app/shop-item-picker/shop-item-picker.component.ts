@@ -37,7 +37,7 @@ export class ShopItemPickerComponent implements OnInit {
   filterItems(items: Item[], selectedItems: number[]): number[] {
     return selectedItems.filter(i => this.displayItem(i));
   }
- 
+
   displayItem(i: number) {
     if (!this.items || i >= this.items.length) {
       return false;
