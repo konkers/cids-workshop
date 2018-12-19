@@ -1,0 +1,6 @@
+<h1>Flags</h1>
+<p>Only a subset of flags are supported</p>
+
+<app-flag [enabled]="flags.Nc" (change)="change('Nc', $event)" flag="Nc" desc="No free characters."></app-flag>
+
+<app-flag [enabled]="flags.Nk" (change)="change('Nk', $event)" flag="Nk" desc="No free key items."></app-flag>

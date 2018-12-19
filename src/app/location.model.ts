@@ -2,6 +2,7 @@
 export interface LocationPoi {
     type: string;
     reqs?: string[];
+    flags?: string[];
 }
 
 export interface Location {

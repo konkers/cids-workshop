@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Location } from './location.model';
 import { State, StateService } from './state.service';
+import { Config, ConfigService } from './config.service';
 
 export { Location, LocationPoi } from './location.model';
 
@@ -17,6 +18,7 @@ export interface Locations {
 // key item, boss, etc.
 export interface PoiState {
   enabled: boolean;
+  visible: boolean;
   keyItem?: string;
   character?: string;
   boss?: string;
@@ -48,7 +50,7 @@ export class LocationService {
   locationState$: Observable<LocationStates>;
   private locationStateData: LocationStates;
 
-  constructor(private http: HttpClient, private stateService: StateService) {
+  constructor(private http: HttpClient, private configService: ConfigService, private stateService: StateService) {
     this._locations =
       <BehaviorSubject<Locations>>new BehaviorSubject(undefined);
     this.locations = this._locations.asObservable();
@@ -58,8 +60,8 @@ export class LocationService {
     this.locationOrder = this._locationOrder.asObservable();
 
     this.locationState$ =
-      combineLatest(this.stateService.getState(), this.locations,
-        (s, l) => this.processState(s, l));
+      combineLatest(this.stateService.getState(), this.configService.getConfig(), this.locations,
+        (s, c, l) => this.processState(s, c, l));
     this.locationState$.subscribe(s => { this.locationStateData = s; });
 
     this.http.get<Location[]>('./assets/data/locations.json')
@@ -78,20 +80,25 @@ export class LocationService {
 
   }
 
-  private processState(state: State, locationsData: Locations): LocationStates {
+  // This is a big horrible function that is begging to be refactored.
+  private processState(state: State, config: Config, locationsData: Locations): LocationStates {
     const states: LocationStates = {};
 
-    if (state === undefined || locationsData === undefined) {
+    if (state === undefined || config === undefined || locationsData === undefined) {
       return states;
     }
     for (const locId of Object.keys(locationsData)) {
       const loc = locationsData[locId];
       const l: LocationState = { enabled: false, poi: [] };
+
       for (const p of Object.keys(loc.poi)) {
         const poi = loc.poi[p];
         const ps: PoiState = {
           enabled: true,
+          visible: true,
         };
+
+        // Scan through any reqs to see if the poi is enabled.
         if ('reqs' in poi) {
           for (const req of poi.reqs) {
             if (!(req in state.key_items)) {
@@ -100,9 +107,35 @@ export class LocationService {
           }
         }
 
+        // If any of the pois are enabled,  The location stays enabled.
         if (ps.enabled) {
           l.enabled = true;
         }
+
+        // Evaluate flags for poi visibility.
+        if ('flags' in poi) {
+          let visible = false;
+          for (let flag of poi.flags) {
+            let invert = false;
+            if (flag.substring(0, 1) === '!') {
+              invert = true;
+              flag = flag.substring(1);
+            }
+            if (flag in config.flags) {
+              let flagVal = config.flags[flag];
+              if (invert) {
+                flagVal = !flagVal;
+              }
+
+              visible = visible || flagVal;
+            } else {
+              console.log(`Flag ${flag} unknown`);
+            }
+            ps.visible = visible;
+          }
+        }
+
+
         l.poi[p] = ps;
       }
       states[locId] = l;

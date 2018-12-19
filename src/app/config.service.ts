@@ -2,7 +2,9 @@ import {Injectable, Inject} from '@angular/core';
 import {SESSION_STORAGE, StorageService} from 'angular-webstorage-service';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-import {Config, CONFIG_VERSION} from './config.model';
+import {Config, Flags, CONFIG_VERSION} from './config.model';
+
+export {Config, Flags} from './config.model';
 
 const STORAGE_KEY = 'workshop.config';
 
@@ -36,10 +38,16 @@ export class ConfigService {
     this.store();
   }
 
+  updateFlags(flags: Flags) {
+    this.configData.flags = flags;
+    this.store();
+  }
+
   defaultConfig(): Config {
     return {
       version: CONFIG_VERSION,
       selected_items: [],
+      flags: {Nc: false, Nk: false},
     };
   }
 }

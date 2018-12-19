@@ -42,10 +42,13 @@ import { CharacterTrackerComponent } from './character-tracker/character-tracker
 import { CharacterComponent } from './character/character.component';
 import { BossComponent } from './boss/boss.component';
 import { BossTrackerComponent } from './boss-tracker/boss-tracker.component';
+import { FlagsComponent } from './flags/flags.component';
+import { FlagComponent } from './flag/flag.component';
 
 const appRoutes: Routes = [
   { path: 'loc/:loc', component: LocationDetailComponent },
   { path: 'shop/:loc/:type', component: ShopItemPickerComponent },
+  { path: 'flags', component: FlagsComponent },
   { path: 'items', component: ItemListComponent },
   { path: '**', component: ItemListComponent }
 ];
@@ -69,7 +72,9 @@ const appRoutes: Routes = [
     CharacterTrackerComponent,
     CharacterComponent,
     BossComponent,
-    BossTrackerComponent
+    BossTrackerComponent,
+    FlagsComponent,
+    FlagComponent
   ],
   imports: [
     RouterModule.forRoot(
