@@ -22,10 +22,12 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule, MatIcon } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
+import { MatMenuModule } from "@angular/material/menu";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -104,10 +106,12 @@ const appRoutes: Routes = [
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatMenuModule,
     MatSelectModule,
     MatSidenavModule,
     MatTableModule,
     MatTabsModule,
+    MatToolbarModule,
     MatTooltipModule
   ],
   entryComponents: [ShopsDialogComponent],

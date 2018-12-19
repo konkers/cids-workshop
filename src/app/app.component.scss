@@ -33,6 +33,14 @@ app-root {
   min-width: 100%;
 }
 
+.content {
+  padding: 10px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
 .app-sidenav-container {
   flex: 1;
   box-sizing: border-box;
@@ -131,7 +139,6 @@ app-root {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 10px;
 }
 
 .docs-component-sidenav-inner-content {
