@@ -44,8 +44,12 @@ export class LocationDetailComponent implements OnInit {
       this.hasPoi('armor-shop');
   }
 
+  hasTrappedChests(): boolean {
+    return this.loc && 'trapped_chests' in this.loc;
+  }
+
   hasPoi(poi: string): boolean {
-    if (this.loc === undefined) {
+    if (this.loc === undefined || this.loc.poi === undefined) {
       return false;
     }
     for (const p of this.loc.poi) {
