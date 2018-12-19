@@ -11,7 +11,7 @@ before_script:
   - npm install -g @angular/cli
 script:
   - ng lint
-  - ng build --prod --base-href https://cidsworkshop.com/
+  - npm run prodbuild
   - ./node_modules/.bin/prettier-check src/**/*.ts
 deploy:
   provider: pages
