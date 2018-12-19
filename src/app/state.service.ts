@@ -4,7 +4,13 @@ import { BehaviorSubject, Observable } from "rxjs";
 
 import { FoundItems, State, STATE_VERSION } from "./state.model";
 
-export { Found, FoundLocation, State } from "./state.model";
+export {
+  Found,
+  FoundLocation,
+  State,
+  TrappedChests,
+  TrappedChestsLocation
+} from "./state.model";
 
 const STORAGE_KEY = "workshop.state";
 
@@ -86,13 +92,22 @@ export class StateService {
     this.store();
   }
 
+  recordTrappedChest(locId: string, chest: number, found: boolean) {
+    if (!(locId in this.stateData.trapped_chests)) {
+      this.stateData.trapped_chests[locId] = {};
+    }
+    this.stateData.trapped_chests[locId][chest] = found;
+    this.store();
+  }
+
   defaultState(): State {
     return {
       version: STATE_VERSION,
       found_items: {},
       key_items: {},
       chars: {},
-      bosses: {}
+      bosses: {},
+      trapped_chests: {}
     };
   }
 

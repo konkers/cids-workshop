@@ -1,6 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, ParamMap, Router } from "@angular/router";
-import { Location, Locations, LocationService } from "../location.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Observable } from "rxjs";
+
+import {
+  Location,
+  Locations,
+  LocationService,
+  LocationState
+} from "../location.service";
 import { ItemComponent } from "../item/item.component";
 
 @Component({
@@ -12,6 +19,8 @@ export class LocationDetailComponent implements OnInit {
   locs: Locations;
   loc: Location;
   locId: string;
+  state$: Observable<LocationState>;
+  loc$: Observable<Location>;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +46,8 @@ export class LocationDetailComponent implements OnInit {
     }
     if (this.locId in this.locs) {
       this.loc = this.locs[this.locId];
+      this.loc$ = this.locationService.getLocation(this.locId);
+      this.state$ = this.locationService.getLocationState(this.loc$);
     }
   }
 
@@ -50,6 +61,10 @@ export class LocationDetailComponent implements OnInit {
 
   hasTrappedChests(): boolean {
     return this.loc && "trapped_chests" in this.loc;
+  }
+
+  doTrappedChest(chest: number, found: boolean) {
+    this.locationService.recordTrappedChest(this.locId, chest, found);
   }
 
   hasPoi(poi: string): boolean {
