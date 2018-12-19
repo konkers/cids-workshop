@@ -10,7 +10,7 @@ import { Config, Flags, ConfigService } from '../config.service';
   styleUrls: ['./flags.component.scss']
 })
 export class FlagsComponent implements OnInit {
-  private flags: Flags;
+  flags: Flags;
 
 
   constructor(private configService: ConfigService) {
