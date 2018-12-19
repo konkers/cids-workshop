@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Location, Locations, LocationService } from '../location.service';
-import { ItemComponent } from '../item/item.component';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { Location, Locations, LocationService } from "../location.service";
+import { ItemComponent } from "../item/item.component";
 
 @Component({
-  selector: 'app-location-detail',
-  templateUrl: './location-detail.component.html',
-  styleUrls: ['./location-detail.component.scss']
+  selector: "app-location-detail",
+  templateUrl: "./location-detail.component.html",
+  styleUrls: ["./location-detail.component.scss"]
 })
 export class LocationDetailComponent implements OnInit {
   locs: Locations;
@@ -14,8 +14,10 @@ export class LocationDetailComponent implements OnInit {
   locId: string;
 
   constructor(
-    private route: ActivatedRoute, private router: Router,
-    private locationService: LocationService) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private locationService: LocationService
+  ) {
     this.locationService.getLocations().subscribe(locs => {
       this.locs = locs;
       this.updateLoc();
@@ -24,7 +26,7 @@ export class LocationDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(m => {
-      this.locId = m.get('loc');
+      this.locId = m.get("loc");
       this.updateLoc();
     });
   }
@@ -39,13 +41,15 @@ export class LocationDetailComponent implements OnInit {
   }
 
   hasShops(): boolean {
-    return this.hasPoi('item-shop') ||
-      this.hasPoi('weapon-shop') ||
-      this.hasPoi('armor-shop');
+    return (
+      this.hasPoi("item-shop") ||
+      this.hasPoi("weapon-shop") ||
+      this.hasPoi("armor-shop")
+    );
   }
 
   hasTrappedChests(): boolean {
-    return this.loc && 'trapped_chests' in this.loc;
+    return this.loc && "trapped_chests" in this.loc;
   }
 
   hasPoi(poi: string): boolean {

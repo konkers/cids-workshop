@@ -1,14 +1,14 @@
-import { Injectable, Inject } from '@angular/core';
-import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, Inject } from "@angular/core";
+import { SESSION_STORAGE, StorageService } from "angular-webstorage-service";
+import { BehaviorSubject, Observable } from "rxjs";
 
-import { FoundItems, State, STATE_VERSION } from './state.model';
+import { FoundItems, State, STATE_VERSION } from "./state.model";
 
-export { Found, FoundLocation, State } from './state.model';
+export { Found, FoundLocation, State } from "./state.model";
 
-const STORAGE_KEY = 'workshop.state';
+const STORAGE_KEY = "workshop.state";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class StateService {
   state$: Observable<State>;
   private stateData: State;
@@ -30,15 +30,17 @@ export class StateService {
     return this.state$;
   }
 
-
   private store() {
-    if ('hook' in this.stateData.key_items || 'magma-key' in this.stateData.key_items) {
-      this.stateData.key_items['underground'] = { location: 'virt', slot: 0 };
+    if (
+      "hook" in this.stateData.key_items ||
+      "magma-key" in this.stateData.key_items
+    ) {
+      this.stateData.key_items["underground"] = { location: "virt", slot: 0 };
     } else {
-      delete this.stateData.key_items['underground'];
+      delete this.stateData.key_items["underground"];
     }
 
-    console.log('saving state', this.stateData);
+    console.log("saving state", this.stateData);
     this._state.next(this.stateData);
     this.storage.set(STORAGE_KEY, this.stateData);
   }
@@ -90,7 +92,7 @@ export class StateService {
       found_items: {},
       key_items: {},
       chars: {},
-      bosses: {},
+      bosses: {}
     };
   }
 

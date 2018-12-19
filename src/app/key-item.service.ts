@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
-import { KeyItem } from './key-item.model';
-import { Found, StateService } from './state.service';
+import { KeyItem } from "./key-item.model";
+import { Found, StateService } from "./state.service";
 
-export { KeyItem } from './key-item.model';
-export { Found, FoundLocation } from './state.service';
+export { KeyItem } from "./key-item.model";
+export { Found, FoundLocation } from "./state.service";
 
 export interface KeyItems {
   [index: string]: KeyItem;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class KeyItemService {
   // TODO: replace with IndexedData.
@@ -28,18 +28,23 @@ export class KeyItemService {
     this._keyItems = <BehaviorSubject<KeyItems>>new BehaviorSubject(undefined);
     this.keyItems$ = this._keyItems.asObservable();
 
-    this._keyItemOrder =
-      <BehaviorSubject<string[]>>new BehaviorSubject(undefined);
+    this._keyItemOrder = <BehaviorSubject<string[]>>(
+      new BehaviorSubject(undefined)
+    );
     this.keyItemOrder$ = this._keyItemOrder.asObservable();
 
-    this.http.get<KeyItem[]>('./assets/data/key-items.json').subscribe(keyItems => {
-      this._keyItemOrder.next(keyItems.map(ki => ki.id));
+    this.http
+      .get<KeyItem[]>("./assets/data/key-items.json")
+      .subscribe(keyItems => {
+        this._keyItemOrder.next(keyItems.map(ki => ki.id));
 
-      this._keyItems.next(keyItems.reduce((kis, ki) => {
-        kis[ki.id] = ki;
-        return kis;
-      }, {}));
-    });
+        this._keyItems.next(
+          keyItems.reduce((kis, ki) => {
+            kis[ki.id] = ki;
+            return kis;
+          }, {})
+        );
+      });
   }
 
   getKeyItems(): Observable<KeyItems> {
@@ -51,8 +56,6 @@ export class KeyItemService {
   }
 
   getKeyItemsFound(): Observable<Found> {
-    return this.stateService.getState().pipe(
-      map(state => state.key_items
-      ));
+    return this.stateService.getState().pipe(map(state => state.key_items));
   }
 }

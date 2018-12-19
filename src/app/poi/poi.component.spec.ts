@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PoiComponent } from './poi.component';
+import { PoiComponent } from "./poi.component";
 
-describe('PoiComponent', () => {
+describe("PoiComponent", () => {
   let component: PoiComponent;
   let fixture: ComponentFixture<PoiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PoiComponent ]
-    })
-    .compileComponents();
+      declarations: [PoiComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('PoiComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

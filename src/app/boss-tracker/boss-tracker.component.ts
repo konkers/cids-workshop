@@ -1,12 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Observable } from "rxjs";
 
-import { Found, Bosses, BossService } from '../boss.service';
+import { Found, Bosses, BossService } from "../boss.service";
 
 @Component({
-  selector: 'app-boss-tracker',
-  templateUrl: './boss-tracker.component.html',
-  styleUrls: ['./boss-tracker.component.scss']
+  selector: "app-boss-tracker",
+  templateUrl: "./boss-tracker.component.html",
+  styleUrls: ["./boss-tracker.component.scss"]
 })
 export class BossTrackerComponent implements OnInit {
   @Output() select = new EventEmitter<string>();
@@ -21,8 +21,7 @@ export class BossTrackerComponent implements OnInit {
     this.bossesFound$ = this.bossService.getBossesFound();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectBoss(boss: string) {
     this.select.emit(boss);

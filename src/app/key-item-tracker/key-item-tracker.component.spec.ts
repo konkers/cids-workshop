@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { KeyItemTrackerComponent } from './key-item-tracker.component';
+import { KeyItemTrackerComponent } from "./key-item-tracker.component";
 
-describe('KeyItemTrackerComponent', () => {
+describe("KeyItemTrackerComponent", () => {
   let component: KeyItemTrackerComponent;
   let fixture: ComponentFixture<KeyItemTrackerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KeyItemTrackerComponent ]
-    })
-    .compileComponents();
+      declarations: [KeyItemTrackerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('KeyItemTrackerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

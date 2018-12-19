@@ -1,14 +1,14 @@
-import {Injectable, Inject} from '@angular/core';
-import {SESSION_STORAGE, StorageService} from 'angular-webstorage-service';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { Injectable, Inject } from "@angular/core";
+import { SESSION_STORAGE, StorageService } from "angular-webstorage-service";
+import { BehaviorSubject, Observable } from "rxjs";
 
-import {Config, Flags, CONFIG_VERSION} from './config.model';
+import { Config, Flags, CONFIG_VERSION } from "./config.model";
 
-export {Config, Flags} from './config.model';
+export { Config, Flags } from "./config.model";
 
-const STORAGE_KEY = 'workshop.config';
+const STORAGE_KEY = "workshop.config";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class ConfigService {
   config$: Observable<Config>;
   private configData: Config;
@@ -19,8 +19,9 @@ export class ConfigService {
     if (this.configData.version !== CONFIG_VERSION) {
       this.configData = this.defaultConfig();
     }
-    this._config =
-        <BehaviorSubject<Config>>new BehaviorSubject(this.configData);
+    this._config = <BehaviorSubject<Config>>(
+      new BehaviorSubject(this.configData)
+    );
     this.config$ = this._config.asObservable();
   }
 
@@ -47,7 +48,7 @@ export class ConfigService {
     return {
       version: CONFIG_VERSION,
       selected_items: [],
-      flags: {Nc: false, Nk: false},
+      flags: { Nc: false, Nk: false }
     };
   }
 }
