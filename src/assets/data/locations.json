@@ -124,7 +124,8 @@
                 "type": "key",
                 "reqs": [
                     "d-mist"
-                ]
+                ],
+                "flags": ["Nk"]
             },
             {
                 "type": "boss",
@@ -170,7 +171,8 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "char"
+                "type": "char",
+                "flags": ["!Nc"]
             },
             {
                 "type": "boss"
@@ -184,7 +186,8 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "char"
+                "type": "char",
+                "flags": ["!Nc"]
             }
         ]
     },
@@ -262,7 +265,8 @@
                 "type": "armor-shop"
             },
             {
-                "type": "char"
+                "type": "key",
+                "flags": ["!Nk"]
             }
         ]
     },
@@ -356,10 +360,12 @@
                 "type": "armor-shop"
             },
             {
-                "type": "char"
+                "type": "char",
+                "flags": ["!Nc"]
             },
             {
-                "type": "char"
+                "type": "char",
+                "flags": ["!Nc"]
             }
         ]
     },
@@ -370,7 +376,8 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "char"
+                "type": "char",
+                "flags": ["!Nc"]
             },
             {
                 "type": "boss"

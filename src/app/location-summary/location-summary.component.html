@@ -1,6 +1,6 @@
 <div
   class="loc"
-    [class.selected]="selected"
+  [class.selected]="selected"
   *ngIf="(loc$ | async) != undefined"
 >
   <img
@@ -10,11 +10,13 @@
     matTooltip="{{(loc$ | async).name}}"
   />
   <div class="pois">
-    <app-poi
-      *ngFor="let poi of (loc$ | async).poi; index as i"
-      [locId]="(loc$ | async).id"
-      [poiIndex]="i"
-      [state$]="state$"
-    ></app-poi>
+    <div *ngFor="let poi of (loc$ | async).poi; index as i">
+      <app-poi
+        *ngIf="(state$ | async).poi[i].visible"
+        [locId]="(loc$ | async).id"
+        [poiIndex]="i"
+        [state$]="state$"
+      ></app-poi>
+    </div>
   </div>
 </div>

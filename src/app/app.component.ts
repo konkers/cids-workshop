@@ -32,6 +32,10 @@ export class AppComponent {
     this.bossEvents = this._bossEvents.asObservable();
   }
 
+  goFlags() {
+    this.router.navigate(['/flags']);
+  }
+
   goItems() {
     this.router.navigate(['/items']);
   }
@@ -49,7 +53,6 @@ export class AppComponent {
   }
 
   bossEvent(boss: string) {
-    console.log(boss);
     this._bossEvents.next(boss);
   }
 }
