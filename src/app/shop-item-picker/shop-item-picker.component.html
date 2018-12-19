@@ -1,9 +1,10 @@
 <div *ngIf="items && selectedItems && foundItems">
-  <ul>
-    <li *ngFor="let id of filterItems(items, selectedItems); index as i">
-      <mat-checkbox [checked]="found(id)" (change)="checked(id, $event.checked)">
+  <div *ngFor="let id of filterItems(items, selectedItems); index as i">
+    <mat-checkbox
+      [checked]="found(id)"
+      (change)="checked(id, $event.checked)"
+    >
       <app-item [item]="items[id]"></app-item>
-      </mat-checkbox>
-    </li>
-  </ul>
+    </mat-checkbox>
+  </div>
 </div>
