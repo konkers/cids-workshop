@@ -1,0 +1,1969 @@
+[
+  {
+    "id": 0,
+    "name": "FireClaw",
+    "price": 350,
+    "icon": "claw",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 1,
+    "name": "IceClaw",
+    "price": 450,
+    "icon": "claw",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 2,
+    "name": "Thunder",
+    "price": 550,
+    "icon": "claw",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 3,
+    "name": "Charm",
+    "price": 2500,
+    "icon": "claw",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 4,
+    "name": "Poison",
+    "price": 3500,
+    "icon": "claw",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 5,
+    "name": "CatClaw",
+    "price": 30000,
+    "icon": "claw",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 6,
+    "name": "Rod",
+    "price": 100,
+    "icon": "rod",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 7,
+    "name": "IceRod",
+    "price": 220,
+    "icon": "rod",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 8,
+    "name": "FlameRod",
+    "price": 380,
+    "icon": "rod",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 9,
+    "name": "Thunder",
+    "price": 700,
+    "icon": "rod",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 10,
+    "name": "Change",
+    "price": 7500,
+    "icon": "rod",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 11,
+    "name": "Charm",
+    "price": 20000,
+    "icon": "rod",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 12,
+    "name": "Stardust",
+    "price": 55000,
+    "icon": "rod",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 13,
+    "name": "Lilith",
+    "price": 7500,
+    "icon": "rod",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 14,
+    "name": "Staff",
+    "price": 160,
+    "icon": "staff",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 15,
+    "name": "Cure",
+    "price": 480,
+    "icon": "staff",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 16,
+    "name": "Silver",
+    "price": 4000,
+    "icon": "staff",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 17,
+    "name": "Power",
+    "price": 2000,
+    "icon": "staff",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 18,
+    "name": "Lunar",
+    "price": 30000,
+    "icon": "staff",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 19,
+    "name": "Life",
+    "price": 50000,
+    "icon": "staff",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 20,
+    "name": "Silence",
+    "price": 30000,
+    "icon": "staff",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 21,
+    "name": "Shadow",
+    "price": 700,
+    "icon": "darksword",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 22,
+    "name": "Darkness",
+    "price": 1200,
+    "icon": "darksword",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 23,
+    "name": "Black",
+    "price": 2000,
+    "icon": "darksword",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 24,
+    "name": "Legend",
+    "price": 0,
+    "icon": "lightsword",
+    "key": "legend_sword"
+  },
+  {
+    "id": 25,
+    "name": "Light",
+    "price": 86000,
+    "icon": "lightsword",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 26,
+    "name": "Excalibur",
+    "price": 190000,
+    "icon": "lightsword",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 27,
+    "name": "Fire",
+    "price": 14000,
+    "icon": "sword",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 28,
+    "name": "IceBrand",
+    "price": 26000,
+    "icon": "sword",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 29,
+    "name": "Defense",
+    "price": 98000,
+    "icon": "sword",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 30,
+    "name": "Drain",
+    "price": 5000,
+    "icon": "sword",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 31,
+    "name": "Ancient",
+    "price": 3500,
+    "icon": "sword",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 32,
+    "name": "Slumber",
+    "price": 6500,
+    "icon": "sword",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 33,
+    "name": "Spear",
+    "price": 60,
+    "icon": "spear",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 34,
+    "name": "Wind",
+    "price": 7000,
+    "icon": "spear",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 35,
+    "name": "Flame",
+    "price": 11000,
+    "icon": "spear",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 36,
+    "name": "Blizzard",
+    "price": 21000,
+    "icon": "spear",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 37,
+    "name": "Dragoon",
+    "price": 88000,
+    "icon": "spear",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 38,
+    "name": "White",
+    "price": 163000,
+    "icon": "spear",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 39,
+    "name": "Drain",
+    "price": 6000,
+    "icon": "spear",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 40,
+    "name": "Gungnir",
+    "price": 88000,
+    "icon": "spear",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 41,
+    "name": "Short",
+    "price": 4000,
+    "icon": "katana",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 42,
+    "name": "Middle",
+    "price": 7000,
+    "icon": "katana",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 43,
+    "name": "Long",
+    "price": 11000,
+    "icon": "katana",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 44,
+    "name": "Ninja",
+    "price": 44000,
+    "icon": "katana",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 45,
+    "name": "Murasame",
+    "price": 93000,
+    "icon": "katana",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 46,
+    "name": "Masamune",
+    "price": 106000,
+    "icon": "katana",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 47,
+    "name": "Assassin",
+    "price": 5000,
+    "icon": "knife",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 48,
+    "name": "Mute",
+    "price": 8000,
+    "icon": "knife",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 49,
+    "name": "Whip",
+    "price": 3000,
+    "icon": "whip",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 50,
+    "name": "Chain",
+    "price": 6000,
+    "icon": "whip",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 51,
+    "name": "Blitz",
+    "price": 10000,
+    "icon": "whip",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 52,
+    "name": "Flame",
+    "price": 16000,
+    "icon": "whip",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 53,
+    "name": "Dragon",
+    "price": 31000,
+    "icon": "whip",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 54,
+    "name": "HandAxe",
+    "price": 3000,
+    "icon": "axe",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 55,
+    "name": "Dwarf",
+    "price": 15000,
+    "icon": "axe",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 56,
+    "name": "Ogre",
+    "price": 45000,
+    "icon": "axe",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 57,
+    "name": "Silver",
+    "price": 3000,
+    "icon": "knife",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 58,
+    "name": "Dancing",
+    "price": 5000,
+    "icon": "knife",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 59,
+    "name": "Silver",
+    "price": 6000,
+    "icon": "sword",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 60,
+    "name": "Spoon",
+    "price": 10000,
+    "icon": "knife",
+    "key": "spoon"
+  },
+  {
+    "id": 61,
+    "name": "Crystal",
+    "price": 215000,
+    "icon": "lightsword",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 62,
+    "name": "Shuriken",
+    "price": 20000,
+    "icon": "shuriken",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 63,
+    "name": "Ninja",
+    "price": 50000,
+    "icon": "shuriken",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 64,
+    "name": "Boomrang",
+    "price": 3000,
+    "icon": "boomerang",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 65,
+    "name": "FullMoon",
+    "price": 12000,
+    "icon": "boomerang",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 66,
+    "name": "Dreamer",
+    "price": 480,
+    "icon": "harp",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 67,
+    "name": "Charm",
+    "price": 1200,
+    "icon": "harp",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 68,
+    "name": "Poison",
+    "price": 80000,
+    "icon": "axe",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 69,
+    "name": "RuneAxe",
+    "price": 90000,
+    "icon": "axe",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 70,
+    "name": "Silver",
+    "price": 8000,
+    "icon": "wrench",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 71,
+    "name": "Earth",
+    "price": 23000,
+    "icon": "wrench",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 72,
+    "name": "Wooden",
+    "price": 80,
+    "icon": "wrench",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 73,
+    "name": "Avenger",
+    "price": 111000,
+    "icon": "sword",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 74,
+    "name": "ShortBow",
+    "price": 220,
+    "icon": "bow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 75,
+    "name": "CrossBow",
+    "price": 700,
+    "icon": "bow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 76,
+    "name": "GreatBow",
+    "price": 2000,
+    "icon": "bow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 77,
+    "name": "Archer",
+    "price": 3000,
+    "icon": "bow",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 78,
+    "name": "ElvenBow",
+    "price": 10000,
+    "icon": "bow",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 79,
+    "name": "Samurai",
+    "price": 17000,
+    "icon": "bow",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 80,
+    "name": "Artemis",
+    "price": 45000,
+    "icon": "bow",
+    "rarity": "ultrarare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 81,
+    "name": "Iron",
+    "price": 10,
+    "icon": "arrow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 82,
+    "name": "White",
+    "price": 20,
+    "icon": "arrow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 83,
+    "name": "Fire",
+    "price": 30,
+    "icon": "arrow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 84,
+    "name": "Ice",
+    "price": 30,
+    "icon": "arrow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 85,
+    "name": "Lit",
+    "price": 30,
+    "icon": "arrow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 86,
+    "name": "Darkness",
+    "price": 40,
+    "icon": "arrow",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 87,
+    "name": "Poison",
+    "price": 70,
+    "icon": "arrow",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 88,
+    "name": "Mute",
+    "price": 100,
+    "icon": "arrow",
+    "rarity": "uncommon",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 89,
+    "name": "Charm",
+    "price": 110,
+    "icon": "arrow",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 90,
+    "name": "Samurai",
+    "price": 140,
+    "icon": "arrow",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 91,
+    "name": "Medusa",
+    "price": 40,
+    "icon": "arrow",
+    "rarity": "common",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 92,
+    "name": "Artemis",
+    "price": 500,
+    "icon": "arrow",
+    "rarity": "rare",
+    "shop_type": "weapon"
+  },
+  {
+    "id": 93,
+    "name": "Iron",
+    "price": 100,
+    "icon": "shield",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 94,
+    "name": "Shadow",
+    "price": 200,
+    "icon": "shield",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 95,
+    "name": "Black",
+    "price": 400,
+    "icon": "shield",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 96,
+    "name": "Paladin",
+    "price": 700,
+    "icon": "shield",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 97,
+    "name": "Silver",
+    "price": 1000,
+    "icon": "shield",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 98,
+    "name": "Fire",
+    "price": 1250,
+    "icon": "shield",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 99,
+    "name": "Ice",
+    "price": 10000,
+    "icon": "shield",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 100,
+    "name": "Diamond",
+    "price": 15000,
+    "icon": "shield",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 101,
+    "name": "Aegis",
+    "price": 20000,
+    "icon": "shield",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 102,
+    "name": "Samurai",
+    "price": 20000,
+    "icon": "shield",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 103,
+    "name": "Dragoon",
+    "price": 25000,
+    "icon": "shield",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 104,
+    "name": "Crystal",
+    "price": 35000,
+    "icon": "shield",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 105,
+    "name": "Iron",
+    "price": 150,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 106,
+    "name": "Shadow",
+    "price": 360,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 107,
+    "name": "Darkness",
+    "price": 640,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 108,
+    "name": "Black",
+    "price": 980,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 109,
+    "name": "Paladin",
+    "price": 4000,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 110,
+    "name": "Silver",
+    "price": 3000,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 111,
+    "name": "Diamond",
+    "price": 10000,
+    "icon": "helmet",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 112,
+    "name": "Samurai",
+    "price": 20000,
+    "icon": "helmet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 113,
+    "name": "Dragoon",
+    "price": 30000,
+    "icon": "helmet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 114,
+    "name": "Crystal",
+    "price": 30000,
+    "icon": "helmet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 115,
+    "name": "Cap",
+    "price": 100,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 116,
+    "name": "Leather",
+    "price": 330,
+    "icon": "helmet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 117,
+    "name": "Gaea",
+    "price": 3500,
+    "icon": "helmet",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 118,
+    "name": "Wizard",
+    "price": 9000,
+    "icon": "helmet",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 119,
+    "name": "Tiara",
+    "price": 20000,
+    "icon": "helmet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 120,
+    "name": "Ribbon",
+    "price": 65000,
+    "icon": "helmet",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 121,
+    "name": "Headband",
+    "price": 6000,
+    "icon": "helmet",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 122,
+    "name": "Bandanna",
+    "price": 9000,
+    "icon": "helmet",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 123,
+    "name": "Ninja",
+    "price": 25000,
+    "icon": "helmet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 124,
+    "name": "Glass",
+    "price": 45000,
+    "icon": "helmet",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 125,
+    "name": "Iron",
+    "price": 600,
+    "icon": "armor",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 126,
+    "name": "Shadow",
+    "price": 1100,
+    "icon": "armor",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 127,
+    "name": "Darkness",
+    "price": 2000,
+    "icon": "armor",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 128,
+    "name": "Black",
+    "price": 3000,
+    "icon": "armor",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 129,
+    "name": "Paladin",
+    "price": 8000,
+    "icon": "armor",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 130,
+    "name": "Silver",
+    "price": 17000,
+    "icon": "armor",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 131,
+    "name": "Fire",
+    "price": 30000,
+    "icon": "armor",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 132,
+    "name": "Ice",
+    "price": 35000,
+    "icon": "armor",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 133,
+    "name": "Diamond",
+    "price": 40000,
+    "icon": "armor",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 134,
+    "name": "Samurai",
+    "price": 40000,
+    "icon": "armor",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 135,
+    "name": "Dragoon",
+    "price": 50000,
+    "icon": "armor",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 136,
+    "name": "Crystal",
+    "price": 65000,
+    "icon": "armor",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 137,
+    "name": "Cloth",
+    "price": 50,
+    "icon": "shirt",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 138,
+    "name": "Leather",
+    "price": 200,
+    "icon": "shirt",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 139,
+    "name": "Gaea",
+    "price": 500,
+    "icon": "shirt",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 140,
+    "name": "Wizard",
+    "price": 11000,
+    "icon": "shirt",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 141,
+    "name": "Black",
+    "price": 20000,
+    "icon": "shirt",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 142,
+    "name": "Sorcerer",
+    "price": 30000,
+    "icon": "shirt",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 143,
+    "name": "White",
+    "price": 60000,
+    "icon": "shirt",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 144,
+    "name": "Power",
+    "price": 70000,
+    "icon": "shirt",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 145,
+    "name": "Heroine",
+    "price": 60000,
+    "icon": "shirt",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 146,
+    "name": "Prisoner",
+    "price": 70,
+    "icon": "shirt",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 147,
+    "name": "Bard",
+    "price": 70,
+    "icon": "shirt",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 148,
+    "name": "Karate",
+    "price": 4000,
+    "icon": "shirt",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 149,
+    "name": "Bl.Belt",
+    "price": 14000,
+    "icon": "shirt",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 150,
+    "name": "Adamant",
+    "price": 500000,
+    "icon": "armor",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 151,
+    "name": "Ninja",
+    "price": 50000,
+    "icon": "shirt",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 152,
+    "name": "Iron",
+    "price": 130,
+    "icon": "gauntlet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 153,
+    "name": "Shadow",
+    "price": 260,
+    "icon": "gauntlet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 154,
+    "name": "Darkness",
+    "price": 520,
+    "icon": "gauntlet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 155,
+    "name": "Black",
+    "price": 800,
+    "icon": "gauntlet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 156,
+    "name": "Paladin",
+    "price": 3000,
+    "icon": "gauntlet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 157,
+    "name": "Silver",
+    "price": 2000,
+    "icon": "gauntlet",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 158,
+    "name": "Diamond",
+    "price": 5000,
+    "icon": "gauntlet",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 159,
+    "name": "Zeus",
+    "price": 65000,
+    "icon": "gauntlet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 160,
+    "name": "Samurai",
+    "price": 10000,
+    "icon": "gauntlet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 161,
+    "name": "Dragoon",
+    "price": 20000,
+    "icon": "gauntlet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 162,
+    "name": "Crystal",
+    "price": 20000,
+    "icon": "gauntlet",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 163,
+    "name": "IronRing",
+    "price": 100,
+    "icon": "ring",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 164,
+    "name": "RubyRing",
+    "price": 500,
+    "icon": "ring",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 165,
+    "name": "Silver",
+    "price": 650,
+    "icon": "ring",
+    "rarity": "common",
+    "shop_type": "armor"
+  },
+  {
+    "id": 166,
+    "name": "Strength",
+    "price": 15000,
+    "icon": "ring",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 167,
+    "name": "Rune",
+    "price": 20000,
+    "icon": "ring",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 168,
+    "name": "Crystal",
+    "price": 50000,
+    "icon": "ring",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 169,
+    "name": "Diamond",
+    "price": 4000,
+    "icon": "ring",
+    "rarity": "uncommon",
+    "shop_type": "armor"
+  },
+  {
+    "id": 170,
+    "name": "Protect",
+    "price": 30000,
+    "icon": "ring",
+    "rarity": "ultrarare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 171,
+    "name": "Cursed",
+    "price": 8000,
+    "icon": "ring",
+    "rarity": "rare",
+    "shop_type": "armor"
+  },
+  {
+    "id": 172,
+    "name": "Bomb",
+    "price": 200,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 173,
+    "name": "BigBomb",
+    "price": 5000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 174,
+    "name": "Notus",
+    "price": 200,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 175,
+    "name": "Boreas",
+    "price": 5000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 176,
+    "name": "ThorRage",
+    "price": 200,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 177,
+    "name": "ZeusRage",
+    "price": 5000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 178,
+    "name": "Stardust",
+    "price": 8000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 179,
+    "name": "Succubus",
+    "price": 350,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 180,
+    "name": "Vampire",
+    "price": 3000,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 181,
+    "name": "Bacchus",
+    "price": 5000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 182,
+    "name": "Hermes",
+    "price": 2000,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 183,
+    "name": "HrGlass1",
+    "price": 1000,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 184,
+    "name": "HrGlass2",
+    "price": 1500,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 185,
+    "name": "HrGlass3",
+    "price": 2500,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 186,
+    "name": "SilkWeb",
+    "price": 3000,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 187,
+    "name": "Illusion",
+    "price": 1000,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 188,
+    "name": "FireBomb",
+    "price": 3000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 189,
+    "name": "Blizzard",
+    "price": 3000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 190,
+    "name": "Lit-Bolt",
+    "price": 3000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 191,
+    "name": "StarVeil",
+    "price": 3000,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 192,
+    "name": "Kamikaze",
+    "price": 1000,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 193,
+    "name": "MoonVeil",
+    "price": 5000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 194,
+    "name": "MuteBell",
+    "price": 500,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 195,
+    "name": "GaiaDrum",
+    "price": 8000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 196,
+    "name": "Crystal",
+    "price": 0,
+    "icon": "crystal",
+    "key": "crystal"
+  },
+  {
+    "id": 197,
+    "name": "Coffin",
+    "price": 5000,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 198,
+    "name": "Grimoire",
+    "price": 6000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 199,
+    "name": "Bestiary",
+    "price": 300,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 200,
+    "name": "Alarm",
+    "price": 200,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 201,
+    "name": "Unihorn",
+    "price": 500,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 202,
+    "name": "Cure1",
+    "price": 30,
+    "icon": "potion",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 203,
+    "name": "Cure2",
+    "price": 150,
+    "icon": "potion",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 204,
+    "name": "Cure3",
+    "price": 3000,
+    "icon": "potion",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 205,
+    "name": "Ether1",
+    "price": 1000,
+    "icon": "potion",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 206,
+    "name": "Ether2",
+    "price": 5000,
+    "icon": "potion",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 207,
+    "name": "Elixir",
+    "price": 100000,
+    "icon": "potion",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 208,
+    "name": "Life",
+    "price": 150,
+    "icon": "potion",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 209,
+    "name": "Soft",
+    "price": 400,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 210,
+    "name": "MaidKiss",
+    "price": 60,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 211,
+    "name": "Mallet",
+    "price": 80,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 212,
+    "name": "DietFood",
+    "price": 100,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 213,
+    "name": "EchoNote",
+    "price": 50,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 214,
+    "name": "Eyedrops",
+    "price": 30,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 215,
+    "name": "Antidote",
+    "price": 40,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 216,
+    "name": "Cross",
+    "price": 100,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 217,
+    "name": "Heal",
+    "price": 100,
+    "icon": "potion",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 218,
+    "name": "Siren",
+    "price": 2000,
+    "icon": "",
+    "rarity": "uncommon",
+    "shop_type": "item"
+  },
+  {
+    "id": 219,
+    "name": "AuApple",
+    "price": 40000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 220,
+    "name": "AgApple",
+    "price": 25000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 221,
+    "name": "SomaDrop",
+    "price": 20000,
+    "icon": "",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 222,
+    "name": "Tent",
+    "price": 200,
+    "icon": "tent",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 223,
+    "name": "Cabin",
+    "price": 1000,
+    "icon": "tent",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 224,
+    "name": "EagleEye",
+    "price": 100,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 225,
+    "name": "Exit",
+    "price": 180,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 226,
+    "name": "Sylph",
+    "price": 20000,
+    "icon": "callmagic",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 227,
+    "name": "Odin",
+    "price": 20000,
+    "icon": "callmagic",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 228,
+    "name": "Levia",
+    "price": 35000,
+    "icon": "callmagic",
+    "rarity": "ultrarare",
+    "shop_type": "item"
+  },
+  {
+    "id": 229,
+    "name": "Asura",
+    "price": 20000,
+    "icon": "callmagic",
+    "rarity": "rare",
+    "shop_type": "item"
+  },
+  {
+    "id": 230,
+    "name": "Baham",
+    "price": 50000,
+    "icon": "callmagic",
+    "rarity": "ultrarare",
+    "shop_type": "item"
+  },
+  {
+    "id": 231,
+    "name": "Carrot",
+    "price": 50,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 232,
+    "name": "Pass",
+    "price": 10000,
+    "icon": "",
+    "key": "pass"
+  },
+  {
+    "id": 233,
+    "name": "Whistle",
+    "price": 20000,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  },
+  {
+    "id": 234,
+    "name": "Package",
+    "price": 0,
+    "icon": "",
+    "key": "package"
+  },
+  {
+    "id": 235,
+    "name": "Baron",
+    "price": 0,
+    "icon": "key",
+    "key": "baron-key"
+  },
+  {
+    "id": 236,
+    "name": "SandRuby",
+    "price": 0,
+    "icon": "",
+    "key": "sand-ruby"
+  },
+  {
+    "id": 237,
+    "name": "Earth",
+    "price": 0,
+    "icon": "crystal",
+    "key": "earth-crystal"
+  },
+  {
+    "id": 238,
+    "name": "Magma",
+    "price": 0,
+    "icon": "key",
+    "key": "magma-key"
+  },
+  {
+    "id": 239,
+    "name": "Luca",
+    "price": 0,
+    "icon": "key",
+    "key": "luca-key"
+  },
+  {
+    "id": 240,
+    "name": "TwinHarp",
+    "price": 0,
+    "icon": "harp",
+    "key": "twin-harp"
+  },
+  {
+    "id": 241,
+    "name": "Darkness",
+    "price": 0,
+    "icon": "crystal",
+    "key": "darkness-crystal"
+  },
+  {
+    "id": 242,
+    "name": "Rat",
+    "price": 0,
+    "icon": "tail",
+    "key": "rat-tail"
+  },
+  {
+    "id": 243,
+    "name": "Adamant",
+    "price": 0,
+    "icon": "",
+    "key": "adamant"
+  },
+  {
+    "id": 244,
+    "name": "Pan",
+    "price": 0,
+    "icon": "",
+    "key": "pan"
+  },
+  {
+    "id": 245,
+    "name": "Pink",
+    "price": 125000,
+    "icon": "tail",
+    "key": "pink-tail"
+  },
+  {
+    "id": 246,
+    "name": "Tower",
+    "price": 0,
+    "icon": "key",
+    "key": "tower_key"
+  },
+  {
+    "id": 247,
+    "name": "DkMatter",
+    "price": 0,
+    "icon": "",
+    "rarity": "common",
+    "shop_type": "item"
+  }
+]
