@@ -15,6 +15,7 @@ script:
 - "./node_modules/.bin/prettier-check src/**/*.ts"
 deploy:
   provider: firebase
+  skip_cleanup: true
   on:
     branch: release
   token:
