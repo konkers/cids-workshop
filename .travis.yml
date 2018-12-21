@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "9"
+- '9'
 dist: trusty
 sudo: required
 branches:
@@ -8,16 +8,14 @@ branches:
   - master
   - release
 before_script:
-  - npm install -g @angular/cli
+- npm install -g @angular/cli
 script:
-  - ng lint
-  - npm run prodbuild
-  - ./node_modules/.bin/prettier-check src/**/*.ts
+- ng lint
+- npm run prodbuild
+- "./node_modules/.bin/prettier-check src/**/*.ts"
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: dist/tracker
-  fqdn: cidsworkshop.com
+  provider: firebase
   on:
     branch: release
+  token:
+    secure: ezxwpVyTO7lK0OwPsZZ5JP/wh4ZgAOCYbsoEBZ1vwrBqNSGEHxbHM+r949m8BEPqxchu3gfx+a9qFFXdfXn1vSLX1nLYd3DDPT0YVXNEw+DK/fgH9W5SdYv7F3zjCBAQebhwAvIXXZSX8abteqUkGu8O7a9LIIjn/ymo47LykRbiTn8NkAHBPDPy4qkOz1wXnPy1COEARU2rrnbJiegd8khGNTT2RgUrpGH76k8VxIRL2dnKJfFe/qfS1Fm4laBKejF92r+hJ8uqF+/YsyX8AoI20PVGW1VBN3NXsnebGH7AdxzozJfFZ8qu3SMOg8+WG5JTDbbbRz7Xxt5xWigO/TJ21LVR9DmRNBzHOcdHJHGpV+odFd6wfreJS6VzgLKTyWmGQzRKVgNSrl2RkWc/A83AcgBkO04Sze6Q7xQ4FrkmnZSmx3L+Itcj5TMaFFRnV4xmYourhSao3G+JwiVsYKplLaNDVuL9UZW7me76Dqm8ON0NZa6fXNJkYF62pNpbXziKte9GNgSWNgEeeeih9RpTXRCH30wwYUvaND89Thtx17DYMA6xFgIjh2OBVLGTycfoUBjc0Uy+Tx2P65qRGQM6O6VCTzWxaUYfRJ7u2Ao9oyzT6NhJ4o3eBuArwEgOd9dMxcUBSL5hZz47EzvSfCU83GlNqbEGQDv6hJ3wx5U=
