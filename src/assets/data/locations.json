@@ -356,7 +356,8 @@
             {
                 "type": "key",
                 "reqs": [
-                    "rat-tail"
+                    "rat-tail",
+                    "hook"
                 ]
             }
         ]
