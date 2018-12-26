@@ -3,9 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, combineLatest } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { Location } from "./location.model";
+import { Location, LocationPoi } from "./location.model";
 import {
   Found,
+  FoundLocation,
   State,
   StateService,
   TrappedChestsLocation
@@ -105,6 +106,89 @@ export class LocationService {
     });
   }
 
+  private checkReq(state: State, poi: LocationPoi): boolean {
+    if ("reqs" in poi) {
+      for (const req of poi.reqs) {
+        if (!(req in state.key_items) && !(req in state.bosses)) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  private processFlags(config: Config, poi: LocationPoi) {
+    if (!("flags" in poi)) {
+      return true;
+    }
+    let visible = false;
+    for (let flag of poi.flags) {
+      let invert = false;
+      if (flag.substring(0, 1) === "!") {
+        invert = true;
+        flag = flag.substring(1);
+      }
+      if (flag in config.flags) {
+        let flagVal = config.flags[flag];
+        if (invert) {
+          flagVal = !flagVal;
+        }
+
+        visible = visible || flagVal;
+      } else {
+        console.log(`Flag ${flag} unknown`);
+      }
+    }
+    return visible;
+  }
+
+  private processPois(
+    state: State,
+    config: Config,
+    loc: Location,
+    l: LocationState
+  ) {
+    if (!("poi" in loc)) {
+      l.enabled = true;
+    } else {
+      for (const p of Object.keys(loc.poi)) {
+        const poi = loc.poi[p];
+        const ps: PoiState = {
+          enabled: false,
+          visible: true
+        };
+
+        if (this.checkReq(state, poi)) {
+          ps.enabled = true;
+
+          // If any of the pois are enabled,  The location stays enabled.
+          l.enabled = true;
+        }
+
+        // Evaluate flags for poi visibility.
+        ps.visible = this.processFlags(config, poi);
+
+        l.poi[p] = ps;
+      }
+    }
+  }
+
+  private processFound(
+    state: State,
+    states: LocationStates,
+    stateKey: string,
+    poiKey: string
+  ) {
+    for (const id of Object.keys(state[stateKey])) {
+      const k: FoundLocation = state[stateKey][id];
+      if (k.location === "virt") {
+        continue;
+      }
+      states[k.location].poi[k.slot][poiKey] = id;
+    }
+  }
+
   // This is a big horrible function that is begging to be refactored.
   private processState(
     state: State,
@@ -120,59 +204,12 @@ export class LocationService {
     ) {
       return states;
     }
+
     for (const locId of Object.keys(locationsData)) {
       const loc = locationsData[locId];
       const l: LocationState = { enabled: false, poi: [], trapped_chests: {} };
 
-      if (!("poi" in loc)) {
-        l.enabled = true;
-      } else {
-        for (const p of Object.keys(loc.poi)) {
-          const poi = loc.poi[p];
-          const ps: PoiState = {
-            enabled: true,
-            visible: true
-          };
-
-          // Scan through any reqs to see if the poi is enabled.
-          if ("reqs" in poi) {
-            for (const req of poi.reqs) {
-              if (!(req in state.key_items) && !(req in state.bosses)) {
-                ps.enabled = false;
-              }
-            }
-          }
-
-          // If any of the pois are enabled,  The location stays enabled.
-          if (ps.enabled) {
-            l.enabled = true;
-          }
-
-          // Evaluate flags for poi visibility.
-          if ("flags" in poi) {
-            let visible = false;
-            for (let flag of poi.flags) {
-              let invert = false;
-              if (flag.substring(0, 1) === "!") {
-                invert = true;
-                flag = flag.substring(1);
-              }
-              if (flag in config.flags) {
-                let flagVal = config.flags[flag];
-                if (invert) {
-                  flagVal = !flagVal;
-                }
-
-                visible = visible || flagVal;
-              } else {
-                console.log(`Flag ${flag} unknown`);
-              }
-              ps.visible = visible;
-            }
-          }
-          l.poi[p] = ps;
-        }
-      }
+      this.processPois(state, config, loc, l);
 
       if (locId in state.trapped_chests) {
         l.trapped_chests = state.trapped_chests[locId];
@@ -180,29 +217,10 @@ export class LocationService {
       states[locId] = l;
     }
 
-    for (const id of Object.keys(state.key_items)) {
-      const k = state.key_items[id];
-      if (k.location === "virt") {
-        continue;
-      }
-      states[k.location].poi[k.slot].keyItem = id;
-    }
+    this.processFound(state, states, "key_items", "keyItem");
+    this.processFound(state, states, "chars", "character");
+    this.processFound(state, states, "bosses", "boss");
 
-    for (const id of Object.keys(state.chars)) {
-      const k = state.chars[id];
-      if (k.location === "virt") {
-        continue;
-      }
-      states[k.location].poi[k.slot].character = id;
-    }
-
-    for (const id of Object.keys(state.bosses)) {
-      const k = state.bosses[id];
-      if (k.location === "virt") {
-        continue;
-      }
-      states[k.location].poi[k.slot].boss = id;
-    }
     return states;
   }
 

@@ -10,6 +10,7 @@ export interface FoundItems {
 
 export interface FoundLocation {
   location: string;
+  type?: string;
   slot: number;
 }
 
