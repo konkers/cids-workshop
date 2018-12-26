@@ -192,6 +192,20 @@
         ]
     },
     {
+        "id": "antlion",
+        "name": "Antlion's Lair",
+        "type": "dungeon",
+        "map": "overworld",
+        "poi": [
+            {
+                "type": "boss"
+            },
+            {
+                "type": "key"
+            }
+        ]
+    },
+    {
         "id": "mt-hobs",
         "name": "Mt. Hobs",
         "type": "dungeon",
