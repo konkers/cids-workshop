@@ -137,7 +137,7 @@ export class LocationService {
           // Scan through any reqs to see if the poi is enabled.
           if ("reqs" in poi) {
             for (const req of poi.reqs) {
-              if (!(req in state.key_items)) {
+              if (!(req in state.key_items) && !(req in state.bosses)) {
                 ps.enabled = false;
               }
             }
