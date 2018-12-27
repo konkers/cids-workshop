@@ -14,4 +14,25 @@
         flag="Nk"
         desc="No free key items."
     ></app-flag>
+
+    <app-flag
+        [enabled]="flags.Kq"
+        (change)="change('Kq', $event)"
+        flag="Kq"
+        desc="Mix key-items with summon quest rewards."
+    ></app-flag>
+
+    <app-flag
+        [enabled]="flags.Km"
+        (change)="change('Km', $event)"
+        flag="Km"
+        desc="Mix key-items with moon boss rewards."
+    ></app-flag>
+
+    <app-flag
+        [enabled]="flags.Kt"
+        (change)="change('Kt', $event)"
+        flag="Kt"
+        desc="Mix key-items with trapped chests."
+    ></app-flag>
 </div>

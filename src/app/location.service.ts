@@ -27,6 +27,9 @@ export interface PoiState {
   keyItem?: string;
   character?: string;
   boss?: string;
+  bossKeyItem?: string;
+  hasKeyItem: boolean;
+  foundItem: boolean;
 }
 
 export interface PoiStates {
@@ -156,7 +159,9 @@ export class LocationService {
         const poi = loc.poi[p];
         const ps: PoiState = {
           enabled: false,
-          visible: true
+          visible: true,
+          hasKeyItem: false,
+          foundItem: false
         };
 
         if (this.checkReq(state, poi)) {
@@ -169,6 +174,21 @@ export class LocationService {
         // Evaluate flags for poi visibility.
         ps.visible = this.processFlags(config, poi);
 
+        if (
+          state.location_info[loc.id] &&
+          state.location_info[loc.id].poi_found_item[p]
+        ) {
+          ps.foundItem = true;
+        }
+
+        // Check if this poi has a key item associated with it (i.e. bosses
+        // in Kq and Km.
+        if ("key_item_flag" in poi) {
+          const ki_flag = poi.key_item_flag;
+          if (ki_flag in config.flags && config.flags[ki_flag]) {
+            ps.hasKeyItem = true;
+          }
+        }
         l.poi[p] = ps;
       }
     }
@@ -177,6 +197,7 @@ export class LocationService {
   private processFound(
     state: State,
     states: LocationStates,
+    type: string,
     stateKey: string,
     poiKey: string
   ) {
@@ -185,11 +206,12 @@ export class LocationService {
       if (k.location === "virt") {
         continue;
       }
-      states[k.location].poi[k.slot][poiKey] = id;
+      if (k.type && k.type === type) {
+        states[k.location].poi[k.slot][poiKey] = id;
+      }
     }
   }
 
-  // This is a big horrible function that is begging to be refactored.
   private processState(
     state: State,
     config: Config,
@@ -217,9 +239,10 @@ export class LocationService {
       states[locId] = l;
     }
 
-    this.processFound(state, states, "key_items", "keyItem");
-    this.processFound(state, states, "chars", "character");
-    this.processFound(state, states, "bosses", "boss");
+    this.processFound(state, states, "poi", "key_items", "keyItem");
+    this.processFound(state, states, "poi", "chars", "character");
+    this.processFound(state, states, "poi", "bosses", "boss");
+    this.processFound(state, states, "boss", "key_items", "bossKeyItem");
 
     return states;
   }
@@ -287,7 +310,7 @@ export class LocationService {
       loc,
       keyItem,
       slot => {
-        this.stateService.recordKeyItem(keyItem, loc, slot);
+        this.stateService.recordKeyItem(keyItem, "poi", loc, slot);
       },
       () => {
         this.stateService.unrecordKeyItem(keyItem);
@@ -303,7 +326,7 @@ export class LocationService {
       loc,
       char,
       slot => {
-        this.stateService.recordCharacter(char, loc, slot);
+        this.stateService.recordCharacter(char, "poi", loc, slot);
       },
       () => {
         this.stateService.unrecordCharacter(char);
@@ -319,7 +342,7 @@ export class LocationService {
       loc,
       boss,
       slot => {
-        this.stateService.recordBoss(boss, loc, slot);
+        this.stateService.recordBoss(boss, "poi", loc, slot);
       },
       () => {
         this.stateService.unrecordBoss(boss);
@@ -327,14 +350,26 @@ export class LocationService {
     );
   }
 
+  processBossKeyItem(loc: string, slot: number, keyItem: string) {
+    if (keyItem === "chest") {
+    }
+    const found = this.state.key_items[keyItem];
+    if (found === undefined) {
+      this.stateService.recordKeyItem(keyItem, "boss", loc, slot);
+    } else if (
+      found.type === "boss" &&
+      found.location === loc &&
+      found.slot === slot
+    ) {
+      this.stateService.unrecordKeyItem(keyItem);
+    }
+  }
+
   recordTrappedChest(locId: string, chest: number, found: boolean) {
     this.stateService.recordTrappedChest(locId, chest, found);
   }
 
   getLocationState(location$: Observable<Location>): Observable<LocationState> {
-    // TODO: rewrite this to use this.locationState$
-    const state$ = this.stateService.getState();
-
     return combineLatest(this.locationState$, location$).pipe(
       map(r => {
         const states = r[0];

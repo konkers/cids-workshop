@@ -46,10 +46,12 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Baron Guards"
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Yang"
             },
             {
                 "type": "char"
@@ -67,12 +69,14 @@
         "poi": [
             {
                 "type": "boss",
+                "vanilla": "Baigan",
                 "reqs": [
                     "baron-key"
                 ]
             },
             {
                 "type": "boss",
+                "vanilla": "Kainazzo",
                 "reqs": [
                     "baron-key"
                 ]
@@ -91,9 +95,11 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Odin",
                 "reqs": [
                     "baron-key"
-                ]
+                ],
+                "key_item_flag": "Kq"
             }
         ]
     },
@@ -104,7 +110,8 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "D. Mist"
             }
         ]
     },
@@ -129,6 +136,7 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Baron Soldiers",
                 "reqs": [
                     "package"
                 ]
@@ -175,7 +183,8 @@
                 "flags": ["!Nc"]
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Octomamm"
             }
         ]
     },
@@ -198,7 +207,8 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Antlion"
             },
             {
                 "type": "key"
@@ -215,7 +225,8 @@
                 "type": "char"
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "MomBomb"
             }
         ]
     },
@@ -235,7 +246,8 @@
                 "type": "armor-shop"
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Fabul Gauntlet"
             },
             {
                 "type": "key"
@@ -292,6 +304,7 @@
         "poi": [
             {
                 "type": "boss",
+                "vanilla": "Dark Elf",
                 "reqs": [
                     "twin-harp"
                 ]
@@ -311,7 +324,8 @@
         "map": "overworld",
         "poi": [
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Magus Sisters"
             },
             {
                 "type": "char",
@@ -323,6 +337,7 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Valvalis",
                 "reqs": ["earth-crystal"]
             }
         ],
@@ -398,16 +413,20 @@
                 "flags": ["!Nc"]
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Milon"
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Milon Z."
+
             },
             {
                 "type": "key"
             },
             {
-                "type": "boss"
+                "type": "boss",
+                "vanilla": "Dark Knight Cecil"
             }
         ]
     },
@@ -463,10 +482,12 @@
             },
             {
                 "type": "boss",
+                "vanilla": "King & Queen Eblan",
                 "reqs": ["hook"]
             },
             {
                 "type": "boss",
+                "vanilla": "Rubicante",
                 "reqs": ["hook"]
             }
         ],
@@ -495,6 +516,7 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Calbrena",
                 "reqs": ["underground"]
             },
             {
@@ -503,6 +525,7 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Golbez",
                 "reqs": ["underground"]
             },
             {
@@ -543,6 +566,7 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Evil Wall",
                 "reqs": ["underground", "luca-key"]
             }
         ]
@@ -571,11 +595,15 @@
             },
             {
                 "type": "boss",
-                "reqs": ["underground"]
+                "vanilla": "Asura",
+                "reqs": ["underground"],
+                "key_item_flag": "Kq"
             },
             {
                 "type": "boss",
-                "reqs": ["underground"]
+                "vanilla": "Leviathan",
+                "reqs": ["underground"],
+                "key_item_flag": "Kq"
             }
         ],
         "trapped_chests": [
@@ -617,6 +645,7 @@
         "poi": [
             {
                 "type": "boss",
+                "vanilla": "Lugae & Balnab",
                 "reqs": ["underground"]
             },
             {
@@ -625,6 +654,7 @@
             },
             {
                 "type": "boss",
+                "vanilla": "Dark Imps",
                 "reqs": ["underground", "tower-key"]
             },
             {
@@ -671,7 +701,9 @@
         "poi": [
             {
                 "type": "boss",
-                "reqs": ["darkness-crystal"]
+                "vanilla": "Bahamut",
+                "reqs": ["darkness-crystal"],
+                "key_item_flag": "Km"
             }
         ]
     },
@@ -692,23 +724,33 @@
         "poi": [
             {
                 "type": "boss",
-                "reqs": ["darkness-crystal"]
+                "vanilla": "Pale Dim",
+                "reqs": ["darkness-crystal"],
+                "key_item_flag": "Km"
             },
             {
                 "type": "boss",
-                "reqs": ["darkness-crystal"]
+                "vanilla": "plague",
+                "reqs": ["darkness-crystal"],
+                "key_item_flag": "Km"
             },
             {
                 "type": "boss",
-                "reqs": ["darkness-crystal"]
+                "vanilla": "D. Lunar",
+                "reqs": ["darkness-crystal"],
+                "key_item_flag": "Km"
             },
             {
                 "type": "boss",
-                "reqs": ["darkness-crystal"]
+                "vanilla": "Ogopogo",
+                "reqs": ["darkness-crystal"],
+                "key_item_flag": "Km"
             },
             {
                 "type": "boss",
-                "reqs": ["darkness-crystal"]
+                "vanilla": "Wyvern",
+                "reqs": ["darkness-crystal"],
+                "key_item_flag": "Km"
             }
         ],
         "trapped_chests": [
@@ -731,10 +773,12 @@
         "poi": [
             {
                 "type": "boss",
+                "vanilla": "Elemental Fields",
                 "reqs": ["darkness-crystal"]
             },
             {
                 "type": "boss",
+                "vanilla": "CPU",
                 "reqs": ["darkness-crystal"]
             },
             {

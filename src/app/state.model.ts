@@ -18,6 +18,24 @@ export interface Found {
   [index: string]: FoundLocation;
 }
 
+export interface LocationFoundInfo {
+  [index: number]: boolean;
+}
+
+export interface LocationInfo {
+  // Set to true if a key item or boss slot yielded an
+  // item instead of a key item.
+  poi_found_item: LocationFoundInfo;
+
+  // Set to true if a trapped chest slot yielded an
+  // item instead of a key item.
+  chest_found_item: LocationFoundInfo;
+}
+
+export interface LocationsInfo {
+  [index: string]: LocationInfo;
+}
+
 export interface TrappedChestsLocation {
   [index: number]: boolean;
 }
@@ -35,6 +53,8 @@ export interface State {
   key_items: Found;
   chars: Found;
   bosses: Found;
+
+  location_info: LocationsInfo;
 
   trapped_chests: TrappedChests;
 }

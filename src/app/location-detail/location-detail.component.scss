@@ -1,3 +1,25 @@
+.boss {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.boss .icon {
+    padding: 4px;
+}
+
+.boss .key {
+    padding: 6px;
+}
+
+.boss .name {
+    padding: 6px;
+}
+
+.flex {
+    display: flex;
+}
+
 .shop-actions {
     display: flex;
     flex-direction: row;

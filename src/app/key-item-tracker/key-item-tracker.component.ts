@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { Found, KeyItems, KeyItemService } from "../key-item.service";
@@ -9,6 +9,7 @@ import { Found, KeyItems, KeyItemService } from "../key-item.service";
   styleUrls: ["./key-item-tracker.component.scss"]
 })
 export class KeyItemTrackerComponent implements OnInit {
+  @Input() extraActions?: boolean;
   @Output() select = new EventEmitter<string>();
 
   keyItems$: Observable<KeyItems>;
@@ -22,7 +23,11 @@ export class KeyItemTrackerComponent implements OnInit {
     this.keyItemsFound$ = keyItemService.getKeyItemsFound();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.extraActions === undefined) {
+      this.extraActions = false;
+    }
+  }
 
   selectKeyItem(keyItem: string) {
     this.select.emit(keyItem);
