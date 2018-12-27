@@ -2,6 +2,36 @@
   class="mat-typography"
   *ngIf="loc"
 >
+  <div *ngIf="hasBosses()">
+    <h2>Bosses</h2>
+    <span *ngFor="let poi of (loc$ | async).poi; index as i">
+      <div
+        *ngIf="(poisDisplayed$ | async)[i]"
+        class="boss"
+      >
+        <div class="icon">
+          <app-poi
+            [locId]="(loc$ | async).id"
+            [poiIndex]="i"
+            [state$]="state$"
+            size="medium"
+          ></app-poi>
+        </div>
+        <div
+          class="key"
+          *ngIf="(state$ | async).poi[i].hasKeyItem"
+        >
+          <app-key-item-picker
+            [location]="locId"
+            [slot]="i"
+            class="flex"
+          ></app-key-item-picker>
+        </div>
+        <div class="name">{{poi.vanilla}}</div>
+      </div>
+    </span>
+  </div>
+
   <div *ngIf="hasShops()">
     <h2>Shops</h2>
     <div class="shop-actions">

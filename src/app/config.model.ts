@@ -1,8 +1,11 @@
-export const CONFIG_VERSION = 2;
+export const CONFIG_VERSION = 3;
 
 export class Flags {
   Nc: boolean;
   Nk: boolean;
+  Kq: boolean;
+  Km: boolean;
+  Kt: boolean;
 }
 
 export class Options {

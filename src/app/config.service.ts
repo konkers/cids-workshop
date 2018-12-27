@@ -29,6 +29,10 @@ export class ConfigService {
     const defaultConfig = this.defaultConfig();
     if (this.configData.version === 1) {
       this.configData.options = defaultConfig.options;
+    } else if (this.configData.version === 2) {
+      this.configData.flags.Kq = defaultConfig.flags.Kq;
+      this.configData.flags.Km = defaultConfig.flags.Km;
+      this.configData.flags.Kt = defaultConfig.flags.Kt;
     }
     this.configData.version = CONFIG_VERSION;
   }
@@ -56,7 +60,7 @@ export class ConfigService {
     return {
       version: CONFIG_VERSION,
       selected_items: [],
-      flags: { Nc: false, Nk: false },
+      flags: { Nc: false, Nk: false, Kq: false, Km: false, Kt: false },
       options: {
         always_remove_key: true
       }
