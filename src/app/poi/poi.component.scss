@@ -1,12 +1,25 @@
-.icon {
+.icon-container {
+    margin-left: 2px;
+}
+
+.icon-container.small {
     width: 16px;
     height: 16px;
 }
 
-.icon-container {
+.icon.small {
     width: 16px;
     height: 16px;
-    margin-left: 2px;
+}
+
+.icon-container.medium {
+    width: 32px;
+    height: 32px;
+}
+
+.icon.medium {
+    width: 32px;
+    height: 32px;
 }
 
 .disabled {

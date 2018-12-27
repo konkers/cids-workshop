@@ -18,6 +18,7 @@ export class PoiComponent implements OnInit {
   @Input() locId: string;
   @Input() poiIndex: number;
   @Input() state$: Observable<LocationState>;
+  @Input() size?: string;
 
   loc: Location;
   poi: LocationPoi;
@@ -25,11 +26,16 @@ export class PoiComponent implements OnInit {
   keyItem: string;
   character: string;
   boss: string;
+  foundItem: boolean;
 
   constructor(
     private locationService: LocationService,
     private stateService: StateService
-  ) {}
+  ) {
+    if (this.size === undefined) {
+      this.size = "small";
+    }
+  }
 
   ngOnInit() {
     this.locationService.getLocation(this.locId).subscribe(loc => {
@@ -38,18 +44,24 @@ export class PoiComponent implements OnInit {
     });
 
     this.state$.subscribe(s => {
+      if (this.locId === "feymarch" && this.poiIndex === 4) {
+        console.log(s);
+      }
       this.enabled = s.poi[this.poiIndex].enabled;
       this.keyItem = s.poi[this.poiIndex].keyItem;
       this.character = s.poi[this.poiIndex].character;
       this.boss = s.poi[this.poiIndex].boss;
+      this.foundItem = s.poi[this.poiIndex].foundItem;
     });
   }
 
   private keyItemImg(): string {
-    if (this.keyItem === undefined) {
-      return "../assets/empty/key.png";
-    } else {
+    if (this.keyItem) {
       return "../assets/key-items/" + this.keyItem + ".png";
+    } else if (this.foundItem) {
+      return "../assets/key-items/chest.png";
+    } else {
+      return "../assets/empty/key.png";
     }
   }
 
@@ -62,10 +74,10 @@ export class PoiComponent implements OnInit {
   }
 
   private bossImg(): string {
-    if (this.boss === undefined) {
-      return "../assets/empty/boss.png";
-    } else {
+    if (this.boss) {
       return "../assets/bosses/" + this.boss + ".png";
+    } else {
+      return "../assets/empty/boss.png";
     }
   }
 
