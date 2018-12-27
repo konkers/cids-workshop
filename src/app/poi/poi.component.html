@@ -1,9 +1,9 @@
 <div
   *ngIf="poi"
-  class="icon-container"
+  [ngClass]="['icon-container', this.size]"
 >
   <img
-    class="icon"
+    [ngClass]="['icon', this.size]"
     [class.disabled]="!enabled"
     [src]="img()"
   />

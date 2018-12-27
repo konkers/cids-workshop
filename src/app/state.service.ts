@@ -23,9 +23,7 @@ export class StateService {
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
     console.log(this.storage.get(STORAGE_KEY));
     this.stateData = this.storage.get(STORAGE_KEY) || this.defaultState();
-    if (this.stateData.version !== STATE_VERSION) {
-      this.stateData = this.defaultState();
-    }
+    this.updateStateData();
     console.log(this.stateData);
 
     this._state = <BehaviorSubject<State>>new BehaviorSubject(this.stateData);
@@ -56,9 +54,43 @@ export class StateService {
     this.store();
   }
 
-  recordKeyItem(key: string, loc: string, slot: number) {
-    if (!(key in this.stateData.key_items)) {
-      this.stateData.key_items[key] = { location: loc, slot: slot };
+  private slotEmpty(loc: string, slot: number): boolean {
+    for (const id of Object.keys(this.stateData.key_items)) {
+      const ki = this.stateData.key_items[id];
+      if (ki.slot === slot && ki.location === loc) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  recordKeyItem(key: string, type: string, loc: string, slot: number) {
+    if (key === undefined) {
+      return;
+    }
+
+    // Ensure we have location info for this location.
+    if (!this.stateData.location_info[loc]) {
+      this.stateData.location_info[loc] = {
+        poi_found_item: {},
+        chest_found_item: {}
+      };
+    }
+
+    if (key === "chest") {
+      if (this.slotEmpty(loc, slot)) {
+        if (
+          this.stateData.location_info[loc] &&
+          this.stateData.location_info[loc].poi_found_item[slot] === true
+        ) {
+          delete this.stateData.location_info[loc].poi_found_item[slot];
+        } else {
+          this.stateData.location_info[loc].poi_found_item[slot] = true;
+        }
+        this.store();
+      }
+    } else if (!(key in this.stateData.key_items)) {
+      this.stateData.key_items[key] = { location: loc, slot: slot, type: type };
       this.store();
     }
   }
@@ -68,9 +100,9 @@ export class StateService {
     this.store();
   }
 
-  recordCharacter(char: string, loc: string, slot: number) {
+  recordCharacter(char: string, type: string, loc: string, slot: number) {
     if (!(char in this.stateData.chars)) {
-      this.stateData.chars[char] = { location: loc, slot: slot };
+      this.stateData.chars[char] = { location: loc, slot: slot, type: type };
       this.store();
     }
   }
@@ -80,9 +112,9 @@ export class StateService {
     this.store();
   }
 
-  recordBoss(boss: string, loc: string, slot: number) {
+  recordBoss(boss: string, type: string, loc: string, slot: number) {
     if (!(boss in this.stateData.bosses)) {
-      this.stateData.bosses[boss] = { location: loc, slot: slot };
+      this.stateData.bosses[boss] = { location: loc, slot: slot, type: type };
       this.store();
     }
   }
@@ -107,8 +139,26 @@ export class StateService {
       key_items: {},
       chars: {},
       bosses: {},
+      location_info: {},
       trapped_chests: {}
     };
+  }
+
+  private checkStateField(field: string) {
+    const defaults = this.defaultState();
+
+    if (!(field in this.stateData)) {
+      this.stateData[field] = defaults[field];
+    }
+  }
+  private updateStateData() {
+    this.checkStateField("found_items");
+    this.checkStateField("key_items");
+    this.checkStateField("chars");
+    this.checkStateField("bosses");
+    this.checkStateField("location_info");
+    this.checkStateField("trapped_chests");
+    this.stateData.version = STATE_VERSION;
   }
 
   reset() {

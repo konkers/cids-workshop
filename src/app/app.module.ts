@@ -51,6 +51,10 @@ import { FlagsComponent } from "./flags/flags.component";
 import { FlagComponent } from "./flag/flag.component";
 import { HelpComponent } from "./help/help.component";
 import { ItemAdderComponent } from "./item-adder/item-adder.component";
+import {
+  KeyItemPickerComponent,
+  KeyItemPickerDialogComponent
+} from "./key-item-picker/key-item-picker.component";
 
 const appRoutes: Routes = [
   { path: "loc/:loc", component: LocationDetailComponent },
@@ -83,7 +87,9 @@ const appRoutes: Routes = [
     FlagsComponent,
     FlagComponent,
     HelpComponent,
-    ItemAdderComponent
+    ItemAdderComponent,
+    KeyItemPickerComponent,
+    KeyItemPickerDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -119,7 +125,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatTooltipModule
   ],
-  entryComponents: [ShopsDialogComponent],
+  entryComponents: [KeyItemPickerDialogComponent, ShopsDialogComponent],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
