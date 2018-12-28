@@ -64,6 +64,17 @@ export class StateService {
     return true;
   }
 
+  private recordItemFound(loc: string, slot: number, field: string) {
+    if (
+      this.stateData.location_info[loc] &&
+      this.stateData.location_info[loc][field][slot] === true
+    ) {
+      delete this.stateData.location_info[loc][field][slot];
+    } else {
+      this.stateData.location_info[loc][field][slot] = true;
+    }
+  }
+
   recordKeyItem(key: string, type: string, loc: string, slot: number) {
     if (key === undefined) {
       return;
@@ -78,17 +89,15 @@ export class StateService {
     }
 
     if (key === "chest") {
-      if (this.slotEmpty(loc, slot)) {
-        if (
-          this.stateData.location_info[loc] &&
-          this.stateData.location_info[loc].poi_found_item[slot] === true
-        ) {
-          delete this.stateData.location_info[loc].poi_found_item[slot];
-        } else {
-          this.stateData.location_info[loc].poi_found_item[slot] = true;
-        }
-        this.store();
+      switch (type) {
+        case "boss":
+          this.recordItemFound(loc, slot, "poi_found_item");
+          break;
+        case "trapped":
+          this.recordItemFound(loc, slot, "chest_found_item");
+          break;
       }
+      this.store();
     } else if (!(key in this.stateData.key_items)) {
       this.stateData.key_items[key] = { location: loc, slot: slot, type: type };
       this.store();
@@ -152,6 +161,10 @@ export class StateService {
     }
   }
   private updateStateData() {
+    if (this.stateData.version <= 2) {
+      this.stateData = this.defaultState();
+      return;
+    }
     this.checkStateField("found_items");
     this.checkStateField("key_items");
     this.checkStateField("chars");
