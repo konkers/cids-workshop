@@ -32,6 +32,16 @@ export interface PoiState {
   foundItem: boolean;
 }
 
+export interface TrappedChestState {
+  found: boolean;
+  keyItem: string;
+  foundItem: boolean;
+}
+
+export interface TrappedChestsState {
+  [index: number]: TrappedChestState;
+}
+
 export interface PoiStates {
   [index: number]: PoiState;
 }
@@ -39,7 +49,7 @@ export interface PoiStates {
 export interface LocationState {
   enabled: boolean;
   poi: PoiStates;
-  trapped_chests: TrappedChestsLocation;
+  trapped_chests: TrappedChestsState;
 }
 
 export interface LocationStates {
@@ -234,7 +244,21 @@ export class LocationService {
       this.processPois(state, config, loc, l);
 
       if (locId in state.trapped_chests) {
-        l.trapped_chests = state.trapped_chests[locId];
+        const chests = state.trapped_chests[locId];
+        for (const c of Object.keys(chests)) {
+          l.trapped_chests[c] = {
+            found: chests[c],
+            keyItem: null,
+            foundItem: false
+          };
+        }
+        for (const c of Object.keys(
+          state.location_info[locId].chest_found_item
+        )) {
+          if (state.location_info[locId].chest_found_item[c]) {
+            l.trapped_chests[c].foundItem = true;
+          }
+        }
       }
       states[locId] = l;
     }
@@ -244,6 +268,13 @@ export class LocationService {
     this.processFound(state, states, "poi", "bosses", "boss");
     this.processFound(state, states, "boss", "key_items", "bossKeyItem");
 
+    for (const id of Object.keys(state.key_items)) {
+      const k: FoundLocation = state.key_items[id];
+      if (k.location === "virt" || k.type !== "trapped") {
+        continue;
+      }
+      states[k.location].trapped_chests[k.slot].keyItem = id;
+    }
     return states;
   }
 
@@ -350,14 +381,38 @@ export class LocationService {
     );
   }
 
-  processBossKeyItem(loc: string, slot: number, keyItem: string) {
-    if (keyItem === "chest") {
-    }
+  processFoundKeyItem(
+    type: string,
+    loc: string,
+    slot: number,
+    keyItem: string
+  ) {
     const found = this.state.key_items[keyItem];
     if (found === undefined) {
-      this.stateService.recordKeyItem(keyItem, "boss", loc, slot);
+      this.stateService.recordKeyItem(keyItem, type, loc, slot);
     } else if (
-      found.type === "boss" &&
+      found.type === type &&
+      found.location === loc &&
+      found.slot === slot
+    ) {
+      this.stateService.unrecordKeyItem(keyItem);
+    }
+  }
+
+  processBossKeyItem(loc: string, slot: number, keyItem: string) {
+    this.processFoundKeyItem("boss", loc, slot, keyItem);
+  }
+
+  processTrappedKeyItem(loc: string, slot: number, keyItem: string) {
+    this.processFoundKeyItem("trapped", loc, slot, keyItem);
+  }
+
+  processChestKeyItem(loc: string, slot: number, keyItem: string) {
+    const found = this.state.key_items[keyItem];
+    if (found === undefined) {
+      this.stateService.recordKeyItem(keyItem, "trapped", loc, slot);
+    } else if (
+      found.type === "trapped" &&
       found.location === loc &&
       found.slot === slot
     ) {

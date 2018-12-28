@@ -9,7 +9,8 @@ import {
   Locations,
   LocationService,
   LocationState,
-  PoiState
+  PoiState,
+  TrappedChestState
 } from "../location.service";
 
 @Component({
@@ -53,7 +54,7 @@ export class KeyItemPickerComponent implements OnInit {
     this.img$ = this.state$.pipe(map(state => this.imgForState(state)));
   }
 
-  private imgForState(state: LocationState): string {
+  private imgForBossState(state: LocationState): string {
     const poi: PoiState = state.poi[this.slot];
     if (poi && poi.bossKeyItem) {
       return "../assets/key-items/" + poi.bossKeyItem + ".png";
@@ -61,6 +62,24 @@ export class KeyItemPickerComponent implements OnInit {
       return "../assets/key-items/chest.png";
     } else {
       return "../assets/empty/key.png";
+    }
+  }
+  private imgForTrappedState(state: LocationState): string {
+    const trapped: TrappedChestState = state.trapped_chests[this.slot];
+    if (trapped && trapped.keyItem) {
+      return "../assets/key-items/" + trapped.keyItem + ".png";
+    } else if (trapped && trapped.foundItem) {
+      return "../assets/key-items/chest.png";
+    } else {
+      return "../assets/empty/key.png";
+    }
+  }
+  private imgForState(state: LocationState): string {
+    switch (this.type) {
+      case "boss":
+        return this.imgForBossState(state);
+      case "trapped":
+        return this.imgForTrappedState(state);
     }
   }
 
@@ -72,7 +91,23 @@ export class KeyItemPickerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.locationService.processBossKeyItem(this.location, this.slot, result);
+      switch (this.type) {
+        case "boss":
+          this.locationService.processBossKeyItem(
+            this.location,
+            this.slot,
+            result
+          );
+          break;
+        case "trapped":
+          this.locationService.processTrappedKeyItem(
+            this.location,
+            this.slot,
+            result
+          );
+
+          break;
+      }
     });
   }
 }
