@@ -273,6 +273,13 @@ export class LocationService {
       if (k.location === "virt" || k.type !== "trapped") {
         continue;
       }
+      if (!states[k.location].trapped_chests[k.slot]) {
+        states[k.location].trapped_chests[k.slot] = {
+          found: false,
+          keyItem: null,
+          foundItem: false
+        };
+      }
       states[k.location].trapped_chests[k.slot].keyItem = id;
     }
     return states;
