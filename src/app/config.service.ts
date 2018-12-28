@@ -16,13 +16,13 @@ export class ConfigService {
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
     this.configData = this.storage.get(STORAGE_KEY) || this.defaultConfig();
-    if (this.configData.version !== CONFIG_VERSION) {
-      this.configData = this.defaultConfig();
-    }
+    this.updateConfig();
+
     this._config = <BehaviorSubject<Config>>(
       new BehaviorSubject(this.configData)
     );
     this.config$ = this._config.asObservable();
+    this.store();
   }
 
   private updateConfig() {
@@ -34,6 +34,11 @@ export class ConfigService {
       this.configData.flags.Km = defaultConfig.flags.Km;
       this.configData.flags.Kt = defaultConfig.flags.Kt;
     }
+
+    if (!this.configData.flags) {
+      this.configData.flags = defaultConfig.flags;
+    }
+
     this.configData.version = CONFIG_VERSION;
   }
 

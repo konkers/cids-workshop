@@ -106,6 +106,7 @@ export class LocationDetailComponent implements OnInit {
   }
 
   doTrappedChest(chest: number, found: boolean) {
+    console.log(found);
     this.locationService.recordTrappedChest(this.locId, chest, found);
   }
 
