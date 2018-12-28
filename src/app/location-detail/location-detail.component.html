@@ -24,6 +24,7 @@
           <app-key-item-picker
             [location]="locId"
             [slot]="i"
+            type="boss"
             class="flex"
           ></app-key-item-picker>
         </div>
@@ -92,12 +93,22 @@
     <h2>Trapped Chests</h2>
     <div class="section">
       <div *ngFor="let chest of loc.trapped_chests; index as i">
-        <mat-checkbox
-          [checked]="(state$ | async).trapped_chests[i]"
-          (change)="doTrappedChest(i, $event.checked)"
-        >
-          {{chest}}
-        </mat-checkbox>
+        <div class="trapped">
+          <app-key-item-picker
+            *ngIf="(config$ | async).flags.Kt"
+            [location]="locId"
+            [slot]="i"
+            type="trapped"
+            class="key"
+          ></app-key-item-picker>
+
+          <mat-checkbox
+            [checked]="(state$ | async).trapped_chests[i]?.found"
+            (change)="doTrappedChest(i, $event.checked)"
+          >
+            {{chest}}
+          </mat-checkbox>
+        </div>
       </div>
     </div>
   </div>
