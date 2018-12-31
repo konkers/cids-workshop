@@ -35,4 +35,11 @@
         flag="Kt"
         desc="Mix key-items with trapped chests."
     ></app-flag>
+
+    <app-flag
+        [enabled]="flags.nodupes"
+        (change)="change('nodupes', $event)"
+        flag="nodupes"
+        desc="Disallow duplicate characters."
+    ></app-flag>
 </div>

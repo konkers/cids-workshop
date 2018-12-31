@@ -22,7 +22,17 @@ export interface LocationFoundInfo {
   [index: number]: boolean;
 }
 
+export interface PoiState {
+  char?: string;
+}
+
+export interface PoiStates {
+  [index: number]: PoiState;
+}
+
 export interface LocationInfo {
+  poi_states: PoiStates;
+
   // Set to true if a key item or boss slot yielded an
   // item instead of a key item.
   poi_found_item: LocationFoundInfo;
@@ -51,7 +61,6 @@ export interface State {
   found_items: FoundItems;
 
   key_items: Found;
-  chars: Found;
   bosses: Found;
 
   location_info: LocationsInfo;

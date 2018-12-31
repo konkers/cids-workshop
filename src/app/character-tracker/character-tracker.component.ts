@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Found, Characters, CharacterService } from "../character.service";
+import {
+  CharactersFoundState,
+  Characters,
+  CharacterService
+} from "../character.service";
 
 @Component({
   selector: "app-character-tracker",
@@ -13,7 +17,7 @@ export class CharacterTrackerComponent implements OnInit {
 
   chars$: Observable<Characters>;
   charOrder$: Observable<string[]>;
-  charsFound$: Observable<Found>;
+  charsFound$: Observable<CharactersFoundState>;
 
   constructor(private characterService: CharacterService) {
     this.chars$ = this.characterService.getCharacters();

@@ -38,6 +38,9 @@ export class ConfigService {
     if (!this.configData.flags) {
       this.configData.flags = defaultConfig.flags;
     }
+    if (!this.configData.flags.nodupes) {
+      this.configData.flags.nodupes = defaultConfig.flags.nodupes;
+    }
 
     this.configData.version = CONFIG_VERSION;
   }
@@ -65,7 +68,14 @@ export class ConfigService {
     return {
       version: CONFIG_VERSION,
       selected_items: [],
-      flags: { Nc: false, Nk: false, Kq: false, Km: false, Kt: false },
+      flags: {
+        Nc: false,
+        Nk: false,
+        Kq: false,
+        Km: false,
+        Kt: false,
+        nodupes: false
+      },
       options: {
         always_remove_key: true
       }
