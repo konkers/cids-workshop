@@ -184,11 +184,15 @@ export class LocationService {
         // Evaluate flags for poi visibility.
         ps.visible = this.processFlags(config, poi);
 
-        if (
-          state.location_info[loc.id] &&
-          state.location_info[loc.id].poi_found_item[p]
-        ) {
-          ps.foundItem = true;
+        if (state.location_info[loc.id]) {
+          const info = state.location_info[loc.id];
+          if (info.poi_states[p]) {
+            ps.character = info.poi_states[p].char;
+          }
+
+          if (info.poi_found_item[p]) {
+            ps.foundItem = true;
+          }
         }
 
         // Check if this poi has a key item associated with it (i.e. bosses
@@ -264,7 +268,6 @@ export class LocationService {
     }
 
     this.processFound(state, states, "poi", "key_items", "keyItem");
-    this.processFound(state, states, "poi", "chars", "character");
     this.processFound(state, states, "poi", "bosses", "boss");
     this.processFound(state, states, "boss", "key_items", "bossKeyItem");
 
@@ -356,20 +359,34 @@ export class LocationService {
     );
   }
 
-  processChar(loc: string, char: string) {
-    this.processPoi(
-      "char",
-      "character",
-      this.state.chars,
-      loc,
-      char,
-      slot => {
-        this.stateService.recordCharacter(char, "poi", loc, slot);
-      },
-      () => {
-        this.stateService.unrecordCharacter(char);
+  processChar(locId: string, charId: string) {
+    if (!locId || !charId) {
+      return;
+    }
+
+    const loc = this.locationsData[locId];
+    const locState = this.locationStateData[locId];
+    for (const i of Object.keys(locState.poi)) {
+      const poiState = locState.poi[i];
+      if (poiState.character === charId) {
+        this.stateService.unrecordCharacter(charId, locId, Number(i));
+        return;
       }
-    );
+    }
+
+    for (const i of Object.keys(loc.poi)) {
+      const poi = loc.poi[i];
+      const poiState = locState.poi[i];
+      if (poi.type === "char" && !poiState.character) {
+        this.stateService.recordCharacter(
+          charId,
+          locId,
+          Number(i),
+          !this.config.flags.nodupes
+        );
+        return;
+      }
+    }
   }
 
   processBoss(loc: string, boss: string) {

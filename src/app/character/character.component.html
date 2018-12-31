@@ -1,7 +1,7 @@
 <div class="char">
   <img
     class="icon"
-    [class.disabled]="state === undefined"
+    [class.disabled]="state === undefined || state === 0"
     src="./assets/characters/{{char.id}}.png"
     [matTooltip]="char.name"
   />
