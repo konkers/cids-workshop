@@ -229,7 +229,7 @@ export class StateService {
     }
   }
   private updateStateData() {
-    if (this.stateData.version <= 2) {
+    if (this.stateData.version <= 3) {
       this.stateData = this.defaultState();
       return;
     }
