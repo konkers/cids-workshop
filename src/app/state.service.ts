@@ -3,6 +3,7 @@ import { SESSION_STORAGE, StorageService } from "angular-webstorage-service";
 import { BehaviorSubject, Observable } from "rxjs";
 
 import { FoundItems, State, STATE_VERSION } from "./state.model";
+import { ObservableData } from "./observable-data";
 
 export {
   Found,
@@ -14,11 +15,17 @@ export {
 
 const STORAGE_KEY = "workshop.state";
 
+export interface CharactersFoundState {
+  [index: string]: number;
+}
+
 @Injectable({ providedIn: "root" })
 export class StateService {
   state$: Observable<State>;
   private stateData: State;
   private _state: BehaviorSubject<State>;
+
+  private charsFound: ObservableData<CharactersFoundState>;
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
     console.log(this.storage.get(STORAGE_KEY));
@@ -28,10 +35,31 @@ export class StateService {
 
     this._state = <BehaviorSubject<State>>new BehaviorSubject(this.stateData);
     this.state$ = this._state.asObservable();
+
+    const charsFound: CharactersFoundState = {};
+    for (const locId of Object.keys(this.stateData.location_info)) {
+      const loc = this.stateData.location_info[locId];
+      for (const poiId of Object.keys(loc.poi_states)) {
+        const poi = loc.poi_states[poiId];
+        if (poi.char) {
+          if (poi.char in charsFound) {
+            charsFound[poi.char] += 1;
+          } else {
+            charsFound[poi.char] = 1;
+          }
+        }
+      }
+    }
+
+    this.charsFound = new ObservableData<CharactersFoundState>(charsFound);
   }
 
   getState() {
     return this.state$;
+  }
+
+  getCharactersFound(): Observable<CharactersFoundState> {
+    return this.charsFound.data$;
   }
 
   private store() {
@@ -83,6 +111,7 @@ export class StateService {
     // Ensure we have location info for this location.
     if (!this.stateData.location_info[loc]) {
       this.stateData.location_info[loc] = {
+        poi_states: {},
         poi_found_item: {},
         chest_found_item: {}
       };
@@ -109,16 +138,56 @@ export class StateService {
     this.store();
   }
 
-  recordCharacter(char: string, type: string, loc: string, slot: number) {
-    if (!(char in this.stateData.chars)) {
-      this.stateData.chars[char] = { location: loc, slot: slot, type: type };
-      this.store();
+  ensureLocationPoi(locId: string, poiIndex: number) {
+    if (!this.stateData.location_info[locId]) {
+      this.stateData.location_info[locId] = {
+        poi_states: {},
+        poi_found_item: {},
+        chest_found_item: {}
+      };
+    }
+
+    const loc = this.stateData.location_info[locId];
+
+    if (!loc.poi_states[poiIndex]) {
+      loc.poi_states[poiIndex] = {};
     }
   }
 
-  unrecordCharacter(char: string) {
-    delete this.stateData.chars[char];
+  recordCharacter(
+    char: string,
+    locId: string,
+    slotId: number,
+    allowDupes: boolean
+  ) {
+    if (
+      !allowDupes &&
+      char in this.charsFound.data &&
+      this.charsFound.data[char] > 0
+    ) {
+      return;
+    }
+
+    this.ensureLocationPoi(locId, slotId);
+
+    const slot = this.stateData.location_info[locId].poi_states[slotId];
+    if (char && !slot.char) {
+      slot.char = char;
+      this.store();
+      if (char in this.charsFound.data) {
+        this.charsFound.data[char] += 1;
+      } else {
+        this.charsFound.data[char] = 1;
+      }
+      this.charsFound.next();
+    }
+  }
+
+  unrecordCharacter(char: string, loc: string, slot: number) {
+    delete this.stateData.location_info[loc].poi_states[slot].char;
     this.store();
+    this.charsFound.data[char] -= 1;
+    this.charsFound.next();
   }
 
   recordBoss(boss: string, type: string, loc: string, slot: number) {
@@ -146,7 +215,6 @@ export class StateService {
       version: STATE_VERSION,
       found_items: {},
       key_items: {},
-      chars: {},
       bosses: {},
       location_info: {},
       trapped_chests: {}
@@ -177,5 +245,7 @@ export class StateService {
   reset() {
     this.stateData = this.defaultState();
     this.store();
+    this.charsFound.data = {};
+    this.charsFound.next();
   }
 }

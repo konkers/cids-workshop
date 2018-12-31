@@ -6,6 +6,7 @@ export class Flags {
   Kq: boolean;
   Km: boolean;
   Kt: boolean;
+  nodupes: boolean;
 }
 
 export class Options {

@@ -9,7 +9,7 @@ import { FoundLocation } from "../state.service";
 })
 export class CharacterComponent implements OnInit {
   @Input() char: Character;
-  @Input() state: FoundLocation;
+  @Input() state: number;
 
   constructor() {}
 

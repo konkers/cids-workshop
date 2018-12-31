@@ -5,10 +5,10 @@ import { map } from "rxjs/operators";
 
 import { Character } from "./character.model";
 import { Index, IndexedData } from "./indexed-data";
-import { Found, StateService } from "./state.service";
+import { CharactersFoundState, StateService } from "./state.service";
 
 export { Character } from "./character.model";
-export { Found, FoundLocation } from "./state.service";
+export { Found, FoundLocation, CharactersFoundState } from "./state.service";
 
 export type Characters = Index<Character>;
 
@@ -32,7 +32,7 @@ export class CharacterService {
     return this.chars.order$;
   }
 
-  getCharactersFound(): Observable<Found> {
-    return this.stateService.getState().pipe(map(state => state.chars));
+  getCharactersFound(): Observable<CharactersFoundState> {
+    return this.stateService.getCharactersFound();
   }
 }
