@@ -6,6 +6,7 @@ import { map } from "rxjs/operators";
 import {
   Location,
   Locations,
+  LocationBossStats,
   LocationService,
   LocationState,
   PoiState
@@ -25,7 +26,8 @@ export class LocationDetailComponent implements OnInit {
   loc$: Observable<Location>;
   config$: Observable<Config>;
 
-  poisDisplayed$: Observable<boolean[]>;
+  hasBossKeyItems$: Observable<boolean>;
+  bossPoi$: Observable<number[]>;
   keyItemImgs$: Observable<string[]>;
 
   constructor(
@@ -57,12 +59,22 @@ export class LocationDetailComponent implements OnInit {
       this.loc$ = this.locationService.getLocation(this.locId);
       this.state$ = this.locationService.getLocationState(this.loc$);
 
+      this.hasBossKeyItems$ = this.state$.pipe(
+        map(state => {
+          let enabled = false;
+          for (const poi of Object.values(state.poi)) {
+            console.log(poi);
+            enabled = enabled || poi.hasKeyItem;
+          }
+          return enabled;
+        })
+      );
+
       this.keyItemImgs$ = this.state$.pipe(
         map(state => this.keyItemImgsForState(state))
       );
-
-      this.poisDisplayed$ = combineLatest(this.loc$, this.state$).pipe(
-        map(results => this.processPoiDisplay(results[0], results[1]))
+      this.bossPoi$ = combineLatest(this.loc$, this.state$).pipe(
+        map(results => this.processBossPoi(results[0], results[1]))
       );
     }
   }
@@ -81,12 +93,35 @@ export class LocationDetailComponent implements OnInit {
     return imgs;
   }
 
-  private processPoiDisplay(loc: Location, state: LocationState): boolean[] {
-    const poisDisplayed: boolean[] = [];
+  private processBossPoi(loc: Location, state: LocationState): number[] {
+    if (!loc || !state) {
+      return [];
+    }
+    const poisDisplayed: number[] = [];
     for (let i = 0; i < loc.poi.length; i++) {
-      poisDisplayed[i] = state.poi[i].visible && loc.poi[i].type === "boss";
+      if (state.poi[i].visible && loc.poi[i].type === "boss") {
+        poisDisplayed.push(i);
+      }
     }
     return poisDisplayed;
+  }
+
+  statToolTip(
+    stats: LocationBossStats,
+    stat: string,
+    mult: string,
+    rate: string
+  ): string {
+    return `${stats[stat]} x${stats[mult]} ${stats[rate]}%`;
+  }
+
+  normalizedStat(
+    stats: LocationBossStats,
+    stat: string,
+    mult: string,
+    rate: string
+  ): number {
+    return (stats[stat] * stats[mult] * stats[rate]) / 100;
   }
 
   hasShops(): boolean {

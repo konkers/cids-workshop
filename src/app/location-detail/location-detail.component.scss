@@ -1,7 +1,15 @@
+.bosses {
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
 .boss {
-    display: flex;
-    flex-direction: row;
-    align-items: center
+    border-top: 1px solid white;
+}
+
+.boss td {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .boss .icon {
@@ -9,11 +17,23 @@
 }
 
 .boss .key {
-    padding: 6px;
+    display: flex;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
 }
 
 .boss .name {
     padding: 6px;
+}
+
+.bosshead .stat {
+    padding-left: 10px;
+}
+
+.boss .stat {
+    padding-left: 10px;
+    text-align: right;
 }
 
 .flex {
