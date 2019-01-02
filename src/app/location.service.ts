@@ -13,7 +13,7 @@ import {
 } from "./state.service";
 import { Config, ConfigService } from "./config.service";
 
-export { Location, LocationPoi } from "./location.model";
+export { Location, LocationBossStats, LocationPoi } from "./location.model";
 
 export interface Locations {
   [index: string]: Location;

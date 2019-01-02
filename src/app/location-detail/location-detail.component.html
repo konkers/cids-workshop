@@ -4,33 +4,74 @@
 >
   <div *ngIf="hasBosses()">
     <h2>Bosses</h2>
-    <span *ngFor="let poi of (loc$ | async).poi; index as i">
-      <div
-        *ngIf="(poisDisplayed$ | async)[i]"
+    <table class="bosses">
+      <tr class="bosshead">
+        <th></th>
+        <th *ngIf="hasBossKeyItems$ | async"></th>
+        <th></th>
+        <th class="stat">HP</th>
+        <th class="stat">XP</th>
+        <th class="stat">Spd</th>
+        <th class="stat">Atk*</th>
+        <th class="stat">M Atk</th>
+        <th class="stat">Def*</th>
+        <th class="stat">M Def*</th>
+      </tr>
+      <tr
         class="boss"
+        *ngFor="let i of (bossPoi$ | async)"
       >
-        <div class="icon">
+        <td>
           <app-poi
             [locId]="(loc$ | async).id"
             [poiIndex]="i"
             [state$]="state$"
-            size="medium"
+            size="small"
           ></app-poi>
-        </div>
-        <div
-          class="key"
-          *ngIf="(state$ | async).poi[i].hasKeyItem"
-        >
+        </td>
+        <td *ngIf="(state$ | async).poi[i].hasKeyItem">
           <app-key-item-picker
             [location]="locId"
             [slot]="i"
             type="boss"
-            class="flex"
+            class="key"
           ></app-key-item-picker>
-        </div>
-        <div class="name">{{poi.vanilla}}</div>
-      </div>
-    </span>
+        </td>
+        <td>
+          {{(loc$ | async).poi[i].vanilla}}
+        </td>
+        <td class="stat">
+          {{(loc$ | async).poi[i].stats.hp}}
+        </td>
+        <td class="stat">
+          {{(loc$ | async).poi[i].stats.xp}}
+        </td>
+        <td class="stat">
+          {{(loc$ | async).poi[i].stats.min_speed}}-{{(loc$ | async).poi[i].stats.max_speed}}
+        </td>
+        <td class="stat">
+          <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'atk', 'atk_mult', 'hit_p')}}">
+            {{normalizedStat((loc$ | async).poi[i].stats, 'atk', 'atk_mult', 'hit_p')}}
+          </span>
+        </td>
+        <td class="stat">
+          {{(loc$ | async).poi[i].stats.spell_power}}
+        </td>
+        <td class="stat">
+          <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'def', 'def_mult', 'eva_p')}}">
+            {{normalizedStat((loc$ | async).poi[i].stats, 'def', 'def_mult', 'eva_p')}}
+          </span>
+        </td>
+        <td class="stat">
+          <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'm_def', 'm_def_mult', 'm_eva_p')}}">
+            {{normalizedStat((loc$ | async).poi[i].stats, 'm_def', 'm_def_mult', 'm_eva_p')}}
+          </span>
+        </td>
+      </tr>
+    </table>
+    <p class="mat-caption">*: Atk, Def, and M Def are normalized. To see power, multiplier, and
+      rate, hover over the stat. These values can be adjusted by the boss at the spot an nly give a
+      rough idea of the power of the spot.</p>
   </div>
 
   <div *ngIf="hasShops()">
