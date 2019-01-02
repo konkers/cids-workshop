@@ -47,11 +47,47 @@
         "poi": [
             {
                 "type": "boss",
-                "vanilla": "Baron Guards"
+                "vanilla": "Baron Guards",
+                "stats": {
+                    "level": 18,
+                    "hp": 200,
+                    "xp": 720,
+                    "gp": 500,
+                    "atk_mult": 3,
+                    "hit_p": 99,
+                    "atk": 46,
+                    "def_mult": 1,
+                    "eva_p": 90,
+                    "def": 1,
+                    "m_def_mult": 3,
+                    "m_eva_p": 40,
+                    "m_def": 14,
+                    "min_speed": 11,
+                    "max_speed": 14,
+                    "spell_power": 26
+                }
             },
             {
                 "type": "boss",
-                "vanilla": "Yang"
+                "vanilla": "Yang",
+                "stats": {
+                    "level": 31,
+                    "hp": 4000,
+                    "xp": 0,
+                    "gp": 0,
+                    "atk_mult": 6,
+                    "hit_p": 99,
+                    "atk": 86,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 0,
+                    "m_eva_p": 0,
+                    "m_def": 0,
+                    "min_speed": 4,
+                    "max_speed": 7,
+                    "spell_power": 0
+                }
             },
             {
                 "type": "char"
@@ -72,14 +108,50 @@
                 "vanilla": "Baigan",
                 "reqs": [
                     "baron-key"
-                ]
+                ],
+                "stats": {
+                    "level": 9,
+                    "hp": 4200,
+                    "xp": 4820,
+                    "gp": 3000,
+                    "atk_mult": 4,
+                    "hit_p": 99,
+                    "atk": 52,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 3,
+                    "m_eva_p": 60,
+                    "m_def": 11,
+                    "min_speed": 8,
+                    "max_speed": 8,
+                    "spell_power": 9
+                }
             },
             {
                 "type": "boss",
                 "vanilla": "Kainazzo",
                 "reqs": [
                     "baron-key"
-                ]
+                ],
+                "stats": {
+                    "level": 16,
+                    "hp": 4000,
+                    "xp": 5500,
+                    "gp": 4000,
+                    "atk_mult": 3,
+                    "hit_p": 99,
+                    "atk": 44,
+                    "def_mult": 2,
+                    "eva_p": 50,
+                    "def": 2,
+                    "m_def_mult": 10,
+                    "m_eva_p": 50,
+                    "m_def": 48,
+                    "min_speed": 15,
+                    "max_speed": 15,
+                    "spell_power": 29
+                }
             },
             {
                 "type": "char",
@@ -111,7 +183,25 @@
         "poi": [
             {
                 "type": "boss",
-                "vanilla": "D. Mist"
+                "vanilla": "D. Mist",
+                "stats": {
+                    "level": 10,
+                    "hp": 465,
+                    "xp": 700,
+                    "gp": 200,
+                    "atk_mult": 2,
+                    "hit_p": 90,
+                    "atk": 16,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 5,
+                    "m_def_mult": 7,
+                    "m_eva_p": 80,
+                    "m_def": 31,
+                    "min_speed": 5,
+                    "max_speed": 5,
+                    "spell_power": 10
+                }
             }
         ]
     },
@@ -132,7 +222,9 @@
                 "reqs": [
                     "d-mist"
                 ],
-                "flags": ["Nk"]
+                "flags": [
+                    "Nk"
+                ]
             },
             {
                 "type": "boss",
@@ -180,7 +272,9 @@
         "poi": [
             {
                 "type": "char",
-                "flags": ["!Nc"]
+                "flags": [
+                    "!Nc"
+                ]
             },
             {
                 "type": "boss",
@@ -196,7 +290,9 @@
         "poi": [
             {
                 "type": "char",
-                "flags": ["!Nc"]
+                "flags": [
+                    "!Nc"
+                ]
             }
         ]
     },
@@ -208,7 +304,25 @@
         "poi": [
             {
                 "type": "boss",
-                "vanilla": "Antlion"
+                "vanilla": "Antlion",
+                "stats": {
+                    "level": 2,
+                    "hp": 1000,
+                    "xp": 1500,
+                    "gp": 800,
+                    "atk_mult": 2,
+                    "hit_p": 85,
+                    "atk": 11,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 2,
+                    "m_def_mult": 2,
+                    "m_eva_p": 60,
+                    "m_def": 8,
+                    "min_speed": 5,
+                    "max_speed": 5,
+                    "spell_power": 0
+                }
             },
             {
                 "type": "key"
@@ -247,7 +361,25 @@
             },
             {
                 "type": "boss",
-                "vanilla": "Fabul Gauntlet"
+                "vanilla": "Fabul Gauntlet",
+                "stats": {
+                    "level": 15,
+                    "hp": 730,
+                    "xp": 1830,
+                    "gp": 485,
+                    "atk_mult": 3,
+                    "hit_p": 90,
+                    "atk": 36,
+                    "def_mult": 2,
+                    "eva_p": 20,
+                    "def": 2,
+                    "m_def_mult": 3,
+                    "m_eva_p": 60,
+                    "m_def": 11,
+                    "min_speed": 6,
+                    "max_speed": 9,
+                    "spell_power": 0
+                }
             },
             {
                 "type": "key"
@@ -292,7 +424,9 @@
             },
             {
                 "type": "key",
-                "flags": ["!Nk"]
+                "flags": [
+                    "!Nk"
+                ]
             }
         ]
     },
@@ -307,7 +441,25 @@
                 "vanilla": "Dark Elf",
                 "reqs": [
                     "twin-harp"
-                ]
+                ],
+                "stats": {
+                    "level": 15,
+                    "hp": 25000,
+                    "xp": 7000,
+                    "gp": 9000,
+                    "atk_mult": 1,
+                    "hit_p": 75,
+                    "atk": 18,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 99,
+                    "m_eva_p": 99,
+                    "m_def": 254,
+                    "min_speed": 9,
+                    "max_speed": 9,
+                    "spell_power": 1
+                }
             },
             {
                 "type": "key",
@@ -325,20 +477,44 @@
         "poi": [
             {
                 "type": "boss",
-                "vanilla": "Magus Sisters"
+                "vanilla": "Magus Sisters",
+                "stats": {
+                    "level": 16,
+                    "hp": 9000,
+                    "xp": 9000,
+                    "gp": 9000,
+                    "atk_mult": 3,
+                    "hit_p": 80,
+                    "atk": 30,
+                    "def_mult": 1,
+                    "eva_p": 50,
+                    "def": 1,
+                    "m_def_mult": 3,
+                    "m_eva_p": 60,
+                    "m_def": 11,
+                    "min_speed": 7,
+                    "max_speed": 7,
+                    "spell_power": 11
+                }
             },
             {
                 "type": "char",
-                "reqs": ["earth-crystal"]
+                "reqs": [
+                    "earth-crystal"
+                ]
             },
             {
                 "type": "char",
-                "reqs": ["earth-crystal"]
+                "reqs": [
+                    "earth-crystal"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "Valvalis",
-                "reqs": ["earth-crystal"]
+                "reqs": [
+                    "earth-crystal"
+                ]
             }
         ],
         "trapped_chests": [
@@ -394,11 +570,15 @@
             },
             {
                 "type": "char",
-                "flags": ["!Nc"]
+                "flags": [
+                    "!Nc"
+                ]
             },
             {
                 "type": "char",
-                "flags": ["!Nc"]
+                "flags": [
+                    "!Nc"
+                ]
             }
         ]
     },
@@ -410,7 +590,9 @@
         "poi": [
             {
                 "type": "char",
-                "flags": ["!Nc"]
+                "flags": [
+                    "!Nc"
+                ]
             },
             {
                 "type": "boss",
@@ -419,7 +601,6 @@
             {
                 "type": "boss",
                 "vanilla": "Milon Z."
-
             },
             {
                 "type": "key"
@@ -466,29 +647,59 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["hook"]
+                "reqs": [
+                    "hook"
+                ]
             },
             {
                 "type": "weapon-shop",
-                "reqs": ["hook"]
+                "reqs": [
+                    "hook"
+                ]
             },
             {
                 "type": "armor-shop",
-                "reqs": ["hook"]
+                "reqs": [
+                    "hook"
+                ]
             },
             {
                 "type": "char",
-                "reqs": ["hook"]
+                "reqs": [
+                    "hook"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "King & Queen Eblan",
-                "reqs": ["hook"]
+                "reqs": [
+                    "hook"
+                ],
+                "stats": {
+                    "level": 15,
+                    "hp": 6000,
+                    "xp": 0,
+                    "gp": 0,
+                    "atk_mult": 9,
+                    "hit_p": 85,
+                    "atk": 116,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 0,
+                    "m_eva_p": 0,
+                    "m_def": 0,
+                    "min_speed": 53,
+                    "max_speed": 53,
+                    "spell_power": 0
+                }
             },
             {
                 "type": "boss",
                 "vanilla": "Rubicante",
-                "reqs": ["hook"]
+                "reqs": [
+                    "hook"
+                ]
             }
         ],
         "trapped_chests": [
@@ -504,33 +715,83 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["uderground"]
+                "reqs": [
+                    "uderground"
+                ]
             },
             {
                 "type": "weapon-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "armor-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "Calbrena",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ],
+                "stats": {
+                    "level": 31,
+                    "hp": 5924,
+                    "xp": 17000,
+                    "gp": 6000,
+                    "atk_mult": 4,
+                    "hit_p": 99,
+                    "atk": 54,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 3,
+                    "m_eva_p": 60,
+                    "m_def": 11,
+                    "min_speed": 16,
+                    "max_speed": 19,
+                    "spell_power": 31
+                }
             },
             {
                 "type": "char",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "Golbez",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ],
+                "stats": {
+                    "level": 31,
+                    "hp": 22002,
+                    "xp": 20000,
+                    "gp": 11000,
+                    "atk_mult": 5,
+                    "hit_p": 99,
+                    "atk": 68,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 0,
+                    "m_eva_p": 0,
+                    "m_def": 0,
+                    "min_speed": 27,
+                    "max_speed": 27,
+                    "spell_power": 1
+                }
             },
             {
                 "type": "key",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             }
         ]
     },
@@ -542,15 +803,21 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "weapon-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "armor-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             }
         ]
     },
@@ -562,12 +829,36 @@
         "poi": [
             {
                 "type": "key",
-                "reqs": ["underground", "luca-key"]
+                "reqs": [
+                    "underground",
+                    "luca-key"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "Evil Wall",
-                "reqs": ["underground", "luca-key"]
+                "reqs": [
+                    "underground",
+                    "luca-key"
+                ],
+                "stats": {
+                    "level": 37,
+                    "hp": 19000,
+                    "xp": 23000,
+                    "gp": 8000,
+                    "atk_mult": 6,
+                    "hit_p": 90,
+                    "atk": 84,
+                    "def_mult": 1,
+                    "eva_p": 35,
+                    "def": 2,
+                    "m_def_mult": 7,
+                    "m_eva_p": 80,
+                    "m_def": 29,
+                    "min_speed": 66,
+                    "max_speed": 66,
+                    "spell_power": 79
+                }
             }
         ]
     },
@@ -579,31 +870,79 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "weapon-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "armor-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "key",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "Asura",
-                "reqs": ["underground"],
-                "key_item_flag": "Kq"
+                "reqs": [
+                    "underground"
+                ],
+                "key_item_flag": "Kq",
+                "stats": {
+                    "level": 63,
+                    "hp": 23000,
+                    "xp": 20000,
+                    "gp": 0,
+                    "atk_mult": 10,
+                    "hit_p": 99,
+                    "atk": 134,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 8,
+                    "m_eva_p": 80,
+                    "m_def": 37,
+                    "min_speed": 66,
+                    "max_speed": 66,
+                    "spell_power": 69
+                }
             },
             {
                 "type": "boss",
                 "vanilla": "Leviathan",
-                "reqs": ["underground"],
-                "key_item_flag": "Kq"
+                "reqs": [
+                    "underground"
+                ],
+                "key_item_flag": "Kq",
+                "stats": {
+                    "level": 79,
+                    "hp": 35000,
+                    "xp": 28000,
+                    "gp": 0,
+                    "atk_mult": 13,
+                    "hit_p": 99,
+                    "atk": 174,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 5,
+                    "m_def_mult": 10,
+                    "m_eva_p": 80,
+                    "m_def": 47,
+                    "min_speed": 53,
+                    "max_speed": 53,
+                    "spell_power": 34
+                }
             }
         ],
         "trapped_chests": [
@@ -633,7 +972,9 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             }
         ]
     },
@@ -646,20 +987,66 @@
             {
                 "type": "boss",
                 "vanilla": "Lugae & Balnab",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ],
+                "stats": {
+                    "level": 32,
+                    "hp": 18944,
+                    "xp": 26020,
+                    "gp": 11000,
+                    "atk_mult": 1,
+                    "hit_p": 75,
+                    "atk": 18,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 0,
+                    "m_eva_p": 0,
+                    "m_def": 0,
+                    "min_speed": 11,
+                    "max_speed": 11,
+                    "spell_power": 0
+                }
             },
             {
                 "type": "key",
-                "reqs": ["underground"]
+                "reqs": [
+                    "underground"
+                ]
             },
             {
                 "type": "boss",
                 "vanilla": "Dark Imps",
-                "reqs": ["underground", "tower-key"]
+                "reqs": [
+                    "underground",
+                    "tower-key"
+                ],
+                "stats": {
+                    "level": 16,
+                    "hp": 199,
+                    "xp": 1940,
+                    "gp": 45,
+                    "atk_mult": 5,
+                    "hit_p": 70,
+                    "atk": 56,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 0,
+                    "m_def_mult": 0,
+                    "m_eva_p": 0,
+                    "m_def": 0,
+                    "min_speed": 18,
+                    "max_speed": 21,
+                    "spell_power": 0
+                }
             },
             {
                 "type": "key",
-                "reqs": ["underground", "tower-key"]
+                "reqs": [
+                    "underground",
+                    "tower-key"
+                ]
             }
         ],
         "trapped_chests": [
@@ -677,7 +1064,9 @@
         "poi": [
             {
                 "type": "item-shop",
-                "reqs": ["darkness-crystal"]
+                "reqs": [
+                    "darkness-crystal"
+                ]
             }
         ]
     },
@@ -689,7 +1078,9 @@
         "poi": [
             {
                 "type": "char",
-                "reqs": ["darkness-crystal"]
+                "reqs": [
+                    "darkness-crystal"
+                ]
             }
         ]
     },
@@ -702,8 +1093,28 @@
             {
                 "type": "boss",
                 "vanilla": "Bahamut",
-                "reqs": ["darkness-crystal"],
-                "key_item_flag": "Km"
+                "reqs": [
+                    "darkness-crystal"
+                ],
+                "key_item_flag": "Km",
+                "stats": {
+                    "level": 47,
+                    "hp": 37000,
+                    "xp": 35000,
+                    "gp": 0,
+                    "atk_mult": 13,
+                    "hit_p": 99,
+                    "atk": 174,
+                    "def_mult": 0,
+                    "eva_p": 0,
+                    "def": 1,
+                    "m_def_mult": 1,
+                    "m_eva_p": 60,
+                    "m_def": 8,
+                    "min_speed": 27,
+                    "max_speed": 27,
+                    "spell_power": 17
+                }
             }
         ]
     },
@@ -725,31 +1136,59 @@
             {
                 "type": "boss",
                 "vanilla": "Pale Dim",
-                "reqs": ["darkness-crystal"],
+                "reqs": [
+                    "darkness-crystal"
+                ],
                 "key_item_flag": "Km"
             },
             {
                 "type": "boss",
                 "vanilla": "plague",
-                "reqs": ["darkness-crystal"],
+                "reqs": [
+                    "darkness-crystal"
+                ],
                 "key_item_flag": "Km"
             },
             {
                 "type": "boss",
                 "vanilla": "D. Lunar",
-                "reqs": ["darkness-crystal"],
-                "key_item_flag": "Km"
+                "reqs": [
+                    "darkness-crystal"
+                ],
+                "key_item_flag": "Km",
+                "stats": {
+                    "level": 99,
+                    "hp": 21000,
+                    "xp": 50000,
+                    "gp": 0,
+                    "atk_mult": 11,
+                    "hit_p": 85,
+                    "atk": 144,
+                    "def_mult": 3,
+                    "eva_p": 30,
+                    "def": 4,
+                    "m_def_mult": 10,
+                    "m_eva_p": 80,
+                    "m_def": 54,
+                    "min_speed": 30,
+                    "max_speed": 30,
+                    "spell_power": 36
+                }
             },
             {
                 "type": "boss",
                 "vanilla": "Ogopogo",
-                "reqs": ["darkness-crystal"],
+                "reqs": [
+                    "darkness-crystal"
+                ],
                 "key_item_flag": "Km"
             },
             {
                 "type": "boss",
                 "vanilla": "Wyvern",
-                "reqs": ["darkness-crystal"],
+                "reqs": [
+                    "darkness-crystal"
+                ],
                 "key_item_flag": "Km"
             }
         ],
@@ -774,16 +1213,58 @@
             {
                 "type": "boss",
                 "vanilla": "Elemental Fields",
-                "reqs": ["darkness-crystal"]
+                "reqs": [
+                    "darkness-crystal"
+                ],
+                "stats": {
+                    "level": 79,
+                    "hp": 104001,
+                    "xp": 102500,
+                    "gp": 20000,
+                    "atk_mult": 10,
+                    "hit_p": 80,
+                    "atk": 128,
+                    "def_mult": 2,
+                    "eva_p": 35,
+                    "def": 3,
+                    "m_def_mult": 3,
+                    "m_eva_p": 60,
+                    "m_def": 4,
+                    "min_speed": 89,
+                    "max_speed": 89,
+                    "spell_power": 15
+                }
             },
             {
                 "type": "boss",
                 "vanilla": "CPU",
-                "reqs": ["darkness-crystal"]
+                "reqs": [
+                    "darkness-crystal"
+                ],
+                "stats": {
+                    "level": 48,
+                    "hp": 24000,
+                    "xp": 150000,
+                    "gp": 10333,
+                    "atk_mult": 13,
+                    "hit_p": 99,
+                    "atk": 174,
+                    "def_mult": 4,
+                    "eva_p": 45,
+                    "def": 4,
+                    "m_def_mult": 8,
+                    "m_eva_p": 50,
+                    "m_def": 38,
+                    "min_speed": 38,
+                    "max_speed": 38,
+                    "spell_power": 127
+                }
             },
             {
                 "type": "char",
-                "reqs": ["darkness-crystal"]
+                "reqs": [
+                    "darkness-crystal"
+                ]
             }
         ],
         "trapped_chests": [
