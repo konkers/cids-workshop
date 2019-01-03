@@ -28,10 +28,8 @@ export class StateService {
   private charsFound: ObservableData<CharactersFoundState>;
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService) {
-    console.log(this.storage.get(STORAGE_KEY));
     this.stateData = this.storage.get(STORAGE_KEY) || this.defaultState();
     this.updateStateData();
-    console.log(this.stateData);
 
     this._state = <BehaviorSubject<State>>new BehaviorSubject(this.stateData);
     this.state$ = this._state.asObservable();
