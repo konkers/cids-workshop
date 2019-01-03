@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   locs: Locations;
   locRouteRe = RegExp("/loc/([^/]*)");
   pageNames = {
-    "/items": "Items",
+    "/items": "Items of Interest",
     "/flags": "Flags",
     "/help": "Help"
   };
