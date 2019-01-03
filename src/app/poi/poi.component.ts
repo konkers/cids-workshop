@@ -44,9 +44,6 @@ export class PoiComponent implements OnInit {
     });
 
     this.state$.subscribe(s => {
-      if (this.locId === "feymarch" && this.poiIndex === 4) {
-        console.log(s);
-      }
       this.enabled = s.poi[this.poiIndex].enabled;
       this.keyItem = s.poi[this.poiIndex].keyItem;
       this.character = s.poi[this.poiIndex].character;

@@ -63,7 +63,6 @@ export class LocationDetailComponent implements OnInit {
         map(state => {
           let enabled = false;
           for (const poi of Object.values(state.poi)) {
-            console.log(poi);
             enabled = enabled || poi.hasKeyItem;
           }
           return enabled;
