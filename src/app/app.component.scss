@@ -12,8 +12,13 @@ app-root {
   padding: 10px;
 }
 
-.runner{
+.locations {
   padding: 10px;
+  flex-grow: 1;
+  overflow: auto;
+
+  /* for Firefox */
+  min-height: 0;
 }
 
 .selectables {
@@ -35,6 +40,8 @@ app-root {
 
 .content {
   padding: 10px;
+  display: flex;
+  overflow-y: auto;
 }
 
 .toolbar-spacer {
@@ -45,11 +52,29 @@ app-root {
   flex: 1;
   box-sizing: border-box;
   min-height: 100%;
+  height:100%;
 }
 
 .app-sidenav {
-  overflow: auto;
+  //overflow: auto;
   width: $sidenav-width;
+}
+
+.sidenav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  padding: 8px;
+}
+
+.quick-actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .docs-component-sidenav-inner-content {
