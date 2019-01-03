@@ -4,29 +4,55 @@
         class="app-sidenav mat-elevation-z8"
         opened
     >
-        <div class="broadcast">
-            <div class="selectables">
-                <app-character-tracker (select)="characterEvent($event)"></app-character-tracker>
-                <div class="vert-sep"></div>
-                <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
-                <div class="vert-sep"></div>
-                <app-boss-tracker (select)="bossEvent($event)"></app-boss-tracker>
+        <div class="sidenav">
+            <div class="broadcast">
+                <div class="selectables">
+                    <app-character-tracker (select)="characterEvent($event)"></app-character-tracker>
+                    <div class="vert-sep"></div>
+                    <app-key-item-tracker (select)="keyItemEvent($event)"></app-key-item-tracker>
+                    <div class="vert-sep"></div>
+                    <app-boss-tracker (select)="bossEvent($event)"></app-boss-tracker>
+                </div>
             </div>
-        </div>
-        <div class="runner">
-            <app-location-tracker
-                [keyItemEvents]="keyItemEvents"
-                [characterEvents]="characterEvents"
-                [bossEvents]="bossEvents"
-            ></app-location-tracker>
+            <div class="quick-actions">
+                <button
+                    mat-icon-button
+                    matTooltip="Items"
+                    (click)="goItems()"
+                >
+                    <mat-icon>assignment</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    matTooltip="Flags"
+                    (click)="goFlags()"
+                >
+                    <mat-icon>flag</mat-icon>
+                </button>
+                <button
+                    mat-icon-button
+                    matTooltip="Help"
+                    (click)="goHelp()"
+                >
+                    <mat-icon>help</mat-icon>
+                </button>
+            </div>
+            <div class="locations">
+                <app-location-tracker
+                    [keyItemEvents]="keyItemEvents"
+                    [characterEvents]="characterEvents"
+                    [bossEvents]="bossEvents"
+                ></app-location-tracker>
+            </div>
+            <div class="actions">
+                <button
+                    mat-raised-button
+                    (click)="reset()"
+                    color="warn"
+                >Reset</button>
+            </div>
 
-            <button
-                mat-raised-button
-                (click)="reset()"
-                color="warn"
-            >Reset</button>
         </div>
-
     </mat-sidenav>
     <mat-sidenav-content class="app-sidenav-content">
         <mat-toolbar
@@ -53,7 +79,7 @@
                     mat-menu-item
                     (click)="goFlags()"
                 >
-                    <mat-icon>check_box</mat-icon>
+                    <mat-icon>flags</mat-icon>
                     <span>Flags</span>
                 </button>
                 <button
