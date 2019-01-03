@@ -63,15 +63,6 @@ export class StateService {
   }
 
   private store() {
-    if (
-      "hook" in this.stateData.key_items ||
-      "magma-key" in this.stateData.key_items
-    ) {
-      this.stateData.key_items["underground"] = { location: "virt", slot: 0 };
-    } else {
-      delete this.stateData.key_items["underground"];
-    }
-
     console.log("saving state", this.stateData);
     this._state.next(this.stateData);
     this.storage.set(STORAGE_KEY, this.stateData);

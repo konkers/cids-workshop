@@ -1857,7 +1857,8 @@
     "name": "Pass",
     "price": 10000,
     "icon": "",
-    "key": "pass"
+    "key": "pass",
+    "shop_type": "item"
   },
   {
     "id": 233,

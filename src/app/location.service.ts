@@ -12,6 +12,7 @@ import {
   TrappedChestsLocation
 } from "./state.service";
 import { Config, ConfigService } from "./config.service";
+import { KeyItemService } from "./key-item.service";
 
 export { Location, LocationBossStats, LocationPoi } from "./location.model";
 
@@ -75,7 +76,8 @@ export class LocationService {
   constructor(
     private http: HttpClient,
     private configService: ConfigService,
-    private stateService: StateService
+    private stateService: StateService,
+    private keyItemService: KeyItemService
   ) {
     this._locations = <BehaviorSubject<Locations>>(
       new BehaviorSubject(undefined)
@@ -98,9 +100,14 @@ export class LocationService {
     this.locationState$ = combineLatest(
       this.stateService.getState(),
       this.configService.getConfig(),
+      this.keyItemService.getKeyItemsFound(),
       this.locations
     ).pipe(
-      map(results => this.processState(results[0], results[1], results[2]))
+      map(results => {
+        const state = Object.assign({}, results[0]);
+        state.key_items = results[2];
+        return this.processState(state, results[1], results[3]);
+      })
     );
     this.locationState$.subscribe(s => {
       this.locationStateData = s;
