@@ -605,6 +605,12 @@
                     "max_speed": 18,
                     "spell_power": 63
                 }
+            },
+            {
+                "type": "key",
+                "reqs": [
+                    "earth-crystal"
+                ]
             }
         ],
         "trapped_chests": [
