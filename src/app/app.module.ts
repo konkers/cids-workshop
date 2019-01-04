@@ -13,6 +13,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import {
   MatDialogModule,
@@ -55,6 +56,7 @@ import {
   KeyItemPickerComponent,
   KeyItemPickerDialogComponent
 } from "./key-item-picker/key-item-picker.component";
+import { KiloPipe } from "./kilo.pipe";
 
 const appRoutes: Routes = [
   { path: "loc/:loc", component: LocationDetailComponent },
@@ -89,7 +91,8 @@ const appRoutes: Routes = [
     HelpComponent,
     ItemAdderComponent,
     KeyItemPickerComponent,
-    KeyItemPickerDialogComponent
+    KeyItemPickerDialogComponent,
+    KiloPipe
   ],
   imports: [
     RouterModule.forRoot(
@@ -111,6 +114,7 @@ const appRoutes: Routes = [
 
     MatAutocompleteModule,
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatDialogModule,
     MatFormFieldModule,

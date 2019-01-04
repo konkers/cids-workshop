@@ -1,6 +1,21 @@
+:host {
+    min-width: 100%;
+}
+
+.full {
+    min-width: 100%;
+}
+
+.card {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
 .bosses {
   border-collapse: collapse;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .boss {
@@ -40,18 +55,35 @@
     display: flex;
 }
 
+.item-picker {
+    display: flex;
+    flex-grow: 1;
+}
+
 .shop-actions {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
+.shops {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.heading {
+    border-bottom: 1px solid white;
+}
+
+.shop {
+    width: 120px;
+}
 .picker {
     padding-right: 10px;
     vertical-align: top;
 }
 
 .section {
-    margin-left: 10px;
     margin-bottom: 10px;
 }
 
