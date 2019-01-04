@@ -1,138 +1,171 @@
 <section
-  class="mat-typography"
+  class="mat-typography full"
   *ngIf="loc"
 >
-  <div *ngIf="hasBosses()">
-    <h2>Bosses</h2>
-    <table class="bosses">
-      <tr class="bosshead">
-        <th></th>
-        <th *ngIf="hasBossKeyItems$ | async"></th>
-        <th></th>
-        <th class="stat">HP</th>
-        <th class="stat">XP</th>
-        <th class="stat">Spd</th>
-        <th class="stat">Atk*</th>
-        <th class="stat">M Atk</th>
-        <th class="stat">Def*</th>
-        <th class="stat">M Def*</th>
-      </tr>
-      <tr
-        class="boss"
-        *ngFor="let i of (bossPoi$ | async)"
-      >
-        <td>
-          <app-poi
-            [locId]="(loc$ | async).id"
-            [poiIndex]="i"
-            [state$]="state$"
-            size="small"
-          ></app-poi>
-        </td>
-        <td *ngIf="(state$ | async).poi[i].hasKeyItem">
-          <app-key-item-picker
-            [location]="locId"
-            [slot]="i"
-            type="boss"
-            class="key"
-          ></app-key-item-picker>
-        </td>
-        <td>
-          {{(loc$ | async).poi[i].vanilla}}
-        </td>
-        <td class="stat">
-          {{(loc$ | async).poi[i].stats.hp}}
-        </td>
-        <td class="stat">
-          {{(loc$ | async).poi[i].stats.xp}}
-        </td>
-        <td class="stat">
-          {{(loc$ | async).poi[i].stats.min_speed}}-{{(loc$ | async).poi[i].stats.max_speed}}
-        </td>
-        <td class="stat">
-          <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'atk', 'atk_mult', 'hit_p')}}">
-            {{normalizedStat((loc$ | async).poi[i].stats, 'atk', 'atk_mult', 'hit_p')}}
-          </span>
-        </td>
-        <td class="stat">
-          {{(loc$ | async).poi[i].stats.spell_power}}
-        </td>
-        <td class="stat">
-          <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'def', 'def_mult', 'eva_p')}}">
-            {{normalizedStat((loc$ | async).poi[i].stats, 'def', 'def_mult', 'eva_p')}}
-          </span>
-        </td>
-        <td class="stat">
-          <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'm_def', 'm_def_mult', 'm_eva_p')}}">
-            {{normalizedStat((loc$ | async).poi[i].stats, 'm_def', 'm_def_mult', 'm_eva_p')}}
-          </span>
-        </td>
-      </tr>
-    </table>
-    <p class="mat-caption">*: Atk, Def, and M Def are normalized. To see power, multiplier, and
-      rate, hover over the stat. These values can be adjusted by the boss at the spot an nly give a
-      rough idea of the power of the spot.</p>
-  </div>
-
-  <div *ngIf="hasShops()">
-    <h2>Shops</h2>
-    <div class="shop-actions">
-      <app-item-adder [autoCheckLoc]="locId"></app-item-adder><button
-        mat-icon-button
-        (click)="gotoItemList()"
-      >
-        <mat-icon>assignment</mat-icon>
-      </button>
-    </div>
-    <div class="section">
-      <table>
-        <tr>
-          <th *ngIf="hasPoi('item-shop')">
-            Item
-          </th>
-          <th *ngIf="hasPoi('weapon-shop')">
-            Weapon
-          </th>
-          <th *ngIf="hasPoi('armor-shop')">
-            Armor
-          </th>
+  <mat-card
+    class="card"
+    *ngIf="hasBosses()"
+  >
+    <mat-card-header>
+      <mat-card-title>Bosses</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table class="bosses">
+        <tr class="bosshead">
+          <th></th>
+          <th *ngIf="hasBossKeyItems$ | async"></th>
+          <th></th>
+          <th class="stat">HP</th>
+          <th class="stat">XP</th>
+          <th class="stat">Spd</th>
+          <th class="stat">Atk*</th>
+          <th class="stat">M Atk</th>
+          <th class="stat">Def*</th>
+          <th class="stat">M Def*</th>
         </tr>
-        <tr>
-          <td
-            *ngIf="hasPoi('item-shop')"
-            class="picker"
-          >
-            <app-shop-item-picker
-              [location]="loc.id"
-              shopType="item"
-            ></app-shop-item-picker>
+        <tr
+          class="boss"
+          *ngFor="let i of (bossPoi$ | async)"
+        >
+          <td>
+            <app-poi
+              [locId]="(loc$ | async).id"
+              [poiIndex]="i"
+              [state$]="state$"
+              size="small"
+            ></app-poi>
           </td>
-          <td
-            *ngIf="hasPoi('weapon-shop')"
-            class="picker"
-          >
-            <app-shop-item-picker
-              [location]="loc.id"
-              shopType="weapon"
-            ></app-shop-item-picker>
+          <td *ngIf="(state$ | async).poi[i].hasKeyItem">
+            <app-key-item-picker
+              [location]="locId"
+              [slot]="i"
+              type="boss"
+              class="key"
+            ></app-key-item-picker>
           </td>
-          <td
-            *ngIf="hasPoi('armor-shop')"
-            class="picker"
-          >
-            <app-shop-item-picker
-              [location]="loc.id"
-              shopType="armor"
-            ></app-shop-item-picker>
+          <td>
+            {{(loc$ | async).poi[i].vanilla}}
+          </td>
+          <td class="stat">
+            {{(loc$ | async).poi[i].stats.hp | kilo}}
+          </td>
+          <td class="stat">
+            {{(loc$ | async).poi[i].stats.xp | kilo}}
+          </td>
+          <td class="stat">
+            {{(loc$ | async).poi[i].stats.min_speed}}-{{(loc$ | async).poi[i].stats.max_speed}}
+          </td>
+          <td class="stat">
+            <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'atk', 'atk_mult', 'hit_p')}}">
+              {{normalizedStat((loc$ | async).poi[i].stats, 'atk', 'atk_mult', 'hit_p') | kilo}}
+            </span>
+          </td>
+          <td class="stat">
+            {{(loc$ | async).poi[i].stats.spell_power}}
+          </td>
+          <td class="stat">
+            <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'def', 'def_mult', 'eva_p')}}">
+              {{normalizedStat((loc$ | async).poi[i].stats, 'def', 'def_mult', 'eva_p') | kilo}}
+            </span>
+          </td>
+          <td class="stat">
+            <span matTooltip="{{statToolTip((loc$ | async).poi[i].stats, 'm_def', 'm_def_mult', 'm_eva_p')}}">
+              {{normalizedStat((loc$ | async).poi[i].stats, 'm_def', 'm_def_mult', 'm_eva_p') |
+              kilo}}
+            </span>
           </td>
         </tr>
       </table>
-    </div>
-  </div>
+      <p class="mat-caption">*: Atk, Def, and M Def are normalized. To see power, multiplier, and
+        rate, hover over the stat. These values can be adjusted by the boss at the spot an nly give
+        a
+        rough idea of the power of the spot.</p>
+    </mat-card-content>
+  </mat-card>
 
-  <div *ngIf="hasTrappedChests() && (state$ | async)">
-    <h2>Trapped Chests</h2>
-    <div class="section">
+  <mat-card
+    class="card"
+    *ngIf="hasShops()"
+  >
+    <mat-card-header>
+      <mat-card-title>Shops</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="shop-actions">
+        <app-item-adder
+          [autoCheckLoc]="locId"
+          class="item-picker"
+        ></app-item-adder><button
+          mat-icon-button
+          (click)="gotoItemList()"
+        >
+          <mat-icon>assignment</mat-icon>
+        </button>
+      </div>
+      <div class="section">
+        <table class="shops">
+          <tr class="heading">
+            <th
+              class="shop"
+              *ngIf="hasPoi('item-shop')"
+            >
+              Item
+            </th>
+            <th
+              class="shop"
+              *ngIf="hasPoi('weapon-shop')"
+            >
+              Weapon
+            </th>
+            <th
+              class="shop"
+              *ngIf="hasPoi('armor-shop')"
+            >
+              Armor
+            </th>
+          </tr>
+          <tr>
+            <td
+              *ngIf="hasPoi('item-shop')"
+              class="picker"
+            >
+              <app-shop-item-picker
+                [location]="loc.id"
+                shopType="item"
+              ></app-shop-item-picker>
+            </td>
+            <td
+              *ngIf="hasPoi('weapon-shop')"
+              class="picker"
+            >
+              <app-shop-item-picker
+                [location]="loc.id"
+                shopType="weapon"
+              ></app-shop-item-picker>
+            </td>
+            <td
+              *ngIf="hasPoi('armor-shop')"
+              class="picker"
+            >
+              <app-shop-item-picker
+                [location]="loc.id"
+                shopType="armor"
+              ></app-shop-item-picker>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card
+    class="card"
+    *ngIf="hasTrappedChests() && (state$ | async)"
+  >
+    <mat-card-header>
+      <mat-card-title>Trapped Chests</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <div *ngFor="let chest of loc.trapped_chests; index as i">
         <div class="trapped">
           <app-key-item-picker
@@ -151,6 +184,6 @@
           </mat-checkbox>
         </div>
       </div>
-    </div>
-  </div>
+    </mat-card-content>
+  </mat-card>
 </section>
