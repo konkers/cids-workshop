@@ -7,8 +7,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('Root title should be Cid\'s Workshop', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to tracker!');
+    expect(page.getTitleText()).toEqual('Cid\'s Workshop');
+  });
+
+  it('Baron in title', () => {
+    page.navigateTo();
+    page.selectLoc('baron-inn');
+    expect(page.getTitleText()).toEqual('Baron Inn');
   });
 });
