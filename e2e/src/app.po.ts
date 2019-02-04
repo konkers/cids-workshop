@@ -5,14 +5,24 @@ export class AppPage {
     return browser.get('/');
   }
 
+  clearData() {
+    browser.executeScript('window.sessionStorage.clear();');
+    browser.executeScript('window.localStorage.clear();');
+  }
+
+  selectBoss(boss: string) {
+    return element(by.css(`app-boss#${boss}`)).click();
+  }
+
   selectLoc(loc: string) {
-    let elem = protractor.ExpectedConditions;
-    //browser.waitForAngular();
-    //browser.wait(elem.visibilityOf(element(by.id(loc))), 6000);
-    element(by.id(loc)).click();
+    return element(by.css(`app-location-summary#${loc}`)).click();
   }
 
   getTitleText() {
     return element(by.css('mat-toolbar span')).getText();
+  }
+
+  getDetailsBossAsset(index: number) {
+    return element.all(by.css('mat-card-content tr.boss app-poi img')).get(index).getAttribute('src');
   }
 }

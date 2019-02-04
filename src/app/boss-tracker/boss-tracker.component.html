@@ -10,6 +10,7 @@
     <app-boss
       [boss]="(bosses$ | async)[id]"
       [state]="(bossesFound$ | async)[id]"
+      id="{{id}}"
     >
       </app-boss>
   </div>
