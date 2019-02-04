@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
 import {
   Location,
   LocationPoi,
-  LocationState,
-  LocationService
+  LocationService,
+  LocationState
 } from "../location.service";
 import { StateService } from "../state.service";
 
@@ -15,10 +15,25 @@ import { StateService } from "../state.service";
   styleUrls: ["./poi.component.scss"]
 })
 export class PoiComponent implements OnInit {
+  private _state$: Observable<LocationState>;
+
   @Input() locId: string;
   @Input() poiIndex: number;
-  @Input() state$: Observable<LocationState>;
   @Input() size?: string;
+
+  @Input()
+  set state$(state: Observable<LocationState>) {
+    this._state$ = state;
+    if (state !== undefined) {
+      state.subscribe(s => {
+        this.enabled = s.poi[this.poiIndex].enabled;
+        this.keyItem = s.poi[this.poiIndex].keyItem;
+        this.character = s.poi[this.poiIndex].character;
+        this.boss = s.poi[this.poiIndex].boss;
+        this.foundItem = s.poi[this.poiIndex].foundItem;
+      });
+    }
+  }
 
   loc: Location;
   poi: LocationPoi;
@@ -41,14 +56,6 @@ export class PoiComponent implements OnInit {
     this.locationService.getLocation(this.locId).subscribe(loc => {
       this.loc = loc;
       this.poi = loc.poi[this.poiIndex];
-    });
-
-    this.state$.subscribe(s => {
-      this.enabled = s.poi[this.poiIndex].enabled;
-      this.keyItem = s.poi[this.poiIndex].keyItem;
-      this.character = s.poi[this.poiIndex].character;
-      this.boss = s.poi[this.poiIndex].boss;
-      this.foundItem = s.poi[this.poiIndex].foundItem;
     });
   }
 
