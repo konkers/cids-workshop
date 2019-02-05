@@ -4,6 +4,8 @@ import { map } from "rxjs/operators";
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
+import { ObservableData } from "../observable-data";
+
 import {
   Location,
   Locations,
@@ -19,7 +21,7 @@ import {
 })
 export class KeyItemPickerDialogComponent {
   constructor(public dialogRef: MatDialogRef<KeyItemPickerDialogComponent>) {}
-
+  G;
   keyItemEvent(keyItem: string) {
     this.dialogRef.close(keyItem);
   }
@@ -35,10 +37,11 @@ export class KeyItemPickerDialogComponent {
   styleUrls: ["./key-item-picker.component.scss"]
 })
 export class KeyItemPickerComponent implements OnInit {
-  @Input() location: string;
+  @Input() locId$: Observable<string>;
   @Input() type: string;
   @Input() slot: number;
 
+  locId: string;
   state$: Observable<LocationState>;
   loc$: Observable<Location>;
   img$: Observable<string>;
@@ -49,9 +52,12 @@ export class KeyItemPickerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loc$ = this.locationService.getLocation(this.location);
+    this.loc$ = this.locationService.getLocation(this.locId$);
     this.state$ = this.locationService.getLocationState(this.loc$);
     this.img$ = this.state$.pipe(map(state => this.imgForState(state)));
+    this.locId$.subscribe(id => {
+      this.locId = id;
+    });
   }
 
   private imgForBossState(state: LocationState): string {
@@ -94,14 +100,14 @@ export class KeyItemPickerComponent implements OnInit {
       switch (this.type) {
         case "boss":
           this.locationService.processBossKeyItem(
-            this.location,
+            this.locId,
             this.slot,
             result
           );
           break;
         case "trapped":
           this.locationService.processTrappedKeyItem(
-            this.location,
+            this.locId,
             this.slot,
             result
           );

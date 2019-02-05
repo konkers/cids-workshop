@@ -8,6 +8,7 @@ import {
   LocationState
 } from "../location.service";
 import { StateService } from "../state.service";
+import { ObservableData } from "../observable-data";
 
 @Component({
   selector: "app-poi",
@@ -15,26 +16,12 @@ import { StateService } from "../state.service";
   styleUrls: ["./poi.component.scss"]
 })
 export class PoiComponent implements OnInit {
-  private _state$: Observable<LocationState>;
-
-  @Input() locId: string;
+  @Input() locId: Observable<string>;
   @Input() poiIndex: number;
   @Input() size?: string;
 
-  @Input()
-  set state$(state: Observable<LocationState>) {
-    this._state$ = state;
-    if (state !== undefined) {
-      state.subscribe(s => {
-        this.enabled = s.poi[this.poiIndex].enabled;
-        this.keyItem = s.poi[this.poiIndex].keyItem;
-        this.character = s.poi[this.poiIndex].character;
-        this.boss = s.poi[this.poiIndex].boss;
-        this.foundItem = s.poi[this.poiIndex].foundItem;
-      });
-    }
-  }
-
+  state$: Observable<LocationState>;
+  loc$: Observable<Location>;
   loc: Location;
   poi: LocationPoi;
   enabled = false;
@@ -53,9 +40,22 @@ export class PoiComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.locationService.getLocation(this.locId).subscribe(loc => {
+    this.loc$ = this.locationService.getLocation(this.locId);
+    this.loc$.subscribe(loc => {
       this.loc = loc;
       this.poi = loc.poi[this.poiIndex];
+    });
+
+    this.state$ = this.locationService.getLocationState(this.loc$);
+    this.state$.subscribe(s => {
+      const poiState = s.poi[this.poiIndex];
+      if (poiState !== undefined) {
+        this.enabled = s.poi[this.poiIndex].enabled;
+        this.keyItem = s.poi[this.poiIndex].keyItem;
+        this.character = s.poi[this.poiIndex].character;
+        this.boss = s.poi[this.poiIndex].boss;
+        this.foundItem = s.poi[this.poiIndex].foundItem;
+      }
     });
   }
 
