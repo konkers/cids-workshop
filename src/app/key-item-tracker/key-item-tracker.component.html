@@ -8,6 +8,7 @@
     (click)="selectKeyItem(id)"
   >
     <app-key-item
+      [id]="id"
       [keyItem]="(keyItems$ | async)[id]"
       [state]="(keyItemsFound$ |async)[id]"
     ></app-key-item>

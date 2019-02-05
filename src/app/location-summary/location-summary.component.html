@@ -13,9 +13,8 @@
     <div *ngFor="let poi of (loc$ | async).poi; index as i">
       <app-poi
         *ngIf="(state$ | async).poi[i].visible"
-        [locId]="(loc$ | async).id"
+        [locId]="_locId.data$"
         [poiIndex]="i"
-        [state$]="state$"
       ></app-poi>
     </div>
   </div>

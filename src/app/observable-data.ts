@@ -11,6 +11,11 @@ export class ObservableData<T> {
     this.data$ = this._data.asObservable();
   }
 
+  nextData(data: T) {
+    this.data = data;
+    this.next();
+  }
+
   next() {
     this._data.next(this.data);
   }

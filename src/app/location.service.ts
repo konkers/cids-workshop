@@ -303,8 +303,36 @@ export class LocationService {
     return this.locationOrder;
   }
 
-  public getLocation(id: string): Observable<Location> {
-    return this.getLocations().pipe(map(locs => locs[id]));
+  public getLocation(id$: Observable<string>): Observable<Location> {
+    return combineLatest(this.locations, id$).pipe(
+      map(r => {
+        const locs = r[0];
+        const id = r[1];
+        return locs[id];
+      })
+    );
+  }
+
+  public getLocationState(
+    location$: Observable<Location>
+  ): Observable<LocationState> {
+    return combineLatest(this.locationState$, location$).pipe(
+      map(r => {
+        const states = r[0];
+        const loc = r[1];
+
+        const l: LocationState = {
+          enabled: false,
+          poi: [],
+          trapped_chests: {}
+        };
+        if (states === undefined || loc === undefined) {
+          return l;
+        }
+
+        return states[loc.id];
+      })
+    );
   }
 
   private processPoi(
@@ -453,25 +481,5 @@ export class LocationService {
 
   recordTrappedChest(locId: string, chest: number, found: boolean) {
     this.stateService.recordTrappedChest(locId, chest, found);
-  }
-
-  getLocationState(location$: Observable<Location>): Observable<LocationState> {
-    return combineLatest(this.locationState$, location$).pipe(
-      map(r => {
-        const states = r[0];
-        const loc = r[1];
-
-        const l: LocationState = {
-          enabled: false,
-          poi: [],
-          trapped_chests: {}
-        };
-        if (states === undefined || loc === undefined) {
-          return l;
-        }
-
-        return states[loc.id];
-      })
-    );
   }
 }
