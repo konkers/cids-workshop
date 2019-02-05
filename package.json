@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prodbuild": "ng build --prod"
+    "prodbuild": "ng build --prod --source-map"
   },
   "private": true,
   "dependencies": {
