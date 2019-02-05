@@ -29,15 +29,14 @@
         >
           <td>
             <app-poi
-              [locId]="(loc$ | async).id"
+              [locId]="locId.data$"
               [poiIndex]="i"
-              [state$]="state$"
               size="small"
             ></app-poi>
           </td>
           <td *ngIf="(state$ | async).poi[i].hasKeyItem">
             <app-key-item-picker
-              [location]="locId"
+              [locId$]="locId.data$"
               [slot]="i"
               type="boss"
               class="key"
@@ -170,7 +169,7 @@
         <div class="trapped">
           <app-key-item-picker
             *ngIf="(config$ | async).flags.Kt"
-            [location]="locId"
+            [locId$]="locId.data$"
             [slot]="i"
             type="trapped"
             class="key"

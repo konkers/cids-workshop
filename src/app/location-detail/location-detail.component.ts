@@ -12,6 +12,7 @@ import {
   PoiState
 } from "../location.service";
 import { Config, ConfigService } from "../config.service";
+import { ObservableData } from "../observable-data";
 
 @Component({
   selector: "app-location-detail",
@@ -19,9 +20,10 @@ import { Config, ConfigService } from "../config.service";
   styleUrls: ["./location-detail.component.scss"]
 })
 export class LocationDetailComponent implements OnInit {
+  private locId: ObservableData<string> = new ObservableData<string>(undefined);
+
   locs: Locations;
   loc: Location;
-  locId: string;
   state$: Observable<LocationState>;
   loc$: Observable<Location>;
   config$: Observable<Config>;
@@ -44,20 +46,26 @@ export class LocationDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loc$ = this.locationService.getLocation(this.locId.data$);
+    this.state$ = this.locationService.getLocationState(this.loc$);
+
     this.route.paramMap.subscribe(m => {
-      this.locId = m.get("loc");
-      this.updateLoc();
+      this.locId.nextData(m.get("loc"));
     });
+    this.locId.data$.subscribe(id => this.updateLoc());
   }
 
   private updateLoc() {
+    const id = this.locId.data;
+    console.log(`updating loc to ${id}`);
     if (this.locs === undefined) {
       return;
     }
-    if (this.locId in this.locs) {
-      this.loc = this.locs[this.locId];
-      this.loc$ = this.locationService.getLocation(this.locId);
-      this.state$ = this.locationService.getLocationState(this.loc$);
+    if (id === undefined) {
+      return;
+    }
+    if (id in this.locs) {
+      this.loc = this.locs[id];
 
       this.hasBossKeyItems$ = this.state$.pipe(
         map(state => {
@@ -141,7 +149,7 @@ export class LocationDetailComponent implements OnInit {
 
   doTrappedChest(chest: number, found: boolean) {
     console.log(found);
-    this.locationService.recordTrappedChest(this.locId, chest, found);
+    this.locationService.recordTrappedChest(this.locId.data, chest, found);
   }
 
   gotoItemList() {
